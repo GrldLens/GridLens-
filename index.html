@@ -128,15 +128,15 @@ searchBox.addEventListener('input', function () {
   alert("Search is working!");
   const searchText = searchBox.value.toLowerCase().trim();
 
-  players.forEach(function (player) {
-    const playerName = player.querySelector('h3').textContent.toLowerCase();
+players.forEach(function (player) {
+  const playerName = player.querySelector('h3').textContent.toLowerCase();
 
-    if (playerName.includes(searchText)) {
-      player.style.display = 'block';
-    } else {
-      player.style.display = 'none';
-    }
-  });
+  if (playerName.includes(searchText)) {
+    player.style.display = '';
+  } else {
+    player.style.display = 'none';
+  }
+});
 });
 </script>
 </body>
