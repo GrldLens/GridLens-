@@ -94,17 +94,77 @@
       margin-top: 0;
     }
 
+    /* PLAYER PROFILE */
+
     .profile {
       display: none;
       background: white;
-      margin-top: 30px;
+      margin-top: 40px;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      border-radius: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
-    .profile h2 {
+    .profile-header {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .player-photo {
+      width: 130px;
+      height: 130px;
+      background: #ddd;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #777;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .profile-header h2 {
+      margin: 0 0 8px;
+      font-size: 32px;
+    }
+
+    .profile-header p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .profile-box {
+      background: #f4f4f4;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .profile-box h3 {
       margin-top: 0;
+    }
+
+    .profile-box p {
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .back-button {
+      margin-top: 25px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 8px;
+      background: #111;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
     }
 
     footer {
@@ -318,10 +378,86 @@
 
   </div>
 
+  <!-- PLAYER PROFILE -->
+
   <div class="profile" id="playerProfile">
-    <h2 id="profileName"></h2>
-    <p id="profileInfo"></p>
-    <p>Player research, statistics, film and analysis will go here.</p>
+
+    <div class="profile-header">
+
+      <div class="player-photo">
+        Player Photo
+      </div>
+
+      <div>
+        <h2 id="profileName"></h2>
+        <p id="profileInfo"></p>
+        <p>GridLens Player Profile</p>
+      </div>
+
+    </div>
+
+    <div class="profile-grid">
+
+      <div class="profile-box">
+        <h3>Player Info</h3>
+        <p>
+          Position: QB<br>
+          Team: Coming soon<br>
+          College: Coming soon
+        </p>
+      </div>
+
+      <div class="profile-box">
+        <h3>2026 Stats</h3>
+        <p>
+          Passing Yards: —<br>
+          Touchdowns: —<br>
+          Interceptions: —<br>
+          Completion %: —
+        </p>
+      </div>
+
+      <div class="profile-box">
+        <h3>Career Stats</h3>
+        <p>
+          Career statistics will be added here.
+        </p>
+      </div>
+
+      <div class="profile-box">
+        <h3>Strengths</h3>
+        <p>
+          Player strengths and traits will be added here.
+        </p>
+      </div>
+
+      <div class="profile-box">
+        <h3>Weaknesses</h3>
+        <p>
+          Player weaknesses and areas for improvement will be added here.
+        </p>
+      </div>
+
+      <div class="profile-box">
+        <h3>Film & Analysis</h3>
+        <p>
+          Film breakdowns and GridLens analysis will be added here.
+        </p>
+      </div>
+
+      <div class="profile-box">
+        <h3>Analyst Notes</h3>
+        <p>
+          Your personal football research and notes will go here.
+        </p>
+      </div>
+
+    </div>
+
+    <button class="back-button" id="backButton">
+      Back to Players
+    </button>
+
   </div>
 
 </section>
@@ -331,17 +467,27 @@
 </footer>
 
 <script>
+
   const searchBox = document.getElementById('searchBox');
   const playerResults = document.getElementById('playerResults');
+
   const playerProfile = document.getElementById('playerProfile');
   const profileName = document.getElementById('profileName');
   const profileInfo = document.getElementById('profileInfo');
 
+  const backButton = document.getElementById('backButton');
+
+
+  /* SEARCH */
+
   searchBox.addEventListener('input', function () {
+
     const searchText = searchBox.value.toLowerCase().trim();
+
     const players = playerResults.querySelectorAll('.card');
 
     players.forEach(function (player) {
+
       const heading = player.querySelector('h3');
 
       if (!heading) return;
@@ -353,18 +499,28 @@
       } else {
         player.style.display = 'none';
       }
+
     });
+
   });
+
+
+  /* CLICK PLAYER */
 
   const cards = playerResults.querySelectorAll('.card');
 
   cards.forEach(function (card) {
+
     card.addEventListener('click', function () {
+
       const name = card.querySelector('h3').textContent;
       const info = card.querySelector('p').textContent;
 
       profileName.textContent = name;
       profileInfo.textContent = info;
+
+      playerResults.style.display = 'none';
+      searchBox.style.display = 'none';
 
       playerProfile.style.display = 'block';
 
@@ -372,10 +528,29 @@
         behavior: 'smooth',
         block: 'start'
       });
+
     });
+
   });
+
+
+  /* BACK BUTTON */
+
+  backButton.addEventListener('click', function () {
+
+    playerProfile.style.display = 'none';
+
+    playerResults.style.display = 'grid';
+    searchBox.style.display = 'block';
+
+    window.scrollTo({
+      top: document.getElementById('players').offsetTop,
+      behavior: 'smooth'
+    });
+
+  });
+
 </script>
 
 </body>
 </html>
-```
