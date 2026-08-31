@@ -81,9 +81,29 @@
       padding: 25px;
       border-radius: 12px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 14px rgba(0,0,0,0.15);
     }
 
     .card h3 {
+      margin-top: 0;
+    }
+
+    .profile {
+      display: none;
+      background: white;
+      margin-top: 30px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .profile h2 {
       margin-top: 0;
     }
 
@@ -125,10 +145,11 @@
 
   <h2>Players</h2>
 
-  <p>Search and explore NFL players.</p>
+  <p>Search and explore NFL quarterbacks.</p>
 
   <input
     type="text"
+    id="searchBox"
     placeholder="Search for a player..."
     style="width: 100%; max-width: 500px; padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 8px;"
   >
@@ -150,6 +171,157 @@
       <p>QB • Baltimore Ravens</p>
     </div>
 
+    <div class="card">
+      <h3>Cam Ward</h3>
+      <p>QB • Tennessee Titans</p>
+    </div>
+
+    <div class="card">
+      <h3>C.J. Stroud</h3>
+      <p>QB • Houston Texans</p>
+    </div>
+
+    <div class="card">
+      <h3>Trevor Lawrence</h3>
+      <p>QB • Jacksonville Jaguars</p>
+    </div>
+
+    <div class="card">
+      <h3>Daniel Jones</h3>
+      <p>QB • Indianapolis Colts</p>
+    </div>
+
+    <div class="card">
+      <h3>Justin Herbert</h3>
+      <p>QB • Los Angeles Chargers</p>
+    </div>
+
+    <div class="card">
+      <h3>Bo Nix</h3>
+      <p>QB • Denver Broncos</p>
+    </div>
+
+    <div class="card">
+      <h3>Kirk Cousins</h3>
+      <p>QB • Atlanta Falcons</p>
+    </div>
+
+    <div class="card">
+      <h3>Deshaun Watson</h3>
+      <p>QB • Cleveland Browns</p>
+    </div>
+
+    <div class="card">
+      <h3>Aaron Rodgers</h3>
+      <p>QB • Pittsburgh Steelers</p>
+    </div>
+
+    <div class="card">
+      <h3>Joe Burrow</h3>
+      <p>QB • Cincinnati Bengals</p>
+    </div>
+
+    <div class="card">
+      <h3>Drake Maye</h3>
+      <p>QB • New England Patriots</p>
+    </div>
+
+    <div class="card">
+      <h3>Geno Smith</h3>
+      <p>QB • Las Vegas Raiders</p>
+    </div>
+
+    <div class="card">
+      <h3>Malik Willis</h3>
+      <p>QB • Green Bay Packers</p>
+    </div>
+
+    <div class="card">
+      <h3>Jared Goff</h3>
+      <p>QB • Detroit Lions</p>
+    </div>
+
+    <div class="card">
+      <h3>Caleb Williams</h3>
+      <p>QB • Chicago Bears</p>
+    </div>
+
+    <div class="card">
+      <h3>Jordan Love</h3>
+      <p>QB • Green Bay Packers</p>
+    </div>
+
+    <div class="card">
+      <h3>Kyler Murray</h3>
+      <p>QB • Arizona Cardinals</p>
+    </div>
+
+    <div class="card">
+      <h3>Sam Darnold</h3>
+      <p>QB • Seattle Seahawks</p>
+    </div>
+
+    <div class="card">
+      <h3>Matthew Stafford</h3>
+      <p>QB • Los Angeles Rams</p>
+    </div>
+
+    <div class="card">
+      <h3>Brock Purdy</h3>
+      <p>QB • San Francisco 49ers</p>
+    </div>
+
+    <div class="card">
+      <h3>Jacoby Brissett</h3>
+      <p>QB • Arizona Cardinals</p>
+    </div>
+
+    <div class="card">
+      <h3>Bryce Young</h3>
+      <p>QB • Carolina Panthers</p>
+    </div>
+
+    <div class="card">
+      <h3>Tua Tagovailoa</h3>
+      <p>QB • Miami Dolphins</p>
+    </div>
+
+    <div class="card">
+      <h3>Baker Mayfield</h3>
+      <p>QB • Tampa Bay Buccaneers</p>
+    </div>
+
+    <div class="card">
+      <h3>Tyler Shough</h3>
+      <p>QB • New Orleans Saints</p>
+    </div>
+
+    <div class="card">
+      <h3>Dak Prescott</h3>
+      <p>QB • Dallas Cowboys</p>
+    </div>
+
+    <div class="card">
+      <h3>Jalen Hurts</h3>
+      <p>QB • Philadelphia Eagles</p>
+    </div>
+
+    <div class="card">
+      <h3>Jayden Daniels</h3>
+      <p>QB • Washington Commanders</p>
+    </div>
+
+    <div class="card">
+      <h3>Jaxson Dart</h3>
+      <p>QB • New York Giants</p>
+    </div>
+
+  </div>
+
+  <div class="profile" id="playerProfile">
+    <h2 id="profileName"></h2>
+    <p id="profileInfo"></p>
+    <p>Player research, statistics, film and analysis will go here.</p>
   </div>
 
 </section>
@@ -159,16 +331,17 @@
 </footer>
 
 <script>
-  const searchBox = document.querySelector('input');
+  const searchBox = document.getElementById('searchBox');
   const playerResults = document.getElementById('playerResults');
+  const playerProfile = document.getElementById('playerProfile');
+  const profileName = document.getElementById('profileName');
+  const profileInfo = document.getElementById('profileInfo');
 
   searchBox.addEventListener('input', function () {
-
     const searchText = searchBox.value.toLowerCase().trim();
     const players = playerResults.querySelectorAll('.card');
 
     players.forEach(function (player) {
-
       const heading = player.querySelector('h3');
 
       if (!heading) return;
@@ -180,10 +353,29 @@
       } else {
         player.style.display = 'none';
       }
+    });
+  });
 
+  const cards = playerResults.querySelectorAll('.card');
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      const name = card.querySelector('h3').textContent;
+      const info = card.querySelector('p').textContent;
+
+      profileName.textContent = name;
+      profileInfo.textContent = info;
+
+      playerProfile.style.display = 'block';
+
+      playerProfile.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     });
   });
 </script>
 
 </body>
 </html>
+```
