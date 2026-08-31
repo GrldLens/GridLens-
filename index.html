@@ -120,23 +120,27 @@ style=“width: 100%; max-width: 500px; padding: 12px; font-size: 16px; border: 
   <footer>
     <p>GridLens © 2026</p>
   </footer>
-  <script>const searchBox = document.querySelector('input');
+  <script>
+    const searchBox = document.querySelector('input');
 const playerResults = document.getElementById('playerResults');
-const players = playerResults.querySelectorAll('.card');
 
 searchBox.addEventListener('input', function () {
-  alert("Search is working!");
   const searchText = searchBox.value.toLowerCase().trim();
+  const players = playerResults.querySelectorAll('.card');
 
-players.forEach(function (player) {
-  const playerName = player.querySelector('h3').textContent.toLowerCase();
+  players.forEach(function (player) {
+    const heading = player.querySelector('h3');
 
-  if (playerName.includes(searchText)) {
-    player.style.display = '';
-  } else {
-    player.style.display = 'none';
-  }
-});
+    if (!heading) return;
+
+    const playerName = heading.textContent.toLowerCase().trim();
+
+    if (playerName.includes(searchText)) {
+      player.style.display = '';
+    } else {
+      player.style.display = 'none';
+    }
+  });
 });
 </script>
 </body>
