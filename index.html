@@ -125,6 +125,7 @@ const playerResults = document.getElementById('playerResults');
 const players = playerResults.querySelectorAll('.card');
 
 searchBox.addEventListener('input', function () {
+  alert("Search is working!");
   const searchText = searchBox.value.toLowerCase().trim();
 
   players.forEach(function (player) {
