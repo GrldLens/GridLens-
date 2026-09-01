@@ -39,8 +39,6 @@
       color: #c7c7c7;
     }
 
-    /* ===== NAVIGATION TABS ===== */
-
     nav {
       margin-top: 18px;
     }
@@ -83,7 +81,7 @@
       line-height: 1.5;
     }
 
-    /* ===== SECTIONS ===== */
+    /* ===== PLAYERS SECTION ===== */
 
     .section {
       max-width: 1000px;
@@ -108,12 +106,17 @@
       color: #c4c4c4;
     }
 
-    /* ===== SEARCH BOX ===== */
+    /* ===== SEARCH ===== */
 
     #searchBox {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
       background: #303030;
       color: white;
-      border: 2px solid #00aaff !important;
+      border: 2px solid #00aaff;
       outline: none;
       box-shadow: 0 0 8px rgba(0,170,255,0.12);
     }
@@ -267,7 +270,6 @@
     /* ===== MOBILE ===== */
 
     @media (max-width: 600px) {
-
       .hero h2 {
         font-size: 30px;
       }
@@ -318,172 +320,9 @@
     type="text"
     id="searchBox"
     placeholder="Search for a player..."
-    style="width: 100%; max-width: 500px; padding: 12px; font-size: 16px; border-radius: 8px;"
   >
 
-  <div class="cards" id="playerResults">
-
-    <div class="card">
-      <h3>Patrick Mahomes</h3>
-      <p>QB • Kansas City Chiefs</p>
-    </div>
-
-    <div class="card">
-      <h3>Josh Allen</h3>
-      <p>QB • Buffalo Bills</p>
-    </div>
-
-    <div class="card">
-      <h3>Lamar Jackson</h3>
-      <p>QB • Baltimore Ravens</p>
-    </div>
-
-    <div class="card">
-      <h3>Cam Ward</h3>
-      <p>QB • Tennessee Titans</p>
-    </div>
-
-    <div class="card">
-      <h3>C.J. Stroud</h3>
-      <p>QB • Houston Texans</p>
-    </div>
-
-    <div class="card">
-      <h3>Trevor Lawrence</h3>
-      <p>QB • Jacksonville Jaguars</p>
-    </div>
-
-    <div class="card">
-      <h3>Daniel Jones</h3>
-      <p>QB • Indianapolis Colts</p>
-    </div>
-
-    <div class="card">
-      <h3>Justin Herbert</h3>
-      <p>QB • Los Angeles Chargers</p>
-    </div>
-
-    <div class="card">
-      <h3>Bo Nix</h3>
-      <p>QB • Denver Broncos</p>
-    </div>
-
-    <div class="card">
-      <h3>Kirk Cousins</h3>
-      <p>QB • Atlanta Falcons</p>
-    </div>
-
-    <div class="card">
-      <h3>Deshaun Watson</h3>
-      <p>QB • Cleveland Browns</p>
-    </div>
-
-    <div class="card">
-      <h3>Aaron Rodgers</h3>
-      <p>QB • Pittsburgh Steelers</p>
-    </div>
-
-    <div class="card">
-      <h3>Joe Burrow</h3>
-      <p>QB • Cincinnati Bengals</p>
-    </div>
-
-    <div class="card">
-      <h3>Drake Maye</h3>
-      <p>QB • New England Patriots</p>
-    </div>
-
-    <div class="card">
-      <h3>Geno Smith</h3>
-      <p>QB • Las Vegas Raiders</p>
-    </div>
-
-    <div class="card">
-      <h3>Malik Willis</h3>
-      <p>QB • Green Bay Packers</p>
-    </div>
-
-    <div class="card">
-      <h3>Jared Goff</h3>
-      <p>QB • Detroit Lions</p>
-    </div>
-
-    <div class="card">
-      <h3>Caleb Williams</h3>
-      <p>QB • Chicago Bears</p>
-    </div>
-
-    <div class="card">
-      <h3>Jordan Love</h3>
-      <p>QB • Green Bay Packers</p>
-    </div>
-
-    <div class="card">
-      <h3>Kyler Murray</h3>
-      <p>QB • Arizona Cardinals</p>
-    </div>
-
-    <div class="card">
-      <h3>Sam Darnold</h3>
-      <p>QB • Seattle Seahawks</p>
-    </div>
-
-    <div class="card">
-      <h3>Matthew Stafford</h3>
-      <p>QB • Los Angeles Rams</p>
-    </div>
-
-    <div class="card">
-      <h3>Brock Purdy</h3>
-      <p>QB • San Francisco 49ers</p>
-    </div>
-
-    <div class="card">
-      <h3>Jacoby Brissett</h3>
-      <p>QB • Arizona Cardinals</p>
-    </div>
-
-    <div class="card">
-      <h3>Bryce Young</h3>
-      <p>QB • Carolina Panthers</p>
-    </div>
-
-    <div class="card">
-      <h3>Tua Tagovailoa</h3>
-      <p>QB • Miami Dolphins</p>
-    </div>
-
-    <div class="card">
-      <h3>Baker Mayfield</h3>
-      <p>QB • Tampa Bay Buccaneers</p>
-    </div>
-
-    <div class="card">
-      <h3>Tyler Shough</h3>
-      <p>QB • New Orleans Saints</p>
-    </div>
-
-    <div class="card">
-      <h3>Dak Prescott</h3>
-      <p>QB • Dallas Cowboys</p>
-    </div>
-
-    <div class="card">
-      <h3>Jalen Hurts</h3>
-      <p>QB • Philadelphia Eagles</p>
-    </div>
-
-    <div class="card">
-      <h3>Jayden Daniels</h3>
-      <p>QB • Washington Commanders</p>
-    </div>
-
-    <div class="card">
-      <h3>Jaxson Dart</h3>
-      <p>QB • New York Giants</p>
-    </div>
-
-  </div>
+  <div class="cards" id="playerResults"></div>
 
   <!-- PLAYER PROFILE -->
 
@@ -507,11 +346,7 @@
 
       <div class="profile-box">
         <h3>Player Info</h3>
-        <p>
-          Position: QB<br>
-          Team: Coming soon<br>
-          College: Coming soon
-        </p>
+        <p id="profilePlayerInfo"></p>
       </div>
 
       <div class="profile-box">
@@ -575,87 +410,365 @@
 
 <script>
 
-  const searchBox = document.getElementById('searchBox');
-  const playerResults = document.getElementById('playerResults');
+  /* ==========================================
+     GRIDLENS PLAYER DATABASE
+     ========================================== */
 
-  const playerProfile = document.getElementById('playerProfile');
-  const profileName = document.getElementById('profileName');
-  const profileInfo = document.getElementById('profileInfo');
+  const players = [
 
-  const backButton = document.getElementById('backButton');
+    {
+      name: "Patrick Mahomes",
+      position: "QB",
+      team: "Kansas City Chiefs",
+      college: "Texas Tech"
+    },
+
+    {
+      name: "Josh Allen",
+      position: "QB",
+      team: "Buffalo Bills",
+      college: "Wyoming"
+    },
+
+    {
+      name: "Lamar Jackson",
+      position: "QB",
+      team: "Baltimore Ravens",
+      college: "Louisville"
+    },
+
+    {
+      name: "Cam Ward",
+      position: "QB",
+      team: "Tennessee Titans",
+      college: "Miami"
+    },
+
+    {
+      name: "C.J. Stroud",
+      position: "QB",
+      team: "Houston Texans",
+      college: "Ohio State"
+    },
+
+    {
+      name: "Trevor Lawrence",
+      position: "QB",
+      team: "Jacksonville Jaguars",
+      college: "Clemson"
+    },
+
+    {
+      name: "Daniel Jones",
+      position: "QB",
+      team: "Indianapolis Colts",
+      college: "Duke"
+    },
+
+    {
+      name: "Justin Herbert",
+      position: "QB",
+      team: "Los Angeles Chargers",
+      college: "Oregon"
+    },
+
+    {
+      name: "Bo Nix",
+      position: "QB",
+      team: "Denver Broncos",
+      college: "Oregon"
+    },
+
+    {
+      name: "Kirk Cousins",
+      position: "QB",
+      team: "Atlanta Falcons",
+      college: "Michigan State"
+    },
+
+    {
+      name: "Deshaun Watson",
+      position: "QB",
+      team: "Cleveland Browns",
+      college: "Clemson"
+    },
+
+    {
+      name: "Aaron Rodgers",
+      position: "QB",
+      team: "Pittsburgh Steelers",
+      college: "California"
+    },
+
+    {
+      name: "Joe Burrow",
+      position: "QB",
+      team: "Cincinnati Bengals",
+      college: "LSU"
+    },
+
+    {
+      name: "Drake Maye",
+      position: "QB",
+      team: "New England Patriots",
+      college: "North Carolina"
+    },
+
+    {
+      name: "Geno Smith",
+      position: "QB",
+      team: "Las Vegas Raiders",
+      college: "West Virginia"
+    },
+
+    {
+      name: "Malik Willis",
+      position: "QB",
+      team: "Green Bay Packers",
+      college: "Liberty"
+    },
+
+    {
+      name: "Jared Goff",
+      position: "QB",
+      team: "Detroit Lions",
+      college: "California"
+    },
+
+    {
+      name: "Caleb Williams",
+      position: "QB",
+      team: "Chicago Bears",
+      college: "USC"
+    },
+
+    {
+      name: "Jordan Love",
+      position: "QB",
+      team: "Green Bay Packers",
+      college: "Utah State"
+    },
+
+    {
+      name: "Kyler Murray",
+      position: "QB",
+      team: "Arizona Cardinals",
+      college: "Oklahoma"
+    },
+
+    {
+      name: "Sam Darnold",
+      position: "QB",
+      team: "Seattle Seahawks",
+      college: "USC"
+    },
+
+    {
+      name: "Matthew Stafford",
+      position: "QB",
+      team: "Los Angeles Rams",
+      college: "Georgia"
+    },
+
+    {
+      name: "Brock Purdy",
+      position: "QB",
+      team: "San Francisco 49ers",
+      college: "Iowa State"
+    },
+
+    {
+      name: "Jacoby Brissett",
+      position: "QB",
+      team: "Arizona Cardinals",
+      college: "NC State"
+    },
+
+    {
+      name: "Bryce Young",
+      position: "QB",
+      team: "Carolina Panthers",
+      college: "Alabama"
+    },
+
+    {
+      name: "Tua Tagovailoa",
+      position: "QB",
+      team: "Miami Dolphins",
+      college: "Alabama"
+    },
+
+    {
+      name: "Baker Mayfield",
+      position: "QB",
+      team: "Tampa Bay Buccaneers",
+      college: "Oklahoma"
+    },
+
+    {
+      name: "Tyler Shough",
+      position: "QB",
+      team: "New Orleans Saints",
+      college: "Louisville"
+    },
+
+    {
+      name: "Dak Prescott",
+      position: "QB",
+      team: "Dallas Cowboys",
+      college: "Mississippi State"
+    },
+
+    {
+      name: "Jalen Hurts",
+      position: "QB",
+      team: "Philadelphia Eagles",
+      college: "Oklahoma"
+    },
+
+    {
+      name: "Jayden Daniels",
+      position: "QB",
+      team: "Washington Commanders",
+      college: "LSU"
+    },
+
+    {
+      name: "Jaxson Dart",
+      position: "QB",
+      team: "New York Giants",
+      college: "Ole Miss"
+    }
+
+  ];
 
 
-  /* SEARCH */
+  /* ==========================================
+     PAGE ELEMENTS
+     ========================================== */
 
-  searchBox.addEventListener('input', function () {
+  const searchBox = document.getElementById("searchBox");
+  const playerResults = document.getElementById("playerResults");
 
-    const searchText = searchBox.value.toLowerCase().trim();
+  const playerProfile = document.getElementById("playerProfile");
 
-    const players = playerResults.querySelectorAll('.card');
+  const profileName = document.getElementById("profileName");
+  const profileInfo = document.getElementById("profileInfo");
+  const profilePlayerInfo = document.getElementById("profilePlayerInfo");
 
-    players.forEach(function (player) {
-
-      const heading = player.querySelector('h3');
-
-      if (!heading) return;
-
-      const playerName = heading.textContent.toLowerCase().trim();
-
-      if (playerName.includes(searchText)) {
-        player.style.display = '';
-      } else {
-        player.style.display = 'none';
-      }
-
-    });
-
-  });
+  const backButton = document.getElementById("backButton");
 
 
-  /* CLICK PLAYER */
+  /* ==========================================
+     CREATE PLAYER CARDS
+     ========================================== */
 
-  const cards = playerResults.querySelectorAll('.card');
+  function displayPlayers(playerList) {
 
-  cards.forEach(function (card) {
+    playerResults.innerHTML = "";
 
-    card.addEventListener('click', function () {
+    playerList.forEach(function(player, index) {
 
-      const name = card.querySelector('h3').textContent;
-      const info = card.querySelector('p').textContent;
+      const card = document.createElement("div");
 
-      profileName.textContent = name;
-      profileInfo.textContent = info;
+      card.className = "card";
 
-      playerResults.style.display = 'none';
-      searchBox.style.display = 'none';
+      card.innerHTML = `
+        <h3>${player.name}</h3>
+        <p>${player.position} • ${player.team}</p>
+      `;
 
-      playerProfile.style.display = 'block';
-
-      playerProfile.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+      card.addEventListener("click", function() {
+        openPlayer(player);
       });
 
+      playerResults.appendChild(card);
+
     });
+
+  }
+
+
+  /* ==========================================
+     OPEN PLAYER PROFILE
+     ========================================== */
+
+  function openPlayer(player) {
+
+    profileName.textContent = player.name;
+
+    profileInfo.textContent =
+      player.position + " • " + player.team;
+
+    profilePlayerInfo.innerHTML =
+      "Position: " + player.position +
+      "<br>Team: " + player.team +
+      "<br>College: " + player.college;
+
+    playerResults.style.display = "none";
+
+    searchBox.style.display = "none";
+
+    playerProfile.style.display = "block";
+
+    playerProfile.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  }
+
+
+  /* ==========================================
+     SEARCH
+     ========================================== */
+
+  searchBox.addEventListener("input", function() {
+
+    const searchText =
+      searchBox.value.toLowerCase().trim();
+
+    const filteredPlayers =
+      players.filter(function(player) {
+
+        return player.name
+          .toLowerCase()
+          .includes(searchText);
+
+      });
+
+    displayPlayers(filteredPlayers);
 
   });
 
 
-  /* BACK BUTTON */
+  /* ==========================================
+     BACK BUTTON
+     ========================================== */
 
-  backButton.addEventListener('click', function () {
+  backButton.addEventListener("click", function() {
 
-    playerProfile.style.display = 'none';
+    playerProfile.style.display = "none";
 
-    playerResults.style.display = 'grid';
-    searchBox.style.display = 'block';
+    playerResults.style.display = "grid";
+
+    searchBox.style.display = "block";
+
+    displayPlayers(players);
 
     window.scrollTo({
-      top: document.getElementById('players').offsetTop,
-      behavior: 'smooth'
+      top: document.getElementById("players").offsetTop,
+      behavior: "smooth"
     });
 
   });
+
+
+  /* ==========================================
+     LOAD PLAYERS
+     ========================================== */
+
+  displayPlayers(players);
 
 </script>
 
