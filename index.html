@@ -13,28 +13,30 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #171717;
+      background: #151515;
       color: #ffffff;
     }
 
-    /* ===== TOP HEADER ===== */
+    /* ===== HEADER ===== */
 
     header {
-      background: #303030;
+      background: #202020;
       color: white;
       padding: 24px 20px;
       text-align: center;
-      border-bottom: 1px solid #505050;
+      border-bottom: 2px solid #00aaff;
     }
 
     header h1 {
       margin: 0;
-      font-size: 34px;
+      font-size: 36px;
+      color: #00aaff;
+      letter-spacing: 1px;
     }
 
     header p {
       margin: 6px 0 0;
-      color: #d0d0d0;
+      color: #c7c7c7;
     }
 
     nav {
@@ -45,15 +47,18 @@
       display: inline-block;
       color: #ffffff;
       text-decoration: none;
-      background: #444444;
+      background: #303030;
       padding: 10px 15px;
       margin: 4px;
       border-radius: 7px;
-      transition: background 0.2s;
+      border: 1px solid #414141;
+      transition: 0.2s;
     }
 
     nav a:hover {
-      background: #5a5a5a;
+      background: #00aaff;
+      border-color: #00aaff;
+      color: #ffffff;
     }
 
     /* ===== HERO ===== */
@@ -61,7 +66,7 @@
     .hero {
       padding: 70px 20px;
       text-align: center;
-      background: #171717;
+      background: #151515;
     }
 
     .hero h2 {
@@ -83,19 +88,19 @@
       max-width: 1000px;
       margin: 40px auto;
       padding: 30px 20px;
-      background: #242424;
+      background: #222222;
       border-radius: 14px;
-      border: 1px solid #3f3f3f;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+      border: 1px solid #3a3a3a;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.3);
     }
 
     .section h2 {
       font-size: 28px;
       margin-top: 0;
       padding: 14px 18px;
-      background: #3a3a3a;
-      border-radius: 9px;
-      border: 1px solid #505050;
+      background: #292929;
+      border-left: 4px solid #00aaff;
+      border-radius: 7px;
     }
 
     .section > p {
@@ -105,18 +110,19 @@
     /* ===== SEARCH ===== */
 
     #searchBox {
-      background: #363636;
+      background: #303030;
       color: white;
-      border: 1px solid #5a5a5a !important;
+      border: 1px solid #555555 !important;
       outline: none;
     }
 
     #searchBox::placeholder {
-      color: #aaaaaa;
+      color: #999999;
     }
 
     #searchBox:focus {
-      border-color: #888888 !important;
+      border-color: #00aaff !important;
+      box-shadow: 0 0 0 2px rgba(0,170,255,0.15);
     }
 
     /* ===== PLAYER CARDS ===== */
@@ -129,20 +135,21 @@
     }
 
     .card {
-      background: #303030;
+      background: #2d2d2d;
       color: white;
       padding: 25px;
       border-radius: 12px;
-      border: 1px solid #4a4a4a;
+      border: 1px solid #444444;
       box-shadow: 0 3px 10px rgba(0,0,0,0.25);
       cursor: pointer;
       transition: transform 0.15s, background 0.15s, border 0.15s;
     }
 
     .card:hover {
-      transform: translateY(-3px);
-      background: #3b3b3b;
-      border-color: #707070;
+      transform: translateY(-4px);
+      background: #353535;
+      border-color: #00aaff;
+      box-shadow: 0 5px 18px rgba(0,170,255,0.15);
     }
 
     .card h3 {
@@ -157,12 +164,12 @@
 
     .profile {
       display: none;
-      background: #2b2b2b;
+      background: #252525;
       margin-top: 35px;
       padding: 30px;
       border-radius: 14px;
-      border: 1px solid #505050;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+      border: 1px solid #444444;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.3);
     }
 
     .profile-header {
@@ -170,18 +177,20 @@
       gap: 25px;
       align-items: center;
       margin-bottom: 30px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #444444;
     }
 
     .player-photo {
       width: 130px;
       height: 130px;
-      background: #454545;
-      border: 1px solid #626262;
+      background: #303030;
+      border: 2px solid #00aaff;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #cccccc;
+      color: #aaaaaa;
       font-size: 14px;
       text-align: center;
     }
@@ -189,6 +198,7 @@
     .profile-header h2 {
       margin: 0 0 8px;
       font-size: 32px;
+      color: #00aaff;
     }
 
     .profile-header p {
@@ -203,10 +213,14 @@
     }
 
     .profile-box {
-      background: #383838;
+      background: #303030;
       padding: 20px;
       border-radius: 10px;
-      border: 1px solid #505050;
+      border: 1px solid #454545;
+    }
+
+    .profile-box:hover {
+      border-color: #00aaff;
     }
 
     .profile-box h3 {
@@ -219,21 +233,23 @@
       line-height: 1.5;
     }
 
-    /* ===== BACK BUTTON ===== */
+    /* ===== BUTTON ===== */
 
     .back-button {
       margin-top: 25px;
-      padding: 10px 18px;
+      padding: 11px 20px;
       border: none;
       border-radius: 8px;
-      background: #4a4a4a;
-      color: white;
+      background: #00aaff;
+      color: #ffffff;
       cursor: pointer;
       font-size: 15px;
+      font-weight: bold;
+      transition: 0.2s;
     }
 
     .back-button:hover {
-      background: #606060;
+      background: #008dcc;
     }
 
     /* ===== FOOTER ===== */
@@ -242,9 +258,9 @@
       margin-top: 60px;
       padding: 25px;
       text-align: center;
-      background: #303030;
-      color: #a5a5a5;
-      border-top: 1px solid #505050;
+      background: #202020;
+      color: #999999;
+      border-top: 1px solid #3a3a3a;
     }
 
     /* ===== MOBILE ===== */
