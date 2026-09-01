@@ -3,215 +3,328 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>GridLens</title>
+  <title>GridLens | Football Research & Analysis</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      background: #111214;
-      color: white;
       font-family: Arial, sans-serif;
+      background: #151515;
+      color: #ffffff;
     }
 
-    /* HEADER */
-    .header {
-      display: flex;
-      align-items: center;
-      padding: 15px 25px;
-      border-bottom: 1px solid #333;
+    header {
+      background: #202020;
+      padding: 24px 20px;
+      text-align: center;
+      border-bottom: 2px solid #00aaff;
     }
 
-    .logo {
-      height: 60px;
-      width: auto;
-      object-fit: contain;
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+      color: #00aaff;
     }
 
-    /* MAIN */
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 30px 20px;
+    header p {
+      margin: 6px 0 0;
+      color: #c7c7c7;
     }
 
-    .search-box {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 14px;
-      margin-bottom: 25px;
-      background: #24262a;
+    nav {
+      margin-top: 18px;
+    }
+
+    nav a {
+      display: inline-block;
       color: white;
-      border: 2px solid #168cff;
-      border-radius: 8px;
+      text-decoration: none;
+      background: #303030;
+      padding: 10px 15px;
+      margin: 4px;
+      border-radius: 7px;
+      border: 1px solid #00aaff;
+    }
+
+    nav a:hover {
+      background: #00aaff;
+    }
+
+    .hero {
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 38px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #bdbdbd;
+      max-width: 600px;
+      margin: auto;
+      line-height: 1.5;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px 20px;
+      background: #222222;
+      border-radius: 14px;
+      border: 1px solid #3a3a3a;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      margin-top: 0;
+      padding: 14px 18px;
+      background: #292929;
+      border-left: 4px solid #00aaff;
+      border-radius: 7px;
+    }
+
+    .section > p {
+      color: #c4c4c4;
+    }
+
+    #searchBox {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px;
       font-size: 16px;
+      border-radius: 8px;
+      background: #303030;
+      color: white;
+      border: 2px solid #00aaff;
       outline: none;
     }
 
-    .search-box::placeholder {
-      color: #aaa;
+    #searchBox::placeholder {
+      color: #999999;
     }
 
     /* PLAYER CARDS */
-    .players {
+
+    .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
     }
 
     .card {
       display: flex;
       align-items: center;
       gap: 15px;
-      background: #202226;
-      border: 2px solid #168cff;
-      border-radius: 10px;
+      background: #2d2d2d;
+      color: white;
       padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #00aaff;
       cursor: pointer;
       transition: 0.2s;
+      min-height: 105px;
     }
 
     .card:hover {
-      background: #292c31;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      background: #353535;
+      box-shadow: 0 5px 18px rgba(0,170,255,0.25);
     }
+
+    /* SMALL PLAYER PHOTO */
 
     .card-photo {
       width: 78px;
       height: 78px;
-      border-radius: 8px;
-      object-fit: cover;
-      background: #15171a;
-      border: 1px solid #168cff;
+      border-radius: 9px;
+      overflow: hidden;
       flex-shrink: 0;
-    }
-
-    .placeholder {
+      background: #202020;
+      border: 1px solid #00aaff;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #168cff;
-      font-size: 30px;
+    }
+
+    .card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .placeholder {
+      color: #00aaff;
+      font-size: 25px;
       font-weight: bold;
+    }
+
+    .card-info {
+      min-width: 0;
     }
 
     .card h3 {
       margin: 0 0 6px;
       font-size: 18px;
+      color: #ffffff;
     }
 
     .card p {
       margin: 0;
-      color: #bbb;
+      color: #bdbdbd;
       font-size: 14px;
+      line-height: 1.4;
     }
 
-    /* PROFILE */
-    #profile {
+    /* PLAYER PROFILE */
+
+    .profile {
       display: none;
+      background: #252525;
+      margin-top: 35px;
+      padding: 30px;
+      border-radius: 14px;
+      border: 1px solid #444444;
     }
 
-    .back-top {
-      display: inline-flex;
+    .top-back-button {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid #00aaff;
+      background: #303030;
+      color: #00aaff;
+      font-size: 28px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: #168cff;
-      color: white;
-      font-size: 28px;
-      border: none;
       cursor: pointer;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
 
-    .profile-box {
-      background: #202226;
-      border: 2px solid #168cff;
-      border-radius: 12px;
-      padding: 25px;
+    .top-back-button:hover {
+      background: #00aaff;
+      color: white;
     }
 
     .profile-header {
       display: flex;
-      align-items: center;
       gap: 25px;
-      margin-bottom: 25px;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #444444;
     }
+
+    /* LARGE PROFILE PHOTO */
 
     .player-photo {
       width: 150px;
       height: 150px;
-      border-radius: 10px;
-      object-fit: cover;
-      border: 2px solid #168cff;
-      background: #15171a;
-    }
-
-    .profile-placeholder {
+      background: #303030;
+      border: 2px solid #00aaff;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #168cff;
-      font-size: 55px;
+    }
+
+    .player-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .profile-header h2 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      color: #00aaff;
+    }
+
+    .profile-header p {
+      margin: 5px 0;
+      color: #c4c4c4;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .profile-box {
+      background: #303030;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #454545;
+    }
+
+    .profile-box:hover {
+      border-color: #00aaff;
+    }
+
+    .profile-box h3 {
+      margin-top: 0;
+    }
+
+    .profile-box p {
+      color: #c4c4c4;
+      line-height: 1.5;
+    }
+
+    .back-button {
+      margin-top: 25px;
+      padding: 11px 20px;
+      border: 2px solid #00aaff;
+      border-radius: 8px;
+      background: #00aaff;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
       font-weight: bold;
     }
 
-    .profile-name {
-      font-size: 32px;
-      margin: 0 0 8px;
+    footer {
+      margin-top: 60px;
+      padding: 25px;
+      text-align: center;
+      background: #202020;
+      color: #999999;
     }
 
-    .profile-info {
-      color: #bbb;
-      line-height: 1.6;
-    }
-
-    .section {
-      background: #17191c;
-      border-radius: 8px;
-      padding: 20px;
-      margin-top: 15px;
-    }
-
-    .section h2 {
-      margin-top: 0;
-      color: #168cff;
-    }
-
-    .back-bottom {
-      margin-top: 25px;
-      padding: 12px 20px;
-      background: #168cff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    /* MOBILE */
     @media (max-width: 600px) {
-      .header {
-        padding: 12px 15px;
+
+      .hero h2 {
+        font-size: 30px;
       }
 
-      .logo {
-        height: 55px;
+      .cards {
+        grid-template-columns: 1fr;
       }
 
-      .container {
-        padding: 25px 15px;
+      .card {
+        min-height: 95px;
+      }
+
+      .card-photo {
+        width: 70px;
+        height: 70px;
       }
 
       .profile-header {
         flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .profile-name {
-        font-size: 26px;
+        text-align: center;
       }
     }
   </style>
@@ -219,463 +332,713 @@
 
 <body>
 
-  <!-- GRIDLENS LOGO -->
-  <header class="header">
-    <img
-      src="images/IMG_1273.jpeg"
-      alt="GridLens"
-      class="logo"
+<header>
+
+  <h1>GridLens</h1>
+
+  <p>Football Research & Analysis</p>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#players">Players</a>
+    <a href="#teams">Teams</a>
+    <a href="#analysis">Analysis</a>
+    <a href="#stats">Stats</a>
+  </nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+  <h2>See Football Through a Different Lens.</h2>
+
+  <p>
+    Research players, study teams, explore statistics,
+    and develop a deeper understanding of the game.
+  </p>
+
+</section>
+
+
+<section class="section" id="players">
+
+  <h2>Players</h2>
+
+  <p>Search and explore NFL quarterbacks.</p>
+
+  <input
+    type="text"
+    id="searchBox"
+    placeholder="Search for a player..."
+  >
+
+  <div class="cards" id="playerResults"></div>
+
+
+  <!-- PLAYER PROFILE -->
+
+  <div class="profile" id="playerProfile">
+
+    <button
+      class="top-back-button"
+      id="topBackButton"
+      aria-label="Back to Players"
     >
-  </header>
+      ←
+    </button>
 
-  <main class="container">
 
-    <!-- PLAYER LIST -->
-    <div id="playerList">
+    <div class="profile-header">
 
-      <input
-        type="text"
-        id="search"
-        class="search-box"
-        placeholder="Search players..."
-        oninput="searchPlayers()"
-      >
+      <div class="player-photo">
+        <img id="profilePhoto" src="" alt="">
+      </div>
 
-      <div id="players" class="players"></div>
+      <div>
+
+        <h2 id="profileName"></h2>
+
+        <p id="profileInfo"></p>
+
+        <p>GridLens Player Profile</p>
+
+      </div>
 
     </div>
 
-    <!-- PLAYER PROFILE -->
-    <div id="profile">
 
-      <button class="back-top" onclick="showPlayers()">←</button>
+    <div class="profile-grid">
 
       <div class="profile-box">
 
-        <div class="profile-header">
+        <h3>Player Info</h3>
 
-          <div id="profilePhoto"></div>
-
-          <div>
-            <h1 id="profileName" class="profile-name"></h1>
-            <div id="profileInfo" class="profile-info"></div>
-          </div>
-
-        </div>
-
-        <div class="section">
-          <h2>Stats</h2>
-          <p>Player statistics will appear here.</p>
-        </div>
-
-        <div class="section">
-          <h2>Analysis</h2>
-          <p>Football analysis and research will appear here.</p>
-        </div>
-
-        <button class="back-bottom" onclick="showPlayers()">
-          ← Back to Players
-        </button>
+        <p id="profilePlayerInfo"></p>
 
       </div>
+
+
+      <div class="profile-box">
+
+        <h3>2026 Stats</h3>
+
+        <p>
+          Passing Yards: —<br>
+          Touchdowns: —<br>
+          Interceptions: —<br>
+          Completion %: —
+        </p>
+
+      </div>
+
+
+      <div class="profile-box">
+
+        <h3>Career Stats</h3>
+
+        <p>
+          Career statistics will be added here.
+        </p>
+
+      </div>
+
+
+      <div class="profile-box">
+
+        <h3>Strengths</h3>
+
+        <p>
+          Player strengths and traits will be added here.
+        </p>
+
+      </div>
+
+
+      <div class="profile-box">
+
+        <h3>Weaknesses</h3>
+
+        <p>
+          Player weaknesses and areas for improvement
+          will be added here.
+        </p>
+
+      </div>
+
+
+      <div class="profile-box">
+
+        <h3>Film & Analysis</h3>
+
+        <p>
+          Film breakdowns and GridLens analysis
+          will be added here.
+        </p>
+
+      </div>
+
+
+      <div class="profile-box">
+
+        <h3>Analyst Notes</h3>
+
+        <p>
+          Your personal football research and notes
+          will go here.
+        </p>
+
+      </div>
+
     </div>
 
-  </main>
 
-  <script>
+    <button class="back-button" id="backButton">
+      Back to Players
+    </button>
 
-    const players = [
+  </div>
 
-      {
-        name: "Patrick Mahomes",
-        position: "QB",
-        team: "Kansas City Chiefs",
-        college: "Texas Tech",
-        photo: "images/IMG_1818.png"
-      },
-
-      {
-        name: "Josh Allen",
-        position: "QB",
-        team: "Buffalo Bills",
-        college: "Wyoming",
-        photo: ""
-      },
-
-      {
-        name: "Lamar Jackson",
-        position: "QB",
-        team: "Baltimore Ravens",
-        college: "Louisville",
-        photo: ""
-      },
-
-      {
-        name: "Cam Ward",
-        position: "QB",
-        team: "Tennessee Titans",
-        college: "Miami",
-        photo: ""
-      },
-
-      {
-        name: "C.J. Stroud",
-        position: "QB",
-        team: "Houston Texans",
-        college: "Ohio State",
-        photo: ""
-      },
-
-      {
-        name: "Trevor Lawrence",
-        position: "QB",
-        team: "Jacksonville Jaguars",
-        college: "Clemson",
-        photo: ""
-      },
-
-      {
-        name: "Daniel Jones",
-        position: "QB",
-        team: "Indianapolis Colts",
-        college: "Duke",
-        photo: ""
-      },
-
-      {
-        name: "Justin Herbert",
-        position: "QB",
-        team: "Los Angeles Chargers",
-        college: "Oregon",
-        photo: ""
-      },
-
-      {
-        name: "Bo Nix",
-        position: "QB",
-        team: "Denver Broncos",
-        college: "Oregon",
-        photo: ""
-      },
-
-      {
-        name: "Kirk Cousins",
-        position: "QB",
-        team: "Atlanta Falcons",
-        college: "Michigan State",
-        photo: ""
-      },
-
-      {
-        name: "Deshaun Watson",
-        position: "QB",
-        team: "Cleveland Browns",
-        college: "Clemson",
-        photo: ""
-      },
-
-      {
-        name: "Aaron Rodgers",
-        position: "QB",
-        team: "Pittsburgh Steelers",
-        college: "California",
-        photo: ""
-      },
-
-      {
-        name: "Joe Burrow",
-        position: "QB",
-        team: "Cincinnati Bengals",
-        college: "LSU",
-        photo: ""
-      },
-
-      {
-        name: "Drake Maye",
-        position: "QB",
-        team: "New England Patriots",
-        college: "North Carolina",
-        photo: ""
-      },
-
-      {
-        name: "Geno Smith",
-        position: "QB",
-        team: "Las Vegas Raiders",
-        college: "West Virginia",
-        photo: ""
-      },
-
-      {
-        name: "Malik Willis",
-        position: "QB",
-        team: "Green Bay Packers",
-        college: "Liberty",
-        photo: ""
-      },
-
-      {
-        name: "Jared Goff",
-        position: "QB",
-        team: "Detroit Lions",
-        college: "California",
-        photo: ""
-      },
-
-      {
-        name: "Caleb Williams",
-        position: "QB",
-        team: "Chicago Bears",
-        college: "USC",
-        photo: ""
-      },
-
-      {
-        name: "Jordan Love",
-        position: "QB",
-        team: "Green Bay Packers",
-        college: "Utah State",
-        photo: ""
-      },
-
-      {
-        name: "Kyler Murray",
-        position: "QB",
-        team: "Arizona Cardinals",
-        college: "Oklahoma",
-        photo: ""
-      },
-
-      {
-        name: "Sam Darnold",
-        position: "QB",
-        team: "Seattle Seahawks",
-        college: "USC",
-        photo: ""
-      },
-
-      {
-        name: "Matthew Stafford",
-        position: "QB",
-        team: "Los Angeles Rams",
-        college: "Georgia",
-        photo: ""
-      },
-
-      {
-        name: "Brock Purdy",
-        position: "QB",
-        team: "San Francisco 49ers",
-        college: "Iowa State",
-        photo: ""
-      },
-
-      {
-        name: "Jacoby Brissett",
-        position: "QB",
-        team: "Arizona Cardinals",
-        college: "NC State",
-        photo: ""
-      },
-
-      {
-        name: "Bryce Young",
-        position: "QB",
-        team: "Carolina Panthers",
-        college: "Alabama",
-        photo: ""
-      },
-
-      {
-        name: "Tua Tagovailoa",
-        position: "QB",
-        team: "Miami Dolphins",
-        college: "Alabama",
-        photo: ""
-      },
-
-      {
-        name: "Baker Mayfield",
-        position: "QB",
-        team: "Tampa Bay Buccaneers",
-        college: "Oklahoma",
-        photo: ""
-      },
-
-      {
-        name: "Tyler Shough",
-        position: "QB",
-        team: "New Orleans Saints",
-        college: "Louisville",
-        photo: ""
-      },
-
-      {
-        name: "Dak Prescott",
-        position: "QB",
-        team: "Dallas Cowboys",
-        college: "Mississippi State",
-        photo: ""
-      },
-
-      {
-        name: "Jalen Hurts",
-        position: "QB",
-        team: "Philadelphia Eagles",
-        college: "Oklahoma",
-        photo: ""
-      },
-
-      {
-        name: "Jayden Daniels",
-        position: "QB",
-        team: "Washington Commanders",
-        college: "LSU",
-        photo: ""
-      },
-
-      {
-        name: "Jaxson Dart",
-        position: "QB",
-        team: "New York Giants",
-        college: "Ole Miss",
-        photo: ""
-      }
-
-    ];
+</section>
 
 
-    function displayPlayers(list = players) {
+<footer>
 
-      const container = document.getElementById("players");
+  <p>GridLens © 2026</p>
 
-      container.innerHTML = "";
+</footer>
 
-      list.forEach((player, index) => {
 
-        const card = document.createElement("div");
+<script>
 
-        card.className = "card";
+  /* =========================
+     PLAYER DATABASE
+  ========================= */
 
-        let photoHTML;
+  const players = [
 
-        if (player.photo) {
+    {
+      name: "Patrick Mahomes",
+      position: "QB",
+      team: "Kansas City Chiefs",
+      college: "Texas Tech",
+      photo: "images/IMG_1818.png"
+    },
 
-          photoHTML = `
-            <img
-              src="${player.photo}"
-              alt="${player.name}"
-              class="card-photo"
-            >
-          `;
+    {
+      name: "Josh Allen",
+      position: "QB",
+      team: "Buffalo Bills",
+      college: "Wyoming",
+      photo: ""
+    },
 
-        } else {
+    {
+      name: "Lamar Jackson",
+      position: "QB",
+      team: "Baltimore Ravens",
+      college: "Louisville",
+      photo: ""
+    },
 
-          photoHTML = `
-            <div class="card-photo placeholder">
-              ${player.name.charAt(0)}
-            </div>
-          `;
+    {
+      name: "Cam Ward",
+      position: "QB",
+      team: "Tennessee Titans",
+      college: "Miami",
+      photo: ""
+    },
 
-        }
+    {
+      name: "C.J. Stroud",
+      position: "QB",
+      team: "Houston Texans",
+      college: "Ohio State",
+      photo: ""
+    },
 
-        card.innerHTML = `
-          ${photoHTML}
+    {
+      name: "Trevor Lawrence",
+      position: "QB",
+      team: "Jacksonville Jaguars",
+      college: "Clemson",
+      photo: ""
+    },
 
-          <div>
-            <h3>${player.name}</h3>
-            <p>${player.position} • ${player.team}</p>
-          </div>
-        `;
+    {
+      name: "Daniel Jones",
+      position: "QB",
+      team: "Indianapolis Colts",
+      college: "Duke",
+      photo: ""
+    },
 
-        card.onclick = () => openPlayer(index);
+    {
+      name: "Justin Herbert",
+      position: "QB",
+      team: "Los Angeles Chargers",
+      college: "Oregon",
+      photo: ""
+    },
 
-        container.appendChild(card);
+    {
+      name: "Bo Nix",
+      position: "QB",
+      team: "Denver Broncos",
+      college: "Oregon",
+      photo: ""
+    },
 
-      });
+    {
+      name: "Kirk Cousins",
+      position: "QB",
+      team: "Atlanta Falcons",
+      college: "Michigan State",
+      photo: ""
+    },
 
+    {
+      name: "Deshaun Watson",
+      position: "QB",
+      team: "Cleveland Browns",
+      college: "Clemson",
+      photo: ""
+    },
+
+    {
+      name: "Aaron Rodgers",
+      position: "QB",
+      team: "Pittsburgh Steelers",
+      college: "California",
+      photo: ""
+    },
+
+    {
+      name: "Joe Burrow",
+      position: "QB",
+      team: "Cincinnati Bengals",
+      college: "LSU",
+      photo: ""
+    },
+
+    {
+      name: "Drake Maye",
+      position: "QB",
+      team: "New England Patriots",
+      college: "North Carolina",
+      photo: ""
+    },
+
+    {
+      name: "Geno Smith",
+      position: "QB",
+      team: "Las Vegas Raiders",
+      college: "West Virginia",
+      photo: ""
+    },
+
+    {
+      name: "Malik Willis",
+      position: "QB",
+      team: "Green Bay Packers",
+      college: "Liberty",
+      photo: ""
+    },
+
+    {
+      name: "Jared Goff",
+      position: "QB",
+      team: "Detroit Lions",
+      college: "California",
+      photo: ""
+    },
+
+    {
+      name: "Caleb Williams",
+      position: "QB",
+      team: "Chicago Bears",
+      college: "USC",
+      photo: ""
+    },
+
+    {
+      name: "Jordan Love",
+      position: "QB",
+      team: "Green Bay Packers",
+      college: "Utah State",
+      photo: ""
+    },
+
+    {
+      name: "Kyler Murray",
+      position: "QB",
+      team: "Arizona Cardinals",
+      college: "Oklahoma",
+      photo: ""
+    },
+
+    {
+      name: "Sam Darnold",
+      position: "QB",
+      team: "Seattle Seahawks",
+      college: "USC",
+      photo: ""
+    },
+
+    {
+      name: "Matthew Stafford",
+      position: "QB",
+      team: "Los Angeles Rams",
+      college: "Georgia",
+      photo: ""
+    },
+
+    {
+      name: "Brock Purdy",
+      position: "QB",
+      team: "San Francisco 49ers",
+      college: "Iowa State",
+      photo: ""
+    },
+
+    {
+      name: "Jacoby Brissett",
+      position: "QB",
+      team: "Arizona Cardinals",
+      college: "NC State",
+      photo: ""
+    },
+
+    {
+      name: "Bryce Young",
+      position: "QB",
+      team: "Carolina Panthers",
+      college: "Alabama",
+      photo: ""
+    },
+
+    {
+      name: "Tua Tagovailoa",
+      position: "QB",
+      team: "Miami Dolphins",
+      college: "Alabama",
+      photo: ""
+    },
+
+    {
+      name: "Baker Mayfield",
+      position: "QB",
+      team: "Tampa Bay Buccaneers",
+      college: "Oklahoma",
+      photo: ""
+    },
+
+    {
+      name: "Tyler Shough",
+      position: "QB",
+      team: "New Orleans Saints",
+      college: "Louisville",
+      photo: ""
+    },
+
+    {
+      name: "Dak Prescott",
+      position: "QB",
+      team: "Dallas Cowboys",
+      college: "Mississippi State",
+      photo: ""
+    },
+
+    {
+      name: "Jalen Hurts",
+      position: "QB",
+      team: "Philadelphia Eagles",
+      college: "Oklahoma",
+      photo: ""
+    },
+
+    {
+      name: "Jayden Daniels",
+      position: "QB",
+      team: "Washington Commanders",
+      college: "LSU",
+      photo: ""
+    },
+
+    {
+      name: "Jaxson Dart",
+      position: "QB",
+      team: "New York Giants",
+      college: "Ole Miss",
+      photo: ""
     }
 
-
-    function searchPlayers() {
-
-      const search = document
-        .getElementById("search")
-        .value
-        .toLowerCase();
-
-      const filtered = players.filter(player =>
-        player.name.toLowerCase().includes(search)
-      );
-
-      displayPlayers(filtered);
-
-    }
+  ];
 
 
-    function openPlayer(index) {
+  /* =========================
+     ELEMENTS
+  ========================= */
 
-      const player = players[index];
+  const searchBox =
+    document.getElementById("searchBox");
 
-      document.getElementById("playerList").style.display = "none";
+  const playerResults =
+    document.getElementById("playerResults");
 
-      document.getElementById("profile").style.display = "block";
+  const playerProfile =
+    document.getElementById("playerProfile");
 
-      document.getElementById("profileName").textContent = player.name;
+  const profileName =
+    document.getElementById("profileName");
 
-      document.getElementById("profileInfo").innerHTML = `
-        <strong>Position:</strong> ${player.position}<br>
-        <strong>Team:</strong> ${player.team}<br>
-        <strong>College:</strong> ${player.college}
-      `;
+  const profileInfo =
+    document.getElementById("profileInfo");
 
-      const photoContainer = document.getElementById("profilePhoto");
+  const profilePlayerInfo =
+    document.getElementById("profilePlayerInfo");
+
+  const profilePhoto =
+    document.getElementById("profilePhoto");
+
+  const backButton =
+    document.getElementById("backButton");
+
+  const topBackButton =
+    document.getElementById("topBackButton");
+
+
+  /* =========================
+     DISPLAY PLAYER CARDS
+  ========================= */
+
+  function displayPlayers(playerList) {
+
+    playerResults.innerHTML = "";
+
+    playerList.forEach(function(player) {
+
+      const card =
+        document.createElement("div");
+
+      card.className = "card";
+
+
+      /* PHOTO */
+
+      let photoHTML = "";
 
       if (player.photo) {
 
-        photoContainer.innerHTML = `
+        photoHTML = `
           <img
             src="${player.photo}"
             alt="${player.name}"
-            class="player-photo"
           >
         `;
 
       } else {
 
-        photoContainer.innerHTML = `
-          <div class="player-photo profile-placeholder">
+        photoHTML = `
+          <div class="placeholder">
             ${player.name.charAt(0)}
           </div>
         `;
 
       }
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+
+      /* CARD */
+
+      card.innerHTML = `
+
+        <div class="card-photo">
+          ${photoHTML}
+        </div>
+
+        <div class="card-info">
+
+          <h3>
+            ${player.name}
+          </h3>
+
+          <p>
+            ${player.position} • ${player.team}
+          </p>
+
+        </div>
+
+      `;
+
+
+      /* CLICK */
+
+      card.addEventListener("click", function() {
+
+        openPlayer(player);
+
       });
+
+
+      playerResults.appendChild(card);
+
+    });
+
+  }
+
+
+  /* =========================
+     OPEN PLAYER PROFILE
+  ========================= */
+
+  function openPlayer(player) {
+
+    profileName.textContent =
+      player.name;
+
+    profileInfo.textContent =
+      player.position +
+      " • " +
+      player.team;
+
+    profilePlayerInfo.innerHTML =
+      "Position: " +
+      player.position +
+      "<br>Team: " +
+      player.team +
+      "<br>College: " +
+      player.college;
+
+
+    /* PROFILE PHOTO */
+
+    if (player.photo) {
+
+      profilePhoto.src =
+        player.photo;
+
+      profilePhoto.alt =
+        player.name + " headshot";
+
+      profilePhoto.style.display =
+        "block";
+
+    } else {
+
+      profilePhoto.src = "";
+
+      profilePhoto.style.display =
+        "none";
 
     }
 
 
-    function showPlayers() {
+    /* HIDE CARDS */
 
-      document.getElementById("profile").style.display = "none";
+    playerResults.style.display =
+      "none";
 
-      document.getElementById("playerList").style.display = "block";
+    searchBox.style.display =
+      "none";
 
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+
+    /* SHOW PROFILE */
+
+    playerProfile.style.display =
+      "block";
+
+
+    playerProfile.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+  }
+
+
+  /* =========================
+     BACK TO PLAYERS
+  ========================= */
+
+  function returnToPlayers() {
+
+    playerProfile.style.display =
+      "none";
+
+    playerResults.style.display =
+      "grid";
+
+    searchBox.style.display =
+      "block";
+
+
+    displayPlayers(players);
+
+
+    window.scrollTo({
+
+      top:
+        document.getElementById("players").offsetTop,
+
+      behavior: "smooth"
+
+    });
+
+  }
+
+
+  /* =========================
+     SEARCH
+  ========================= */
+
+  searchBox.addEventListener(
+    "input",
+    function() {
+
+      const searchText =
+        searchBox.value
+          .toLowerCase()
+          .trim();
+
+
+      const filteredPlayers =
+        players.filter(function(player) {
+
+          return player.name
+            .toLowerCase()
+            .includes(searchText);
+
+        });
+
+
+      displayPlayers(filteredPlayers);
 
     }
+  );
 
 
-    displayPlayers();
+  /* =========================
+     BACK BUTTONS
+  ========================= */
 
-  </script>
+  backButton.addEventListener(
+    "click",
+    returnToPlayers
+  );
+
+  topBackButton.addEventListener(
+    "click",
+    returnToPlayers
+  );
+
+
+  /* =========================
+     START WEBSITE
+  ========================= */
+
+  displayPlayers(players);
+
+</script>
 
 </body>
 </html>
