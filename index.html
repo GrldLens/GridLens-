@@ -1778,7 +1778,26 @@
   displayPlayers(players);
 
   displayTeams(teams);
+// SLEEPER API TEST
+async function testSleeperAPI() {
+  try {
+    const response = await fetch("https://api.sleeper.app/v1/players/nfl");
+    const players = await response.json();
 
+    const joshAllen = players.find(function(player) {
+      return player.full_name === "Josh Allen" &&
+             player.team === "BUF";
+    });
+
+    console.log("Sleeper API connected!");
+    console.log("Josh Allen:", joshAllen);
+  } catch (error) {
+    console.error("Sleeper API error:", error);
+  }
+}
+
+testSleeperAPI();
+  
 </script>
 
 </body>
