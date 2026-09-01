@@ -24,10 +24,13 @@
       border-bottom: 2px solid #00aaff;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 36px;
-      color: #00aaff;
+    /* GRIDLENS HEADER LOGO */
+
+    .header-logo {
+      width: 190px;
+      height: auto;
+      display: block;
+      margin: 0 auto 6px;
     }
 
     header p {
@@ -195,6 +198,15 @@
       border: 1px solid #444444;
     }
 
+    /* PROFILE LOGO */
+
+    .profile-logo {
+      width: 130px;
+      height: auto;
+      display: block;
+      margin: 0 auto 25px;
+    }
+
     .top-back-button {
       width: 46px;
       height: 46px;
@@ -303,7 +315,20 @@
       color: #999999;
     }
 
+    /* FOOTER LOGO */
+
+    .footer-logo {
+      width: 75px;
+      height: auto;
+      display: block;
+      margin: 0 auto 10px;
+    }
+
     @media (max-width: 600px) {
+
+      .header-logo {
+        width: 155px;
+      }
 
       .hero h2 {
         font-size: 30px;
@@ -326,6 +351,10 @@
         flex-direction: column;
         text-align: center;
       }
+
+      .profile-logo {
+        width: 105px;
+      }
     }
   </style>
 </head>
@@ -334,7 +363,11 @@
 
 <header>
 
-  <h1>GridLens</h1>
+  <img
+    src="images/IMG_1274.png"
+    alt="GridLens Logo"
+    class="header-logo"
+  >
 
   <p>Football Research & Analysis</p>
 
@@ -388,6 +421,11 @@
       ←
     </button>
 
+    <img
+      src="images/IMG_1274.png"
+      alt="GridLens Logo"
+      class="profile-logo"
+    >
 
     <div class="profile-header">
 
@@ -503,6 +541,12 @@
 
 
 <footer>
+
+  <img
+    src="images/IMG_1274.png"
+    alt="GridLens Logo"
+    class="footer-logo"
+  >
 
   <p>GridLens © 2026</p>
 
