@@ -81,7 +81,7 @@
       line-height: 1.5;
     }
 
-    /* ===== PLAYERS SECTION ===== */
+    /* ===== SECTION ===== */
 
     .section {
       max-width: 1000px;
@@ -175,6 +175,33 @@
       box-shadow: 0 3px 15px rgba(0,0,0,0.3);
     }
 
+    /* ===== TOP ARROW BUTTON ===== */
+
+    .top-back-button {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 2px solid #00aaff;
+      background: #303030;
+      color: #00aaff;
+      font-size: 28px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-bottom: 25px;
+    }
+
+    .top-back-button:hover {
+      background: #00aaff;
+      color: #ffffff;
+      box-shadow: 0 0 15px rgba(0,170,255,0.4);
+    }
+
+    /* ===== PROFILE HEADER ===== */
+
     .profile-header {
       display: flex;
       gap: 25px;
@@ -209,6 +236,8 @@
       color: #c4c4c4;
     }
 
+    /* ===== PROFILE BOXES ===== */
+
     .profile-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -236,7 +265,7 @@
       line-height: 1.5;
     }
 
-    /* ===== BUTTON ===== */
+    /* ===== BOTTOM BUTTON ===== */
 
     .back-button {
       margin-top: 25px;
@@ -270,6 +299,7 @@
     /* ===== MOBILE ===== */
 
     @media (max-width: 600px) {
+
       .hero h2 {
         font-size: 30px;
       }
@@ -289,7 +319,9 @@
 <body>
 
 <header>
+
   <h1>GridLens</h1>
+
   <p>Football Research & Analysis</p>
 
   <nav>
@@ -299,16 +331,21 @@
     <a href="#analysis">Analysis</a>
     <a href="#stats">Stats</a>
   </nav>
+
 </header>
 
+
 <section class="hero" id="home">
+
   <h2>See Football Through a Different Lens.</h2>
 
   <p>
     Research players, study teams, explore statistics,
     and develop a deeper understanding of the game.
   </p>
+
 </section>
+
 
 <section class="section" id="players">
 
@@ -324,14 +361,22 @@
 
   <div class="cards" id="playerResults"></div>
 
+
   <!-- PLAYER PROFILE -->
 
   <div class="profile" id="playerProfile">
-    
-<button class="top-back-button" id="topBackButton">
-  ← Back to Players
-</button>
-    
+
+    <!-- TOP BACK ARROW -->
+
+    <button
+      class="top-back-button"
+      id="topBackButton"
+      aria-label="Back to Players"
+    >
+      ←
+    </button>
+
+
     <div class="profile-header">
 
       <div class="player-photo">
@@ -339,66 +384,101 @@
       </div>
 
       <div>
+
         <h2 id="profileName"></h2>
+
         <p id="profileInfo"></p>
+
         <p>GridLens Player Profile</p>
+
       </div>
 
     </div>
 
+
     <div class="profile-grid">
 
       <div class="profile-box">
+
         <h3>Player Info</h3>
+
         <p id="profilePlayerInfo"></p>
+
       </div>
 
+
       <div class="profile-box">
+
         <h3>2026 Stats</h3>
+
         <p>
           Passing Yards: —<br>
           Touchdowns: —<br>
           Interceptions: —<br>
           Completion %: —
         </p>
+
       </div>
 
+
       <div class="profile-box">
+
         <h3>Career Stats</h3>
+
         <p>
           Career statistics will be added here.
         </p>
+
       </div>
 
+
       <div class="profile-box">
+
         <h3>Strengths</h3>
+
         <p>
           Player strengths and traits will be added here.
         </p>
+
       </div>
 
+
       <div class="profile-box">
+
         <h3>Weaknesses</h3>
+
         <p>
           Player weaknesses and areas for improvement will be added here.
         </p>
+
       </div>
 
+
       <div class="profile-box">
+
         <h3>Film & Analysis</h3>
+
         <p>
           Film breakdowns and GridLens analysis will be added here.
         </p>
+
       </div>
 
+
       <div class="profile-box">
+
         <h3>Analyst Notes</h3>
+
         <p>
           Your personal football research and notes will go here.
         </p>
+
       </div>
 
     </div>
+
+
+    <!-- BOTTOM BACK BUTTON -->
 
     <button class="back-button" id="backButton">
       Back to Players
@@ -408,9 +488,13 @@
 
 </section>
 
+
 <footer>
+
   <p>GridLens © 2026</p>
+
 </footer>
+
 
 <script>
 
@@ -652,15 +736,23 @@
      ========================================== */
 
   const searchBox = document.getElementById("searchBox");
+
   const playerResults = document.getElementById("playerResults");
 
   const playerProfile = document.getElementById("playerProfile");
 
   const profileName = document.getElementById("profileName");
-  const profileInfo = document.getElementById("profileInfo");
-  const profilePlayerInfo = document.getElementById("profilePlayerInfo");
 
-  const backButton = document.getElementById("backButton");
+  const profileInfo = document.getElementById("profileInfo");
+
+  const profilePlayerInfo =
+    document.getElementById("profilePlayerInfo");
+
+  const backButton =
+    document.getElementById("backButton");
+
+  const topBackButton =
+    document.getElementById("topBackButton");
 
 
   /* ==========================================
@@ -671,7 +763,7 @@
 
     playerResults.innerHTML = "";
 
-    playerList.forEach(function(player, index) {
+    playerList.forEach(function(player) {
 
       const card = document.createElement("div");
 
@@ -683,7 +775,9 @@
       `;
 
       card.addEventListener("click", function() {
+
         openPlayer(player);
+
       });
 
       playerResults.appendChild(card);
@@ -694,7 +788,7 @@
 
 
   /* ==========================================
-     OPEN PLAYER PROFILE
+     OPEN PLAYER
      ========================================== */
 
   function openPlayer(player) {
@@ -724,6 +818,28 @@
 
 
   /* ==========================================
+     RETURN TO PLAYERS
+     ========================================== */
+
+  function returnToPlayers() {
+
+    playerProfile.style.display = "none";
+
+    playerResults.style.display = "grid";
+
+    searchBox.style.display = "block";
+
+    displayPlayers(players);
+
+    window.scrollTo({
+      top: document.getElementById("players").offsetTop,
+      behavior: "smooth"
+    });
+
+  }
+
+
+  /* ==========================================
      SEARCH
      ========================================== */
 
@@ -747,29 +863,25 @@
 
 
   /* ==========================================
-     BACK BUTTON
+     BACK BUTTONS
      ========================================== */
 
   backButton.addEventListener("click", function() {
 
-    playerProfile.style.display = "none";
+    returnToPlayers();
 
-    playerResults.style.display = "grid";
+  });
 
-    searchBox.style.display = "block";
 
-    displayPlayers(players);
+  topBackButton.addEventListener("click", function() {
 
-    window.scrollTo({
-      top: document.getElementById("players").offsetTop,
-      behavior: "smooth"
-    });
+    returnToPlayers();
 
   });
 
 
   /* ==========================================
-     LOAD PLAYERS
+     INITIAL LOAD
      ========================================== */
 
   displayPlayers(players);
