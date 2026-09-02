@@ -405,6 +405,109 @@
       color: white;
     }
 
+    /* TEAM DROPDOWNS */
+
+    .team-dropdown {
+      background: #303030;
+      border: 1px solid #454545;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .team-dropdown summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 17px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff;
+      background: #292929;
+      border-left: 4px solid #00aaff;
+    }
+
+    .team-dropdown summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .team-dropdown summary::after {
+      content: "▾";
+      float: right;
+      color: #00aaff;
+      font-size: 20px;
+    }
+
+    .team-dropdown[open] summary::after {
+      content: "▴";
+    }
+
+    .team-dropdown summary:hover {
+      background: #353535;
+    }
+
+    .team-dropdown-content {
+      padding: 20px;
+    }
+
+    /* SEASON SELECTOR */
+
+    .season-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+    }
+
+    .season-button {
+      padding: 12px;
+      background: #292929;
+      color: #ffffff;
+      border: 1px solid #00aaff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .season-button:hover {
+      background: #00aaff;
+    }
+
+    .season-button.active {
+      background: #00aaff;
+    }
+
+    .season-detail {
+      margin-top: 20px;
+      background: #292929;
+      border: 1px solid #414141;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .season-detail h3 {
+      color: #00aaff;
+      margin-top: 0;
+    }
+
+    .season-record {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .season-placeholder {
+      color: #bdbdbd;
+      line-height: 1.6;
+    }
+
+    .schedule-placeholder {
+      margin-top: 15px;
+      padding: 15px;
+      background: #303030;
+      border-radius: 8px;
+      border: 1px solid #414141;
+    }
+
     /* AUTOMATED ROSTER */
 
     .roster-loading {
@@ -520,6 +623,10 @@
 
       .team-card {
         padding: 14px;
+      }
+
+      .season-list {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
@@ -741,73 +848,229 @@
       id="teamProfileInfo"
     ></p>
 
-    <div class="profile-grid">
+    <div>
 
-      <div class="profile-box">
+      <!-- 2026 SEASON -->
 
-        <h3>Team Info</h3>
+      <details class="team-dropdown" open>
 
-        <p id="teamInfo"></p>
+        <summary>
+          2026 Season
+        </summary>
 
-      </div>
+        <div class="team-dropdown-content">
 
-      <div class="profile-box">
+          <div class="season-detail">
 
-        <h3>2026 Stats</h3>
+            <h3>2026 Record</h3>
 
-        <p>
-          Wins: —<br>
-          Losses: —<br>
-          Points Per Game: —<br>
-          Points Allowed: —
-        </p>
+            <div class="season-record">
+              — - —
+            </div>
 
-      </div>
+            <p class="season-placeholder">
+              2026 team statistics will be added here.
+            </p>
 
-      <div class="profile-box">
+            <p class="season-placeholder">
+              Wins: —<br>
+              Losses: —<br>
+              Points Per Game: —<br>
+              Points Allowed: —
+            </p>
 
-        <h3>Roster</h3>
+            <div class="schedule-placeholder">
 
-        <div id="teamRoster">
+              <strong>2026 Schedule & Results</strong>
 
-          <p class="roster-loading">
-            Roster will load when a team is selected.
+              <p class="season-placeholder">
+                Schedule and game scores will appear here.
+              </p>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </details>
+
+      <!-- PREVIOUS SEASONS -->
+
+      <details class="team-dropdown">
+
+        <summary>
+          Previous Seasons
+        </summary>
+
+        <div class="team-dropdown-content">
+
+          <p class="season-placeholder">
+            Select a season to view that team's
+            record, statistics, schedule, and game results.
+          </p>
+
+          <div class="season-list">
+
+            <button
+              class="season-button"
+              data-season="2025"
+            >
+              2025
+            </button>
+
+            <button
+              class="season-button"
+              data-season="2024"
+            >
+              2024
+            </button>
+
+            <button
+              class="season-button"
+              data-season="2023"
+            >
+              2023
+            </button>
+
+            <button
+              class="season-button"
+              data-season="2022"
+            >
+              2022
+            </button>
+
+            <button
+              class="season-button"
+              data-season="2021"
+            >
+              2021
+            </button>
+
+            <button
+              class="season-button"
+              data-season="2020"
+            >
+              2020
+            </button>
+
+            <button
+              class="season-button"
+              data-season="2019"
+            >
+              2019
+            </button>
+
+            <button
+              class="season-button"
+              data-season="2018"
+            >
+              2018
+            </button>
+
+            <button
+              class="season-button"
+              data-season="2017"
+            >
+              2017
+            </button>
+
+            <button
+              class="season-button"
+              data-season="2016"
+            >
+              2016
+            </button>
+
+          </div>
+
+          <div
+            class="season-detail"
+            id="previousSeasonDetail"
+          >
+
+            <h3>
+              Select a Season
+            </h3>
+
+            <p class="season-placeholder">
+              Choose a year above to view the
+              record, statistics, schedule, and
+              game results for that season.
+            </p>
+
+          </div>
+
+        </div>
+
+      </details>
+
+      <!-- ROSTER -->
+
+      <details class="team-dropdown">
+
+        <summary>
+          Roster
+        </summary>
+
+        <div class="team-dropdown-content">
+
+          <div id="teamRoster">
+
+            <p class="roster-loading">
+              Roster will load when a team is selected.
+            </p>
+
+          </div>
+
+        </div>
+
+      </details>
+
+      <!-- TEAM INFO -->
+
+      <div class="profile-grid">
+
+        <div class="profile-box">
+
+          <h3>Team Info</h3>
+
+          <p id="teamInfo"></p>
+
+        </div>
+
+        <div class="profile-box">
+
+          <h3>Offense</h3>
+
+          <p>
+            Offensive scheme, personnel,
+            tendencies, and analysis will be added here.
           </p>
 
         </div>
 
-      </div>
+        <div class="profile-box">
 
-      <div class="profile-box">
+          <h3>Defense</h3>
 
-        <h3>Offense</h3>
+          <p>
+            Defensive scheme, personnel,
+            tendencies, and analysis will be added here.
+          </p>
 
-        <p>
-          Offensive scheme, personnel,
-          tendencies, and analysis will be added here.
-        </p>
+        </div>
 
-      </div>
+        <div class="profile-box">
 
-      <div class="profile-box">
+          <h3>Film & Analysis</h3>
 
-        <h3>Defense</h3>
+          <p>
+            Team film breakdowns and GridLens
+            analysis will be added here.
+          </p>
 
-        <p>
-          Defensive scheme, personnel,
-          tendencies, and analysis will be added here.
-        </p>
-
-      </div>
-
-      <div class="profile-box">
-
-        <h3>Film & Analysis</h3>
-
-        <p>
-          Team film breakdowns and GridLens
-          analysis will be added here.
-        </p>
+        </div>
 
       </div>
 
@@ -1549,6 +1812,9 @@
   const teamRoster =
     document.getElementById("teamRoster");
 
+  const previousSeasonDetail =
+    document.getElementById("previousSeasonDetail");
+
   /* =========================
      SLEEPER ROSTER CACHE
   ========================= */
@@ -1768,31 +2034,6 @@
         return;
 
       }
-
-      const positionOrder = [
-        "QB",
-        "RB",
-        "FB",
-        "WR",
-        "TE",
-        "OL",
-        "OT",
-        "OG",
-        "C",
-        "DL",
-        "DE",
-        "DT",
-        "NT",
-        "LB",
-        "ILB",
-        "OLB",
-        "DB",
-        "CB",
-        "S",
-        "K",
-        "P",
-        "LS"
-      ];
 
       const groupOrder = [
         "QB",
@@ -2103,6 +2344,104 @@
   }
 
   /* =========================
+     LOAD PREVIOUS SEASON
+  ========================= */
+
+  function loadPreviousSeason(season) {
+
+    previousSeasonDetail.innerHTML = `
+
+      <h3>
+        ${season} Season
+      </h3>
+
+      <div class="season-record">
+        — - —
+      </div>
+
+      <p class="season-placeholder">
+        ${season} team statistics will be added here.
+      </p>
+
+      <p class="season-placeholder">
+        Wins: —<br>
+        Losses: —<br>
+        Points Per Game: —<br>
+        Points Allowed: —
+      </p>
+
+      <div class="schedule-placeholder">
+
+        <strong>
+          ${season} Schedule & Results
+        </strong>
+
+        <p class="season-placeholder">
+          Schedule and game scores will be added here.
+        </p>
+
+        <p class="season-placeholder">
+          Week 1: —<br>
+          Week 2: —<br>
+          Week 3: —<br>
+          Week 4: —<br>
+          More games will appear here when
+          historical data is connected.
+        </p>
+
+      </div>
+
+    `;
+
+    document
+      .querySelectorAll(".season-button")
+      .forEach(
+        function(button) {
+
+          button.classList.remove(
+            "active"
+          );
+
+          if (
+            button.dataset.season ===
+            season
+          ) {
+
+            button.classList.add(
+              "active"
+            );
+
+          }
+
+        }
+      );
+
+  }
+
+  /* =========================
+     SEASON BUTTONS
+  ========================= */
+
+  document
+    .querySelectorAll(".season-button")
+    .forEach(
+      function(button) {
+
+        button.addEventListener(
+          "click",
+          function() {
+
+            loadPreviousSeason(
+              button.dataset.season
+            );
+
+          }
+        );
+
+      }
+    );
+
+  /* =========================
      OPEN TEAM PROFILE
   ========================= */
 
@@ -2138,6 +2477,32 @@
         Loading ${team.name} roster...
       </p>
     `;
+
+    previousSeasonDetail.innerHTML = `
+
+      <h3>
+        Select a Season
+      </h3>
+
+      <p class="season-placeholder">
+        Choose a year above to view the
+        record, statistics, schedule, and
+        game results for that season.
+      </p>
+
+    `;
+
+    document
+      .querySelectorAll(".season-button")
+      .forEach(
+        function(button) {
+
+          button.classList.remove(
+            "active"
+          );
+
+        }
+      );
 
     teamProfile.scrollIntoView({
       behavior: "smooth",
