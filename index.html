@@ -299,9 +299,7 @@
       font-weight: bold;
     }
 
-    /* =========================
-       TEAM SECTION
-    ========================= */
+    /* TEAM SECTION */
 
     .team-search {
       width: 100%;
@@ -508,9 +506,7 @@
       border: 1px solid #414141;
     }
 
-    /* =========================
-       HISTORICAL DATA
-    ========================= */
+    /* HISTORICAL DATA */
 
     .historical-loading {
       color: #00aaff;
@@ -851,9 +847,7 @@
 
 </section>
 
-<!-- =========================
-     PLAYERS
-========================= -->
+<!-- PLAYERS -->
 
 <section class="section" id="players">
 
@@ -906,77 +900,56 @@
     <div class="profile-grid">
 
       <div class="profile-box">
-
         <h3>Player Info</h3>
-
         <p id="profilePlayerInfo"></p>
-
       </div>
 
       <div class="profile-box">
-
         <h3>2026 Stats</h3>
-
         <p>
           Passing Yards: —<br>
           Touchdowns: —<br>
           Interceptions: —<br>
           Completion %: —
         </p>
-
       </div>
 
       <div class="profile-box">
-
         <h3>Career Stats</h3>
-
         <p>
           Career statistics will be added here.
         </p>
-
       </div>
 
       <div class="profile-box">
-
         <h3>Strengths</h3>
-
         <p>
           Player strengths and traits will be added here.
         </p>
-
       </div>
 
       <div class="profile-box">
-
         <h3>Weaknesses</h3>
-
         <p>
           Player weaknesses and areas for improvement
           will be added here.
         </p>
-
       </div>
 
       <div class="profile-box">
-
         <h3>Film & Analysis</h3>
-
         <p>
           Film breakdowns and GridLens analysis
           will be added here.
         </p>
-
       </div>
 
       <div class="profile-box">
-
         <h3>Analyst Notes</h3>
-
         <p>
           Your personal football research and notes
           will go here.
         </p>
-
       </div>
 
     </div>
@@ -989,9 +962,7 @@
 
 </section>
 
-<!-- =========================
-     TEAMS
-========================= -->
+<!-- TEAMS -->
 
 <section class="section" id="teams">
 
@@ -1034,229 +1005,164 @@
       id="teamProfileInfo"
     ></p>
 
-    <div>
+    <!-- 2026 SEASON -->
 
-      <!-- 2026 SEASON -->
+    <details class="team-dropdown" open>
 
-      <details class="team-dropdown" open>
+      <summary>
+        2026 Season
+      </summary>
 
-        <summary>
-          2026 Season
-        </summary>
+      <div class="team-dropdown-content">
 
-        <div class="team-dropdown-content">
+        <div class="season-detail">
 
-          <div class="season-detail">
+          <h3>2026 Record</h3>
 
-            <h3>2026 Record</h3>
-
-            <div class="season-record">
-              — - —
-            </div>
-
-            <p class="season-placeholder">
-              2026 team statistics will be added here.
-            </p>
-
-            <p class="season-placeholder">
-              Wins: —<br>
-              Losses: —<br>
-              Points Per Game: —<br>
-              Points Allowed: —
-            </p>
-
-            <div class="schedule-placeholder">
-
-              <strong>2026 Schedule & Results</strong>
-
-              <p class="season-placeholder">
-                Schedule and game scores will appear here.
-              </p>
-
-            </div>
-
+          <div class="season-record">
+            — - —
           </div>
-
-        </div>
-
-      </details>
-
-      <!-- PREVIOUS SEASONS -->
-
-      <details class="team-dropdown">
-
-        <summary>
-          Previous Seasons
-        </summary>
-
-        <div class="team-dropdown-content">
 
           <p class="season-placeholder">
-            Select a season to view that team's
-            record, statistics, schedule, and game results.
+            2026 team statistics will be added here.
           </p>
 
-          <div class="season-list">
+          <p class="season-placeholder">
+            Wins: —<br>
+            Losses: —<br>
+            Points Per Game: —<br>
+            Points Allowed: —
+          </p>
 
-            <button
-              class="season-button"
-              data-season="2025"
-            >
-              2025
-            </button>
+          <div class="schedule-placeholder">
 
-            <button
-              class="season-button"
-              data-season="2024"
-            >
-              2024
-            </button>
-
-            <button
-              class="season-button"
-              data-season="2023"
-            >
-              2023
-            </button>
-
-            <button
-              class="season-button"
-              data-season="2022"
-            >
-              2022
-            </button>
-
-            <button
-              class="season-button"
-              data-season="2021"
-            >
-              2021
-            </button>
-
-            <button
-              class="season-button"
-              data-season="2020"
-            >
-              2020
-            </button>
-
-            <button
-              class="season-button"
-              data-season="2019"
-            >
-              2019
-            </button>
-
-            <button
-              class="season-button"
-              data-season="2018"
-            >
-              2018
-            </button>
-
-            <button
-              class="season-button"
-              data-season="2017"
-            >
-              2017
-            </button>
-
-            <button
-              class="season-button"
-              data-season="2016"
-            >
-              2016
-            </button>
-
-          </div>
-
-          <div
-            class="season-detail"
-            id="previousSeasonDetail"
-          >
-
-            <h3>
-              Select a Season
-            </h3>
+            <strong>2026 Schedule & Results</strong>
 
             <p class="season-placeholder">
-              Choose a year above to view the
-              record, statistics, schedule, and
-              game results for that season.
+              Schedule and game scores will appear here.
             </p>
 
           </div>
 
         </div>
 
-      </details>
+      </div>
 
-      <!-- ROSTER -->
+    </details>
 
-      <details class="team-dropdown">
+    <!-- PREVIOUS SEASONS -->
 
-        <summary>
-          Roster
-        </summary>
+    <details class="team-dropdown">
 
-        <div class="team-dropdown-content">
+      <summary>
+        Previous Seasons
+      </summary>
 
-          <div id="teamRoster">
+      <div class="team-dropdown-content">
 
-            <p class="roster-loading">
-              Roster will load when a team is selected.
-            </p>
+        <p class="season-placeholder">
+          Select a season to view that team's
+          record, statistics, schedule, and game results.
+        </p>
 
-          </div>
+        <div class="season-list">
 
-        </div>
-
-      </details>
-
-      <!-- TEAM INFO -->
-
-      <div class="profile-grid">
-
-        <div class="profile-box">
-
-          <h3>Team Info</h3>
-
-          <p id="teamInfo"></p>
+          <button class="season-button" data-season="2025">2025</button>
+          <button class="season-button" data-season="2024">2024</button>
+          <button class="season-button" data-season="2023">2023</button>
+          <button class="season-button" data-season="2022">2022</button>
+          <button class="season-button" data-season="2021">2021</button>
+          <button class="season-button" data-season="2020">2020</button>
+          <button class="season-button" data-season="2019">2019</button>
+          <button class="season-button" data-season="2018">2018</button>
+          <button class="season-button" data-season="2017">2017</button>
+          <button class="season-button" data-season="2016">2016</button>
 
         </div>
 
-        <div class="profile-box">
+        <div
+          class="season-detail"
+          id="previousSeasonDetail"
+        >
 
-          <h3>Offense</h3>
+          <h3>Select a Season</h3>
 
-          <p>
-            Offensive scheme, personnel,
-            tendencies, and analysis will be added here.
+          <p class="season-placeholder">
+            Choose a year above to view the
+            record, statistics, schedule, and
+            game results for that season.
           </p>
 
         </div>
 
-        <div class="profile-box">
+      </div>
 
-          <h3>Defense</h3>
+    </details>
 
-          <p>
-            Defensive scheme, personnel,
-            tendencies, and analysis will be added here.
+    <!-- ROSTER -->
+
+    <details class="team-dropdown">
+
+      <summary>
+        Roster
+      </summary>
+
+      <div class="team-dropdown-content">
+
+        <div id="teamRoster">
+
+          <p class="roster-loading">
+            Roster will load when a team is selected.
           </p>
 
         </div>
 
-        <div class="profile-box">
+      </div>
 
-          <h3>Film & Analysis</h3>
+    </details>
 
-          <p>
-            Team film breakdowns and GridLens
-            analysis will be added here.
-          </p>
+    <!-- TEAM INFO -->
 
-        </div>
+    <div class="profile-grid">
+
+      <div class="profile-box">
+
+        <h3>Team Info</h3>
+
+        <p id="teamInfo"></p>
+
+      </div>
+
+      <div class="profile-box">
+
+        <h3>Offense</h3>
+
+        <p>
+          Offensive scheme, personnel,
+          tendencies, and analysis will be added here.
+        </p>
+
+      </div>
+
+      <div class="profile-box">
+
+        <h3>Defense</h3>
+
+        <p>
+          Defensive scheme, personnel,
+          tendencies, and analysis will be added here.
+        </p>
+
+      </div>
+
+      <div class="profile-box">
+
+        <h3>Film & Analysis</h3>
+
+        <p>
+          Team film breakdowns and GridLens
+          analysis will be added here.
+        </p>
 
       </div>
 
@@ -1280,1397 +1186,1273 @@
 
 <script>
 
-  /* =========================
-     PLAYER DATABASE
-  ========================= */
+/* =========================
+   PLAYER DATABASE
+========================= */
 
-  const players = [
+const players = [
 
-    {
-      name: "Patrick Mahomes",
-      position: "QB",
-      team: "Kansas City Chiefs",
-      college: "Texas Tech",
-      photo: "images/IMG_1818.png"
-    },
+  {
+    name: "Patrick Mahomes",
+    position: "QB",
+    team: "Kansas City Chiefs",
+    college: "Texas Tech",
+    photo: "images/IMG_1818.png"
+  },
 
-    {
-      name: "Josh Allen",
-      position: "QB",
-      team: "Buffalo Bills",
-      college: "Wyoming",
-      photo: ""
-    },
+  {
+    name: "Josh Allen",
+    position: "QB",
+    team: "Buffalo Bills",
+    college: "Wyoming",
+    photo: ""
+  },
 
-    {
-      name: "Lamar Jackson",
-      position: "QB",
-      team: "Baltimore Ravens",
-      college: "Louisville",
-      photo: ""
-    },
+  {
+    name: "Lamar Jackson",
+    position: "QB",
+    team: "Baltimore Ravens",
+    college: "Louisville",
+    photo: ""
+  },
 
-    {
-      name: "Cam Ward",
-      position: "QB",
-      team: "Tennessee Titans",
-      college: "Miami",
-      photo: ""
-    },
+  {
+    name: "Cam Ward",
+    position: "QB",
+    team: "Tennessee Titans",
+    college: "Miami",
+    photo: ""
+  },
 
-    {
-      name: "C.J. Stroud",
-      position: "QB",
-      team: "Houston Texans",
-      college: "Ohio State",
-      photo: ""
-    },
+  {
+    name: "C.J. Stroud",
+    position: "QB",
+    team: "Houston Texans",
+    college: "Ohio State",
+    photo: ""
+  },
 
-    {
-      name: "Trevor Lawrence",
-      position: "QB",
-      team: "Jacksonville Jaguars",
-      college: "Clemson",
-      photo: ""
-    },
+  {
+    name: "Trevor Lawrence",
+    position: "QB",
+    team: "Jacksonville Jaguars",
+    college: "Clemson",
+    photo: ""
+  },
 
-    {
-      name: "Daniel Jones",
-      position: "QB",
-      team: "Indianapolis Colts",
-      college: "Duke",
-      photo: ""
-    },
+  {
+    name: "Daniel Jones",
+    position: "QB",
+    team: "Indianapolis Colts",
+    college: "Duke",
+    photo: ""
+  },
 
-    {
-      name: "Justin Herbert",
-      position: "QB",
-      team: "Los Angeles Chargers",
-      college: "Oregon",
-      photo: ""
-    },
+  {
+    name: "Justin Herbert",
+    position: "QB",
+    team: "Los Angeles Chargers",
+    college: "Oregon",
+    photo: ""
+  },
 
-    {
-      name: "Bo Nix",
-      position: "QB",
-      team: "Denver Broncos",
-      college: "Oregon",
-      photo: ""
-    },
+  {
+    name: "Bo Nix",
+    position: "QB",
+    team: "Denver Broncos",
+    college: "Oregon",
+    photo: ""
+  },
 
-    {
-      name: "Kirk Cousins",
-      position: "QB",
-      team: "Atlanta Falcons",
-      college: "Michigan State",
-      photo: ""
-    },
+  {
+    name: "Kirk Cousins",
+    position: "QB",
+    team: "Atlanta Falcons",
+    college: "Michigan State",
+    photo: ""
+  },
 
-    {
-      name: "Deshaun Watson",
-      position: "QB",
-      team: "Cleveland Browns",
-      college: "Clemson",
-      photo: ""
-    },
+  {
+    name: "Deshaun Watson",
+    position: "QB",
+    team: "Cleveland Browns",
+    college: "Clemson",
+    photo: ""
+  },
 
-    {
-      name: "Aaron Rodgers",
-      position: "QB",
-      team: "Pittsburgh Steelers",
-      college: "California",
-      photo: ""
-    },
+  {
+    name: "Aaron Rodgers",
+    position: "QB",
+    team: "Pittsburgh Steelers",
+    college: "California",
+    photo: ""
+  },
 
-    {
-      name: "Joe Burrow",
-      position: "QB",
-      team: "Cincinnati Bengals",
-      college: "LSU",
-      photo: ""
-    },
+  {
+    name: "Joe Burrow",
+    position: "QB",
+    team: "Cincinnati Bengals",
+    college: "LSU",
+    photo: ""
+  },
 
-    {
-      name: "Drake Maye",
-      position: "QB",
-      team: "New England Patriots",
-      college: "North Carolina",
-      photo: ""
-    },
+  {
+    name: "Drake Maye",
+    position: "QB",
+    team: "New England Patriots",
+    college: "North Carolina",
+    photo: ""
+  },
 
-    {
-      name: "Geno Smith",
-      position: "QB",
-      team: "Las Vegas Raiders",
-      college: "West Virginia",
-      photo: ""
-    },
+  {
+    name: "Geno Smith",
+    position: "QB",
+    team: "Las Vegas Raiders",
+    college: "West Virginia",
+    photo: ""
+  },
 
-    {
-      name: "Malik Willis",
-      position: "QB",
-      team: "Green Bay Packers",
-      college: "Liberty",
-      photo: ""
-    },
+  {
+    name: "Malik Willis",
+    position: "QB",
+    team: "Green Bay Packers",
+    college: "Liberty",
+    photo: ""
+  },
 
-    {
-      name: "Jared Goff",
-      position: "QB",
-      team: "Detroit Lions",
-      college: "California",
-      photo: ""
-    },
+  {
+    name: "Jared Goff",
+    position: "QB",
+    team: "Detroit Lions",
+    college: "California",
+    photo: ""
+  },
 
-    {
-      name: "Caleb Williams",
-      position: "QB",
-      team: "Chicago Bears",
-      college: "USC",
-      photo: ""
-    },
+  {
+    name: "Caleb Williams",
+    position: "QB",
+    team: "Chicago Bears",
+    college: "USC",
+    photo: ""
+  },
 
-    {
-      name: "Jordan Love",
-      position: "QB",
-      team: "Green Bay Packers",
-      college: "Utah State",
-      photo: ""
-    },
+  {
+    name: "Jordan Love",
+    position: "QB",
+    team: "Green Bay Packers",
+    college: "Utah State",
+    photo: ""
+  },
 
-    {
-      name: "Kyler Murray",
-      position: "QB",
-      team: "Arizona Cardinals",
-      college: "Oklahoma",
-      photo: ""
-    },
+  {
+    name: "Kyler Murray",
+    position: "QB",
+    team: "Arizona Cardinals",
+    college: "Oklahoma",
+    photo: ""
+  },
 
-    {
-      name: "Sam Darnold",
-      position: "QB",
-      team: "Seattle Seahawks",
-      college: "USC",
-      photo: ""
-    },
+  {
+    name: "Sam Darnold",
+    position: "QB",
+    team: "Seattle Seahawks",
+    college: "USC",
+    photo: ""
+  },
 
-    {
-      name: "Matthew Stafford",
-      position: "QB",
-      team: "Los Angeles Rams",
-      college: "Georgia",
-      photo: ""
-    },
+  {
+    name: "Matthew Stafford",
+    position: "QB",
+    team: "Los Angeles Rams",
+    college: "Georgia",
+    photo: ""
+  },
 
-    {
-      name: "Brock Purdy",
-      position: "QB",
-      team: "San Francisco 49ers",
-      college: "Iowa State",
-      photo: ""
-    },
+  {
+    name: "Brock Purdy",
+    position: "QB",
+    team: "San Francisco 49ers",
+    college: "Iowa State",
+    photo: ""
+  },
 
-    {
-      name: "Jacoby Brissett",
-      position: "QB",
-      team: "Arizona Cardinals",
-      college: "NC State",
-      photo: ""
-    },
+  {
+    name: "Jacoby Brissett",
+    position: "QB",
+    team: "Arizona Cardinals",
+    college: "NC State",
+    photo: ""
+  },
 
-    {
-      name: "Bryce Young",
-      position: "QB",
-      team: "Carolina Panthers",
-      college: "Alabama",
-      photo: ""
-    },
+  {
+    name: "Bryce Young",
+    position: "QB",
+    team: "Carolina Panthers",
+    college: "Alabama",
+    photo: ""
+  },
 
-    {
-      name: "Tua Tagovailoa",
-      position: "QB",
-      team: "Miami Dolphins",
-      college: "Alabama",
-      photo: ""
-    },
+  {
+    name: "Tua Tagovailoa",
+    position: "QB",
+    team: "Miami Dolphins",
+    college: "Alabama",
+    photo: ""
+  },
 
-    {
-      name: "Baker Mayfield",
-      position: "QB",
-      team: "Tampa Bay Buccaneers",
-      college: "Oklahoma",
-      photo: ""
-    },
+  {
+    name: "Baker Mayfield",
+    position: "QB",
+    team: "Tampa Bay Buccaneers",
+    college: "Oklahoma",
+    photo: ""
+  },
 
-    {
-      name: "Tyler Shough",
-      position: "QB",
-      team: "New Orleans Saints",
-      college: "Louisville",
-      photo: ""
-    },
+  {
+    name: "Tyler Shough",
+    position: "QB",
+    team: "New Orleans Saints",
+    college: "Louisville",
+    photo: ""
+  },
 
-    {
-      name: "Dak Prescott",
-      position: "QB",
-      team: "Dallas Cowboys",
-      college: "Mississippi State",
-      photo: ""
-    },
+  {
+    name: "Dak Prescott",
+    position: "QB",
+    team: "Dallas Cowboys",
+    college: "Mississippi State",
+    photo: ""
+  },
 
-    {
-      name: "Jalen Hurts",
-      position: "QB",
-      team: "Philadelphia Eagles",
-      college: "Oklahoma",
-      photo: ""
-    },
+  {
+    name: "Jalen Hurts",
+    position: "QB",
+    team: "Philadelphia Eagles",
+    college: "Oklahoma",
+    photo: ""
+  },
 
-    {
-      name: "Jayden Daniels",
-      position: "QB",
-      team: "Washington Commanders",
-      college: "LSU",
-      photo: ""
-    },
+  {
+    name: "Jayden Daniels",
+    position: "QB",
+    team: "Washington Commanders",
+    college: "LSU",
+    photo: ""
+  },
 
-    {
-      name: "Jaxson Dart",
-      position: "QB",
-      team: "New York Giants",
-      college: "Ole Miss",
-      photo: ""
+  {
+    name: "Jaxson Dart",
+    position: "QB",
+    team: "New York Giants",
+    college: "Ole Miss",
+    photo: ""
+  }
+
+];
+
+/* PLAYER ELEMENTS */
+
+const searchBox =
+  document.getElementById("searchBox");
+
+const playerResults =
+  document.getElementById("playerResults");
+
+const playerProfile =
+  document.getElementById("playerProfile");
+
+const profileName =
+  document.getElementById("profileName");
+
+const profileInfo =
+  document.getElementById("profileInfo");
+
+const profilePlayerInfo =
+  document.getElementById("profilePlayerInfo");
+
+const profilePhoto =
+  document.getElementById("profilePhoto");
+
+const backButton =
+  document.getElementById("backButton");
+
+const topBackButton =
+  document.getElementById("topBackButton");
+
+/* DISPLAY PLAYER CARDS */
+
+function displayPlayers(playerList) {
+
+  playerResults.innerHTML = "";
+
+  playerList.forEach(function(player) {
+
+    const card =
+      document.createElement("div");
+
+    card.className = "card";
+
+    let photoHTML = "";
+
+    if (player.photo) {
+
+      photoHTML = `
+        <img
+          src="${player.photo}"
+          alt="${player.name}"
+        >
+      `;
+
+    } else {
+
+      photoHTML = `
+        <div class="placeholder">
+          ${player.name.charAt(0)}
+        </div>
+      `;
+
     }
 
+    card.innerHTML = `
+
+      <div class="card-photo">
+        ${photoHTML}
+      </div>
+
+      <div class="card-info">
+
+        <h3>
+          ${player.name}
+        </h3>
+
+        <p>
+          ${player.position} • ${player.team}
+        </p>
+
+      </div>
+
+    `;
+
+    card.addEventListener("click", function() {
+      openPlayer(player);
+    });
+
+    playerResults.appendChild(card);
+
+  });
+
+}
+
+/* OPEN PLAYER PROFILE */
+
+function openPlayer(player) {
+
+  profileName.textContent =
+    player.name;
+
+  profileInfo.textContent =
+    player.position +
+    " • " +
+    player.team;
+
+  profilePlayerInfo.innerHTML =
+    "Position: " +
+    player.position +
+    "<br>Team: " +
+    player.team +
+    "<br>College: " +
+    player.college;
+
+  if (player.photo) {
+
+    profilePhoto.src =
+      player.photo;
+
+    profilePhoto.alt =
+      player.name + " headshot";
+
+    profilePhoto.style.display =
+      "block";
+
+  } else {
+
+    profilePhoto.src = "";
+
+    profilePhoto.style.display =
+      "none";
+
+  }
+
+  playerResults.style.display =
+    "none";
+
+  searchBox.style.display =
+    "none";
+
+  playerProfile.style.display =
+    "block";
+
+  playerProfile.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+}
+
+/* BACK TO PLAYERS */
+
+function returnToPlayers() {
+
+  playerProfile.style.display =
+    "none";
+
+  playerResults.style.display =
+    "grid";
+
+  searchBox.style.display =
+    "block";
+
+  displayPlayers(players);
+
+  window.scrollTo({
+    top:
+      document.getElementById("players").offsetTop,
+    behavior: "smooth"
+  });
+
+}
+
+searchBox.addEventListener(
+  "input",
+  function() {
+
+    const searchText =
+      searchBox.value
+        .toLowerCase()
+        .trim();
+
+    const filteredPlayers =
+      players.filter(function(player) {
+
+        return player.name
+          .toLowerCase()
+          .includes(searchText);
+
+      });
+
+    displayPlayers(filteredPlayers);
+
+  }
+);
+
+backButton.addEventListener(
+  "click",
+  returnToPlayers
+);
+
+topBackButton.addEventListener(
+  "click",
+  returnToPlayers
+);
+
+/* =========================
+   TEAM DATABASE
+========================= */
+
+const teams = [
+
+  { name: "Buffalo Bills", abbreviation: "BUF", division: "AFC East" },
+  { name: "Miami Dolphins", abbreviation: "MIA", division: "AFC East" },
+  { name: "New England Patriots", abbreviation: "NE", division: "AFC East" },
+  { name: "New York Jets", abbreviation: "NYJ", division: "AFC East" },
+
+  { name: "Baltimore Ravens", abbreviation: "BAL", division: "AFC North" },
+  { name: "Cincinnati Bengals", abbreviation: "CIN", division: "AFC North" },
+  { name: "Cleveland Browns", abbreviation: "CLE", division: "AFC North" },
+  { name: "Pittsburgh Steelers", abbreviation: "PIT", division: "AFC North" },
+
+  { name: "Houston Texans", abbreviation: "HOU", division: "AFC South" },
+  { name: "Indianapolis Colts", abbreviation: "IND", division: "AFC South" },
+  { name: "Jacksonville Jaguars", abbreviation: "JAX", division: "AFC South" },
+  { name: "Tennessee Titans", abbreviation: "TEN", division: "AFC South" },
+
+  { name: "Denver Broncos", abbreviation: "DEN", division: "AFC West" },
+  { name: "Kansas City Chiefs", abbreviation: "KC", division: "AFC West" },
+  { name: "Las Vegas Raiders", abbreviation: "LV", division: "AFC West" },
+  { name: "Los Angeles Chargers", abbreviation: "LAC", division: "AFC West" },
+
+  { name: "Dallas Cowboys", abbreviation: "DAL", division: "NFC East" },
+  { name: "New York Giants", abbreviation: "NYG", division: "NFC East" },
+  { name: "Philadelphia Eagles", abbreviation: "PHI", division: "NFC East" },
+  { name: "Washington Commanders", abbreviation: "WAS", division: "NFC East" },
+
+  { name: "Chicago Bears", abbreviation: "CHI", division: "NFC North" },
+  { name: "Detroit Lions", abbreviation: "DET", division: "NFC North" },
+  { name: "Green Bay Packers", abbreviation: "GB", division: "NFC North" },
+  { name: "Minnesota Vikings", abbreviation: "MIN", division: "NFC North" },
+
+  { name: "Atlanta Falcons", abbreviation: "ATL", division: "NFC South" },
+  { name: "Carolina Panthers", abbreviation: "CAR", division: "NFC South" },
+  { name: "New Orleans Saints", abbreviation: "NO", division: "NFC South" },
+  { name: "Tampa Bay Buccaneers", abbreviation: "TB", division: "NFC South" },
+
+  { name: "Arizona Cardinals", abbreviation: "ARI", division: "NFC West" },
+  { name: "Los Angeles Rams", abbreviation: "LAR", division: "NFC West" },
+  { name: "San Francisco 49ers", abbreviation: "SF", division: "NFC West" },
+  { name: "Seattle Seahawks", abbreviation: "SEA", division: "NFC West" }
+
+];
+
+/* TEAM ELEMENTS */
+
+const teamSearch =
+  document.getElementById("teamSearch");
+
+const teamResults =
+  document.getElementById("teamResults");
+
+const teamProfile =
+  document.getElementById("teamProfile");
+
+const teamProfileName =
+  document.getElementById("teamProfileName");
+
+const teamProfileInfo =
+  document.getElementById("teamProfileInfo");
+
+const teamInfo =
+  document.getElementById("teamInfo");
+
+const teamBackButton =
+  document.getElementById("teamBackButton");
+
+const teamRoster =
+  document.getElementById("teamRoster");
+
+const previousSeasonDetail =
+  document.getElementById("previousSeasonDetail");
+
+/* =========================
+   SLEEPER ROSTER
+========================= */
+
+const SLEEPER_PLAYERS_URL =
+  "https://api.sleeper.app/v1/players/nfl";
+
+const ROSTER_CACHE_KEY =
+  "gridlens_sleeper_players";
+
+const ROSTER_CACHE_TIME_KEY =
+  "gridlens_sleeper_players_time";
+
+const CACHE_DURATION =
+  60 * 60 * 1000;
+
+let sleeperPlayers = null;
+
+async function getSleeperPlayers() {
+
+  if (sleeperPlayers) {
+    return sleeperPlayers;
+  }
+
+  const savedPlayers =
+    localStorage.getItem(
+      ROSTER_CACHE_KEY
+    );
+
+  const savedTime =
+    localStorage.getItem(
+      ROSTER_CACHE_TIME_KEY
+    );
+
+  if (
+    savedPlayers &&
+    savedTime &&
+    Date.now() - Number(savedTime) < CACHE_DURATION
+  ) {
+
+    try {
+
+      sleeperPlayers =
+        JSON.parse(savedPlayers);
+
+      return sleeperPlayers;
+
+    } catch (error) {
+
+      localStorage.removeItem(
+        ROSTER_CACHE_KEY
+      );
+
+      localStorage.removeItem(
+        ROSTER_CACHE_TIME_KEY
+      );
+
+    }
+
+  }
+
+  const response =
+    await fetch(
+      SLEEPER_PLAYERS_URL
+    );
+
+  if (!response.ok) {
+
+    throw new Error(
+      "Sleeper API request failed."
+    );
+
+  }
+
+  sleeperPlayers =
+    await response.json();
+
+  try {
+
+    localStorage.setItem(
+      ROSTER_CACHE_KEY,
+      JSON.stringify(sleeperPlayers)
+    );
+
+    localStorage.setItem(
+      ROSTER_CACHE_TIME_KEY,
+      Date.now().toString()
+    );
+
+  } catch (error) {
+
+    console.warn(
+      "Could not save roster cache.",
+      error
+    );
+
+  }
+
+  return sleeperPlayers;
+
+}
+
+/* INJURY STATUS */
+
+function getRosterStatus(player) {
+
+  const possibleStatuses = [
+    player.injury_status,
+    player.injuryStatus,
+    player.status
   ];
 
-  /* =========================
-     PLAYER ELEMENTS
-  ========================= */
+  for (
+    let i = 0;
+    i < possibleStatuses.length;
+    i++
+  ) {
 
-  const searchBox =
-    document.getElementById("searchBox");
+    const value =
+      possibleStatuses[i];
 
-  const playerResults =
-    document.getElementById("playerResults");
+    if (
+      typeof value !== "string"
+    ) {
+      continue;
+    }
 
-  const playerProfile =
-    document.getElementById("playerProfile");
+    const status =
+      value.trim().toUpperCase();
 
-  const profileName =
-    document.getElementById("profileName");
+    if (
+      status === "IR" ||
+      status === "PUP"
+    ) {
+      return status;
+    }
 
-  const profileInfo =
-    document.getElementById("profileInfo");
+  }
 
-  const profilePlayerInfo =
-    document.getElementById("profilePlayerInfo");
+  return "";
 
-  const profilePhoto =
-    document.getElementById("profilePhoto");
+}
 
-  const backButton =
-    document.getElementById("backButton");
+/* POSITION GROUP */
 
-  const topBackButton =
-    document.getElementById("topBackButton");
+function getRosterPositionGroup(player) {
 
-  /* =========================
-     DISPLAY PLAYER CARDS
-  ========================= */
+  if (
+    player.position === "CB" ||
+    player.position === "DB" ||
+    player.position === "S"
+  ) {
+    return "Defensive Backs (DB)";
+  }
 
-  function displayPlayers(playerList) {
+  return player.position;
 
-    playerResults.innerHTML = "";
+}
 
-    playerList.forEach(function(player) {
+/* LOAD ROSTER */
 
-      const card =
-        document.createElement("div");
+async function loadTeamRoster(team) {
 
-      card.className = "card";
+  teamRoster.innerHTML = `
+    <p class="roster-loading">
+      Loading ${team.name} roster...
+    </p>
+  `;
 
-      let photoHTML = "";
+  try {
 
-      if (player.photo) {
+    const allPlayers =
+      await getSleeperPlayers();
 
-        photoHTML = `
-          <img
-            src="${player.photo}"
-            alt="${player.name}"
-          >
+    const teamPlayers =
+      Object.values(allPlayers).filter(
+        function(player) {
+
+          return (
+            player &&
+            player.team === team.abbreviation &&
+            player.position
+          );
+
+        }
+      );
+
+    if (teamPlayers.length === 0) {
+
+      teamRoster.innerHTML = `
+        <p class="roster-error">
+          No roster information was found for
+          ${team.name}.
+        </p>
+      `;
+
+      return;
+
+    }
+
+    const groupOrder = [
+      "QB",
+      "RB",
+      "FB",
+      "WR",
+      "TE",
+      "OL",
+      "OT",
+      "OG",
+      "C",
+      "DL",
+      "DE",
+      "DT",
+      "NT",
+      "LB",
+      "ILB",
+      "OLB",
+      "Defensive Backs (DB)",
+      "K",
+      "P",
+      "LS"
+    ];
+
+    teamPlayers.sort(
+      function(a, b) {
+
+        const aGroup =
+          getRosterPositionGroup(a);
+
+        const bGroup =
+          getRosterPositionGroup(b);
+
+        const aPosition =
+          groupOrder.indexOf(aGroup);
+
+        const bPosition =
+          groupOrder.indexOf(bGroup);
+
+        if (
+          aPosition !== bPosition
+        ) {
+
+          return (
+            (aPosition === -1 ? 999 : aPosition) -
+            (bPosition === -1 ? 999 : bPosition)
+          );
+
+        }
+
+        return (
+          (a.full_name || "")
+            .localeCompare(
+              b.full_name || ""
+            )
+        );
+
+      }
+    );
+
+    const positionGroups = {};
+
+    teamPlayers.forEach(
+      function(player) {
+
+        const groupName =
+          getRosterPositionGroup(player);
+
+        if (
+          !positionGroups[groupName]
+        ) {
+          positionGroups[groupName] = [];
+        }
+
+        positionGroups[groupName].push(
+          player
+        );
+
+      }
+    );
+
+    let rosterHTML = "";
+
+    groupOrder.forEach(
+      function(groupName) {
+
+        if (
+          !positionGroups[groupName]
+        ) {
+          return;
+        }
+
+        rosterHTML += `
+          <div class="roster-position">
+
+            <h4 class="roster-position-title">
+              ${groupName}
+            </h4>
         `;
 
-      } else {
+        positionGroups[groupName].forEach(
+          function(player) {
 
-        photoHTML = `
-          <div class="placeholder">
-            ${player.name.charAt(0)}
+            const number =
+              player.number
+                ? "#" + player.number
+                : "";
+
+            const status =
+              getRosterStatus(player);
+
+            const statusHTML =
+              status
+                ? `
+                  <span class="roster-player-status">
+                    ${status}
+                  </span>
+                `
+                : "";
+
+            rosterHTML += `
+              <div class="roster-player">
+
+                <span class="roster-player-name">
+                  ${player.full_name || "Unknown Player"}
+                </span>
+
+                ${statusHTML}
+
+                <span class="roster-player-number">
+                  ${number}
+                </span>
+
+              </div>
+            `;
+
+          }
+        );
+
+        rosterHTML += `
           </div>
         `;
 
       }
-
-      card.innerHTML = `
-
-        <div class="card-photo">
-          ${photoHTML}
-        </div>
-
-        <div class="card-info">
-
-          <h3>
-            ${player.name}
-          </h3>
-
-          <p>
-            ${player.position} • ${player.team}
-          </p>
-
-        </div>
-
-      `;
-
-      card.addEventListener("click", function() {
-
-        openPlayer(player);
-
-      });
-
-      playerResults.appendChild(card);
-
-    });
-
-  }
-
-  /* =========================
-     OPEN PLAYER PROFILE
-  ========================= */
-
-  function openPlayer(player) {
-
-    profileName.textContent =
-      player.name;
-
-    profileInfo.textContent =
-      player.position +
-      " • " +
-      player.team;
-
-    profilePlayerInfo.innerHTML =
-      "Position: " +
-      player.position +
-      "<br>Team: " +
-      player.team +
-      "<br>College: " +
-      player.college;
-
-    if (player.photo) {
-
-      profilePhoto.src =
-        player.photo;
-
-      profilePhoto.alt =
-        player.name + " headshot";
-
-      profilePhoto.style.display =
-        "block";
-
-    } else {
-
-      profilePhoto.src = "";
-
-      profilePhoto.style.display =
-        "none";
-
-    }
-
-    playerResults.style.display =
-      "none";
-
-    searchBox.style.display =
-      "none";
-
-    playerProfile.style.display =
-      "block";
-
-    playerProfile.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-  }
-
-  /* =========================
-     BACK TO PLAYERS
-  ========================= */
-
-  function returnToPlayers() {
-
-    playerProfile.style.display =
-      "none";
-
-    playerResults.style.display =
-      "grid";
-
-    searchBox.style.display =
-      "block";
-
-    displayPlayers(players);
-
-    window.scrollTo({
-
-      top:
-        document.getElementById("players").offsetTop,
-
-      behavior: "smooth"
-
-    });
-
-  }
-
-  /* =========================
-     PLAYER SEARCH
-  ========================= */
-
-  searchBox.addEventListener(
-    "input",
-    function() {
-
-      const searchText =
-        searchBox.value
-          .toLowerCase()
-          .trim();
-
-      const filteredPlayers =
-        players.filter(function(player) {
-
-          return player.name
-            .toLowerCase()
-            .includes(searchText);
-
-        });
-
-      displayPlayers(filteredPlayers);
-
-    }
-  );
-
-  /* =========================
-     PLAYER BACK BUTTONS
-  ========================= */
-
-  backButton.addEventListener(
-    "click",
-    returnToPlayers
-  );
-
-  topBackButton.addEventListener(
-    "click",
-    returnToPlayers
-  );
-
-  /* =========================
-     TEAM DATABASE
-  ========================= */
-
-  const teams = [
-
-    {
-      name: "Buffalo Bills",
-      abbreviation: "BUF",
-      division: "AFC East"
-    },
-
-    {
-      name: "Miami Dolphins",
-      abbreviation: "MIA",
-      division: "AFC East"
-    },
-
-    {
-      name: "New England Patriots",
-      abbreviation: "NE",
-      division: "AFC East"
-    },
-
-    {
-      name: "New York Jets",
-      abbreviation: "NYJ",
-      division: "AFC East"
-    },
-
-    {
-      name: "Baltimore Ravens",
-      abbreviation: "BAL",
-      division: "AFC North"
-    },
-
-    {
-      name: "Cincinnati Bengals",
-      abbreviation: "CIN",
-      division: "AFC North"
-    },
-
-    {
-      name: "Cleveland Browns",
-      abbreviation: "CLE",
-      division: "AFC North"
-    },
-
-    {
-      name: "Pittsburgh Steelers",
-      abbreviation: "PIT",
-      division: "AFC North"
-    },
-
-    {
-      name: "Houston Texans",
-      abbreviation: "HOU",
-      division: "AFC South"
-    },
-
-    {
-      name: "Indianapolis Colts",
-      abbreviation: "IND",
-      division: "AFC South"
-    },
-
-    {
-      name: "Jacksonville Jaguars",
-      abbreviation: "JAX",
-      division: "AFC South"
-    },
-
-    {
-      name: "Tennessee Titans",
-      abbreviation: "TEN",
-      division: "AFC South"
-    },
-
-    {
-      name: "Denver Broncos",
-      abbreviation: "DEN",
-      division: "AFC West"
-    },
-
-    {
-      name: "Kansas City Chiefs",
-      abbreviation: "KC",
-      division: "AFC West"
-    },
-
-    {
-      name: "Las Vegas Raiders",
-      abbreviation: "LV",
-      division: "AFC West"
-    },
-
-    {
-      name: "Los Angeles Chargers",
-      abbreviation: "LAC",
-      division: "AFC West"
-    },
-
-    {
-      name: "Dallas Cowboys",
-      abbreviation: "DAL",
-      division: "NFC East"
-    },
-
-    {
-      name: "New York Giants",
-      abbreviation: "NYG",
-      division: "NFC East"
-    },
-
-    {
-      name: "Philadelphia Eagles",
-      abbreviation: "PHI",
-      division: "NFC East"
-    },
-
-    {
-      name: "Washington Commanders",
-      abbreviation: "WAS",
-      division: "NFC East"
-    },
-
-    {
-      name: "Chicago Bears",
-      abbreviation: "CHI",
-      division: "NFC North"
-    },
-
-    {
-      name: "Detroit Lions",
-      abbreviation: "DET",
-      division: "NFC North"
-    },
-
-    {
-      name: "Green Bay Packers",
-      abbreviation: "GB",
-      division: "NFC North"
-    },
-
-    {
-      name: "Minnesota Vikings",
-      abbreviation: "MIN",
-      division: "NFC North"
-    },
-
-    {
-      name: "Atlanta Falcons",
-      abbreviation: "ATL",
-      division: "NFC South"
-    },
-
-    {
-      name: "Carolina Panthers",
-      abbreviation: "CAR",
-      division: "NFC South"
-    },
-
-    {
-      name: "New Orleans Saints",
-      abbreviation: "NO",
-      division: "NFC South"
-    },
-
-    {
-      name: "Tampa Bay Buccaneers",
-      abbreviation: "TB",
-      division: "NFC South"
-    },
-
-    {
-      name: "Arizona Cardinals",
-      abbreviation: "ARI",
-      division: "NFC West"
-    },
-
-    {
-      name: "Los Angeles Rams",
-      abbreviation: "LAR",
-      division: "NFC West"
-    },
-
-    {
-      name: "San Francisco 49ers",
-      abbreviation: "SF",
-      division: "NFC West"
-    },
-
-    {
-      name: "Seattle Seahawks",
-      abbreviation: "SEA",
-      division: "NFC West"
-    }
-
-  ];
-
-  /* =========================
-     TEAM ELEMENTS
-  ========================= */
-
-  const teamSearch =
-    document.getElementById("teamSearch");
-
-  const teamResults =
-    document.getElementById("teamResults");
-
-  const teamProfile =
-    document.getElementById("teamProfile");
-
-  const teamProfileName =
-    document.getElementById("teamProfileName");
-
-  const teamProfileInfo =
-    document.getElementById("teamProfileInfo");
-
-  const teamInfo =
-    document.getElementById("teamInfo");
-
-  const teamBackButton =
-    document.getElementById("teamBackButton");
-
-  const teamRoster =
-    document.getElementById("teamRoster");
-
-  const previousSeasonDetail =
-    document.getElementById("previousSeasonDetail");
-
-  /* =========================
-     SLEEPER ROSTER CACHE
-  ========================= */
-
-  const SLEEPER_PLAYERS_URL =
-    "https://api.sleeper.app/v1/players/nfl";
-
-  const ROSTER_CACHE_KEY =
-    "gridlens_sleeper_players";
-
-  const ROSTER_CACHE_TIME_KEY =
-    "gridlens_sleeper_players_time";
-
-  const CACHE_DURATION =
-    60 * 60 * 1000;
-
-  let sleeperPlayers = null;
-
-  /* =========================
-     GET SLEEPER PLAYERS
-  ========================= */
-
-  async function getSleeperPlayers() {
-
-    if (sleeperPlayers) {
-      return sleeperPlayers;
-    }
-
-    const savedPlayers =
-      localStorage.getItem(
-        ROSTER_CACHE_KEY
-      );
-
-    const savedTime =
-      localStorage.getItem(
-        ROSTER_CACHE_TIME_KEY
-      );
-
-    if (
-      savedPlayers &&
-      savedTime &&
-      Date.now() - Number(savedTime) < CACHE_DURATION
-    ) {
-
-      try {
-
-        sleeperPlayers =
-          JSON.parse(savedPlayers);
-
-        return sleeperPlayers;
-
-      } catch (error) {
-
-        localStorage.removeItem(
-          ROSTER_CACHE_KEY
-        );
-
-        localStorage.removeItem(
-          ROSTER_CACHE_TIME_KEY
-        );
-
-      }
-
-    }
-
-    const response =
-      await fetch(
-        SLEEPER_PLAYERS_URL
-      );
-
-    if (!response.ok) {
-
-      throw new Error(
-        "Sleeper API request failed."
-      );
-
-    }
-
-    sleeperPlayers =
-      await response.json();
-
-    try {
-
-      localStorage.setItem(
-        ROSTER_CACHE_KEY,
-        JSON.stringify(sleeperPlayers)
-      );
-
-      localStorage.setItem(
-        ROSTER_CACHE_TIME_KEY,
-        Date.now().toString()
-      );
-
-    } catch (error) {
-
-      console.warn(
-        "Could not save roster cache.",
-        error
-      );
-
-    }
-
-    return sleeperPlayers;
-
-  }
-
-  /* =========================
-     GET INJURY STATUS
-  ========================= */
-
-  function getRosterStatus(player) {
-
-    const possibleStatuses = [
-
-      player.injury_status,
-      player.injuryStatus,
-      player.status
-
-    ];
-
-    for (
-      let i = 0;
-      i < possibleStatuses.length;
-      i++
-    ) {
-
-      const value =
-        possibleStatuses[i];
-
-      if (
-        typeof value !== "string"
-      ) {
-
-        continue;
-
-      }
-
-      const status =
-        value
-          .trim()
-          .toUpperCase();
-
-      if (
-        status === "IR" ||
-        status === "PUP"
-      ) {
-
-        return status;
-
-      }
-
-    }
-
-    return "";
-
-  }
-
-  /* =========================
-     GET ROSTER POSITION GROUP
-  ========================= */
-
-  function getRosterPositionGroup(player) {
-
-    if (
-      player.position === "CB" ||
-      player.position === "DB" ||
-      player.position === "S"
-    ) {
-
-      return "Defensive Backs (DB)";
-
-    }
-
-    return player.position;
-
-  }
-
-  /* =========================
-     LOAD TEAM ROSTER
-  ========================= */
-
-  async function loadTeamRoster(team) {
+    );
+
+    rosterHTML += `
+      <div class="roster-updated">
+        Roster data provided by Sleeper.
+        Automatically refreshes every hour.
+      </div>
+    `;
+
+    teamRoster.innerHTML =
+      rosterHTML;
+
+  } catch (error) {
+
+    console.error(
+      "Sleeper roster error:",
+      error
+    );
 
     teamRoster.innerHTML = `
-      <p class="roster-loading">
-        Loading ${team.name} roster...
+      <p class="roster-error">
+        We couldn't load the roster right now.
+        Please try again later.
       </p>
     `;
 
-    try {
-
-      const allPlayers =
-        await getSleeperPlayers();
-
-      const teamPlayers =
-        Object.values(allPlayers).filter(
-          function(player) {
-
-            return (
-              player &&
-              player.team === team.abbreviation &&
-              player.position
-            );
-
-          }
-        );
-
-      if (teamPlayers.length === 0) {
-
-        teamRoster.innerHTML = `
-          <p class="roster-error">
-            No roster information was found for
-            ${team.name}.
-          </p>
-        `;
-
-        return;
-
-      }
-
-      const groupOrder = [
-        "QB",
-        "RB",
-        "FB",
-        "WR",
-        "TE",
-        "OL",
-        "OT",
-        "OG",
-        "C",
-        "DL",
-        "DE",
-        "DT",
-        "NT",
-        "LB",
-        "ILB",
-        "OLB",
-        "Defensive Backs (DB)",
-        "K",
-        "P",
-        "LS"
-      ];
-
-      teamPlayers.sort(
-        function(a, b) {
-
-          const aGroup =
-            getRosterPositionGroup(a);
-
-          const bGroup =
-            getRosterPositionGroup(b);
-
-          const aPosition =
-            groupOrder.indexOf(aGroup);
-
-          const bPosition =
-            groupOrder.indexOf(bGroup);
-
-          if (
-            aPosition !== bPosition
-          ) {
-
-            return (
-              (aPosition === -1 ? 999 : aPosition) -
-              (bPosition === -1 ? 999 : bPosition)
-            );
-
-          }
-
-          return (
-            (a.full_name || "")
-              .localeCompare(
-                b.full_name || ""
-              )
-          );
-
-        }
-      );
-
-      const positionGroups = {};
-
-      teamPlayers.forEach(
-        function(player) {
-
-          const groupName =
-            getRosterPositionGroup(player);
-
-          if (
-            !positionGroups[groupName]
-          ) {
-
-            positionGroups[groupName] = [];
-
-          }
-
-          positionGroups[groupName].push(
-            player
-          );
-
-        }
-      );
-
-      let rosterHTML = "";
-
-      groupOrder.forEach(
-        function(groupName) {
-
-          if (
-            !positionGroups[groupName]
-          ) {
-
-            return;
-
-          }
-
-          const positionPlayers =
-            positionGroups[groupName];
-
-          rosterHTML += `
-            <div class="roster-position">
-
-              <h4 class="roster-position-title">
-                ${groupName}
-              </h4>
-          `;
-
-          positionPlayers.forEach(
-            function(player) {
-
-              const number =
-                player.number
-                  ? "#" + player.number
-                  : "";
-
-              const status =
-                getRosterStatus(player);
-
-              const statusHTML =
-                status
-                  ? `
-                    <span class="roster-player-status">
-                      ${status}
-                    </span>
-                  `
-                  : "";
-
-              rosterHTML += `
-                <div class="roster-player">
-
-                  <span class="roster-player-name">
-                    ${player.full_name || "Unknown Player"}
-                  </span>
-
-                  ${statusHTML}
-
-                  <span class="roster-player-number">
-                    ${number}
-                  </span>
-
-                </div>
-              `;
-
-            }
-          );
-
-          rosterHTML += `
-            </div>
-          `;
-
-        }
-      );
-
-      rosterHTML += `
-        <div class="roster-updated">
-          Roster data provided by Sleeper.
-          Automatically refreshes every hour.
-        </div>
-      `;
-
-      teamRoster.innerHTML =
-        rosterHTML;
-
-    } catch (error) {
-
-      console.error(
-        "Sleeper roster error:",
-        error
-      );
-
-      teamRoster.innerHTML = `
-        <p class="roster-error">
-          We couldn't load the roster right now.
-          Please try again later.
-        </p>
-      `;
-
-    }
-
   }
 
-  /* =========================
-     DISPLAY TEAMS BY DIVISION
-  ========================= */
+}
 
-  function displayTeams(teamList) {
+/* =========================
+   DISPLAY TEAMS
+========================= */
 
-    teamResults.innerHTML = "";
+function displayTeams(teamList) {
 
-    const divisions = [
+  teamResults.innerHTML = "";
 
-      "AFC East",
-      "AFC North",
-      "AFC South",
-      "AFC West",
+  const divisions = [
+    "AFC East",
+    "AFC North",
+    "AFC South",
+    "AFC West",
+    "NFC East",
+    "NFC North",
+    "NFC South",
+    "NFC West"
+  ];
 
-      "NFC East",
-      "NFC North",
-      "NFC South",
-      "NFC West"
+  divisions.forEach(
+    function(division) {
 
-    ];
-
-    divisions.forEach(
-      function(division) {
-
-        const divisionTeams =
-          teamList.filter(
-            function(team) {
-
-              return (
-                team.division ===
-                division
-              );
-
-            }
-          );
-
-        if (
-          divisionTeams.length === 0
-        ) {
-
-          return;
-
-        }
-
-        const divisionSection =
-          document.createElement(
-            "div"
-          );
-
-        divisionSection.className =
-          "division";
-
-        const divisionTitle =
-          document.createElement(
-            "h3"
-          );
-
-        divisionTitle.className =
-          "division-title";
-
-        divisionTitle.textContent =
-          division;
-
-        const divisionGrid =
-          document.createElement(
-            "div"
-          );
-
-        divisionGrid.className =
-          "division-grid";
-
-        divisionTeams.forEach(
+      const divisionTeams =
+        teamList.filter(
           function(team) {
-
-            const card =
-              document.createElement(
-                "div"
-              );
-
-            card.className =
-              "team-card";
-
-            card.innerHTML = `
-
-              <h3>
-                ${team.name}
-              </h3>
-
-              <p>
-                ${team.abbreviation}
-              </p>
-
-            `;
-
-            card.addEventListener(
-              "click",
-              function() {
-
-                openTeam(team);
-
-              }
-            );
-
-            divisionGrid.appendChild(
-              card
-            );
-
+            return team.division === division;
           }
         );
 
-        divisionSection.appendChild(
-          divisionTitle
-        );
-
-        divisionSection.appendChild(
-          divisionGrid
-        );
-
-        teamResults.appendChild(
-          divisionSection
-        );
-
+      if (
+        divisionTeams.length === 0
+      ) {
+        return;
       }
-    );
 
-  }
+      const divisionSection =
+        document.createElement("div");
 
-  /* =========================
-     NFLVERSE HISTORICAL DATA
-  ========================= */
+      divisionSection.className =
+        "division";
 
-  const NFLVERSE_SCHEDULE_URL =
-    "https://github.com/nflverse/nflverse-data/releases/download/schedules/schedules.csv";
+      const divisionTitle =
+        document.createElement("h3");
 
-  const HISTORICAL_CACHE_PREFIX =
-    "gridlens_nflverse_schedule_";
+      divisionTitle.className =
+        "division-title";
 
-  const HISTORICAL_CACHE_TIME_PREFIX =
-    "gridlens_nflverse_schedule_time_";
+      divisionTitle.textContent =
+        division;
 
-  const HISTORICAL_CACHE_DURATION =
-    24 * 60 * 60 * 1000;
+      const divisionGrid =
+        document.createElement("div");
 
-  let nflverseSchedule =
-    null;
+      divisionGrid.className =
+        "division-grid";
 
-  /* =========================
-     TEAM LOGO MAPPING
-  ========================= */
+      divisionTeams.forEach(
+        function(team) {
 
-  const teamLogoCodes = {
+          const card =
+            document.createElement("div");
 
-    ARI: "ari",
-    ATL: "atl",
-    BAL: "bal",
-    BUF: "buf",
-    CAR: "car",
-    CHI: "chi",
-    CIN: "cin",
-    CLE: "cle",
-    DAL: "dal",
-    DEN: "den",
-    DET: "det",
-    GB: "gb",
-    HOU: "hou",
-    IND: "ind",
-    JAX: "jax",
-    KC: "kc",
-    LAC: "lac",
-    LAR: "lar",
-    LV: "lv",
-    MIA: "mia",
-    MIN: "min",
-    NE: "ne",
-    NO: "no",
-    NYG: "nyg",
-    NYJ: "nyj",
-    PHI: "phi",
-    PIT: "pit",
-    SEA: "sea",
-    SF: "sf",
-    TB: "tb",
-    TEN: "ten",
-    WAS: "wsh"
+          card.className =
+            "team-card";
 
-  };
+          card.innerHTML = `
+            <h3>
+              ${team.name}
+            </h3>
 
-  const teamNamesByAbbreviation = {};
+            <p>
+              ${team.abbreviation}
+            </p>
+          `;
 
-  teams.forEach(
-    function(team) {
+          card.addEventListener(
+            "click",
+            function() {
+              openTeam(team);
+            }
+          );
 
-      teamNamesByAbbreviation[
-        team.abbreviation
-      ] = team.name;
+          divisionGrid.appendChild(card);
+
+        }
+      );
+
+      divisionSection.appendChild(
+        divisionTitle
+      );
+
+      divisionSection.appendChild(
+        divisionGrid
+      );
+
+      teamResults.appendChild(
+        divisionSection
+      );
 
     }
   );
 
-  /* =========================
-     GET TEAM LOGO
-  ========================= */
+}
 
-  function getTeamLogoURL(abbreviation) {
+/* =========================
+   HISTORICAL NFL DATA
+========================= */
 
-    const code =
-      teamLogoCodes[abbreviation];
+/*
+   We use two nflverse sources.
 
-    if (!code) {
-      return "";
-    }
+   If the first one fails, the second
+   one is automatically attempted.
 
-    return (
-      "https://a.espncdn.com/i/teamlogos/nfl/500/" +
-      code +
-      ".png"
-    );
+   Nothing is stored in localStorage because
+   the complete NFL dataset can be too large.
+*/
+
+const NFLVERSE_URLS = [
+
+  "https://github.com/nflverse/nflverse-data/releases/download/schedules/schedules.csv",
+
+  "https://raw.githubusercontent.com/nflverse/nflverse-data/master/data/games.csv"
+
+];
+
+let nflverseSchedule = null;
+
+let nflverseLoadingPromise = null;
+
+/* =========================
+   NFLVERSE TEAM ALIASES
+========================= */
+
+const nflverseAliases = {
+
+  BUF: ["BUF"],
+  MIA: ["MIA"],
+  NE: ["NE"],
+  NYJ: ["NYJ"],
+
+  BAL: ["BAL"],
+  CIN: ["CIN"],
+  CLE: ["CLE"],
+  PIT: ["PIT"],
+
+  HOU: ["HOU"],
+  IND: ["IND"],
+  JAX: ["JAX", "JAC"],
+  TEN: ["TEN"],
+
+  DEN: ["DEN"],
+  KC: ["KC"],
+  LV: ["LV", "OAK"],
+  LAC: ["LAC", "SD"],
+
+  DAL: ["DAL"],
+  NYG: ["NYG"],
+  PHI: ["PHI"],
+  WAS: ["WAS", "WSH"],
+
+  CHI: ["CHI"],
+  DET: ["DET"],
+  GB: ["GB"],
+  MIN: ["MIN"],
+
+  ATL: ["ATL"],
+  CAR: ["CAR"],
+  NO: ["NO"],
+  TB: ["TB"],
+
+  ARI: ["ARI"],
+  LAR: ["LAR", "LA", "STL"],
+  SF: ["SF"],
+  SEA: ["SEA"]
+
+};
+
+/* =========================
+   NFLVERSE CODE CONVERTER
+========================= */
+
+const nflverseToAppTeam = {
+
+  BUF: "BUF",
+  MIA: "MIA",
+  NE: "NE",
+  NYJ: "NYJ",
+
+  BAL: "BAL",
+  CIN: "CIN",
+  CLE: "CLE",
+  PIT: "PIT",
+
+  HOU: "HOU",
+  IND: "IND",
+  JAX: "JAX",
+  JAC: "JAX",
+  TEN: "TEN",
+
+  DEN: "DEN",
+  KC: "KC",
+  LV: "LV",
+  OAK: "LV",
+  LAC: "LAC",
+  SD: "LAC",
+
+  DAL: "DAL",
+  NYG: "NYG",
+  PHI: "PHI",
+  WAS: "WAS",
+  WSH: "WAS",
+
+  CHI: "CHI",
+  DET: "DET",
+  GB: "GB",
+  MIN: "MIN",
+
+  ATL: "ATL",
+  CAR: "CAR",
+  NO: "NO",
+  TB: "TB",
+
+  ARI: "ARI",
+  LAR: "LAR",
+  LA: "LAR",
+  STL: "LAR",
+  SF: "SF",
+  SEA: "SEA"
+
+};
+
+/* =========================
+   ESPN TEAM LOGOS
+========================= */
+
+const teamLogoCodes = {
+
+  ARI: "ari",
+  ATL: "atl",
+  BAL: "bal",
+  BUF: "buf",
+  CAR: "car",
+  CHI: "chi",
+  CIN: "cin",
+  CLE: "cle",
+  DAL: "dal",
+  DEN: "den",
+  DET: "det",
+  GB: "gb",
+  HOU: "hou",
+  IND: "ind",
+  JAX: "jax",
+  KC: "kc",
+  LAC: "lac",
+  LAR: "lar",
+  LV: "lv",
+  MIA: "mia",
+  MIN: "min",
+  NE: "ne",
+  NO: "no",
+  NYG: "nyg",
+  NYJ: "nyj",
+  PHI: "phi",
+  PIT: "pit",
+  SEA: "sea",
+  SF: "sf",
+  TB: "tb",
+  TEN: "ten",
+  WAS: "wsh"
+
+};
+
+const teamNamesByAbbreviation = {};
+
+teams.forEach(
+  function(team) {
+
+    teamNamesByAbbreviation[
+      team.abbreviation
+    ] = team.name;
 
   }
+);
 
-  /* =========================
-     PARSE CSV
-  ========================= */
+function getTeamLogoURL(
+  abbreviation
+) {
 
-  function parseCSVLine(line) {
+  const code =
+    teamLogoCodes[
+      abbreviation
+    ];
 
-    const values = [];
+  if (!code) {
+    return "";
+  }
 
-    let current = "";
+  return (
+    "https://a.espncdn.com/i/teamlogos/nfl/500/" +
+    code +
+    ".png"
+  );
 
-    let insideQuotes = false;
+}
 
-    for (
-      let i = 0;
-      i < line.length;
-      i++
+/* =========================
+   CSV PARSER
+========================= */
+
+function parseCSV(text) {
+
+  const rows = [];
+
+  let row = [];
+
+  let current = "";
+
+  let insideQuotes = false;
+
+  for (
+    let i = 0;
+    i < text.length;
+    i++
+  ) {
+
+    const character =
+      text[i];
+
+    if (
+      insideQuotes
     ) {
 
-      const character =
-        line[i];
-
       if (
+        character === '"' &&
+        text[i + 1] === '"'
+      ) {
+
+        current += '"';
+
+        i++;
+
+      } else if (
         character === '"'
       ) {
 
-        if (
-          insideQuotes &&
-          line[i + 1] === '"'
-        ) {
-
-          current += '"';
-
-          i++;
-
-        } else {
-
-          insideQuotes =
-            !insideQuotes;
-
-        }
-
-      } else if (
-        character === "," &&
-        !insideQuotes
-      ) {
-
-        values.push(current);
-
-        current = "";
+        insideQuotes =
+          false;
 
       } else {
 
@@ -2678,854 +2460,709 @@
 
       }
 
-    }
+    } else {
 
-    values.push(current);
+      if (
+        character === '"'
+      ) {
 
-    return values;
+        insideQuotes =
+          true;
 
-  }
+      } else if (
+        character === ","
+      ) {
 
-  function parseCSV(text) {
+        row.push(current);
 
-    const lines =
-      text
-        .replace(/\r/g, "")
-        .split("\n")
-        .filter(
-          function(line) {
-            return line.trim() !== "";
-          }
-        );
+        current = "";
 
-    if (lines.length === 0) {
-      return [];
-    }
+      } else if (
+        character === "\n"
+      ) {
 
-    const headers =
-      parseCSVLine(lines[0]);
+        row.push(current);
 
-    const rows = [];
+        rows.push(row);
 
-    for (
-      let i = 1;
-      i < lines.length;
-      i++
-    ) {
+        row = [];
 
-      const values =
-        parseCSVLine(lines[i]);
+        current = "";
 
-      const row = {};
+      } else if (
+        character !== "\r"
+      ) {
 
-      headers.forEach(
-        function(header, index) {
-
-          row[header] =
-            values[index] !== undefined
-              ? values[index]
-              : "";
-
-        }
-      );
-
-      rows.push(row);
-
-    }
-
-    return rows;
-
-  }
-
-  /* =========================
-     GET HISTORICAL SCHEDULE
-  ========================= */
-
-  async function getNFLVerseSchedule() {
-
-    if (nflverseSchedule) {
-      return nflverseSchedule;
-    }
-
-    const cachedData =
-      localStorage.getItem(
-        HISTORICAL_CACHE_PREFIX + "all"
-      );
-
-    const cachedTime =
-      localStorage.getItem(
-        HISTORICAL_CACHE_TIME_PREFIX + "all"
-      );
-
-    if (
-      cachedData &&
-      cachedTime &&
-      Date.now() - Number(cachedTime) <
-        HISTORICAL_CACHE_DURATION
-    ) {
-
-      try {
-
-        nflverseSchedule =
-          JSON.parse(cachedData);
-
-        return nflverseSchedule;
-
-      } catch (error) {
-
-        localStorage.removeItem(
-          HISTORICAL_CACHE_PREFIX + "all"
-        );
-
-        localStorage.removeItem(
-          HISTORICAL_CACHE_TIME_PREFIX + "all"
-        );
+        current += character;
 
       }
 
     }
 
-    const response =
-      await fetch(
-        NFLVERSE_SCHEDULE_URL
-      );
+  }
 
-    if (!response.ok) {
+  if (
+    current !== "" ||
+    row.length > 0
+  ) {
 
-      throw new Error(
-        "NFLverse schedule request failed."
-      );
+    row.push(current);
+
+    rows.push(row);
+
+  }
+
+  if (
+    rows.length === 0
+  ) {
+
+    return [];
+
+  }
+
+  const headers =
+    rows[0].map(
+      function(header, index) {
+
+        let clean =
+          header.trim();
+
+        if (
+          index === 0
+        ) {
+
+          clean =
+            clean.replace(
+              /^\uFEFF/,
+              ""
+            );
+
+        }
+
+        return clean;
+
+      }
+    );
+
+  const data = [];
+
+  for (
+    let i = 1;
+    i < rows.length;
+    i++
+  ) {
+
+    const values =
+      rows[i];
+
+    if (
+      values.length === 0
+    ) {
+
+      continue;
 
     }
 
-    const csvText =
-      await response.text();
+    const object = {};
 
-    nflverseSchedule =
-      parseCSV(csvText);
+    headers.forEach(
+      function(header, index) {
 
-    try {
+        object[header] =
+          values[index] !== undefined
+            ? values[index].trim()
+            : "";
 
-      localStorage.setItem(
-        HISTORICAL_CACHE_PREFIX + "all",
-        JSON.stringify(
-          nflverseSchedule
-        )
-      );
+      }
+    );
 
-      localStorage.setItem(
-        HISTORICAL_CACHE_TIME_PREFIX + "all",
-        Date.now().toString()
-      );
+    data.push(object);
 
-    } catch (error) {
+  }
 
-      console.warn(
-        "Could not save historical data cache.",
-        error
-      );
+  return data;
 
-    }
+}
+
+/* =========================
+   LOAD NFLVERSE DATA
+========================= */
+
+async function getNFLVerseSchedule() {
+
+  if (
+    nflverseSchedule
+  ) {
 
     return nflverseSchedule;
 
   }
 
-  /* =========================
-     FORMAT GAME WEEK
-  ========================= */
+  if (
+    nflverseLoadingPromise
+  ) {
 
-  function formatGameWeek(game) {
-
-    const gameType =
-      String(
-        game.game_type || ""
-      ).toUpperCase();
-
-    if (
-      gameType === "REG"
-    ) {
-
-      return "Week " + game.week;
-
-    }
-
-    const playoffNames = {
-
-      WC: "Wild Card",
-      DIV: "Divisional",
-      CON: "Conference",
-      SB: "Super Bowl"
-
-    };
-
-    return (
-      playoffNames[gameType] ||
-      gameType ||
-      "Game"
-    );
+    return nflverseLoadingPromise;
 
   }
 
-  /* =========================
-     GET OPPONENT
-  ========================= */
+  nflverseLoadingPromise =
+    (async function() {
 
-  function getOpponentForGame(
-    game,
-    teamAbbreviation
-  ) {
+      let lastError = null;
 
-    if (
-      game.home_team ===
-      teamAbbreviation
-    ) {
+      for (
+        let i = 0;
+        i < NFLVERSE_URLS.length;
+        i++
+      ) {
 
-      return game.away_team;
+        const url =
+          NFLVERSE_URLS[i];
 
-    }
+        try {
 
-    return game.home_team;
-
-  }
-
-  /* =========================
-     GET TEAM SCORE
-  ========================= */
-
-  function getTeamScore(
-    game,
-    teamAbbreviation
-  ) {
-
-    if (
-      game.home_team ===
-      teamAbbreviation
-    ) {
-
-      return Number(
-        game.home_score
-      );
-
-    }
-
-    return Number(
-      game.away_score
-    );
-
-  }
-
-  /* =========================
-     GET OPPONENT SCORE
-  ========================= */
-
-  function getOpponentScore(
-    game,
-    teamAbbreviation
-  ) {
-
-    if (
-      game.home_team ===
-      teamAbbreviation
-    ) {
-
-      return Number(
-        game.away_score
-      );
-
-    }
-
-    return Number(
-      game.home_score
-    );
-
-  }
-
-  /* =========================
-     GET GAME RESULT
-  ========================= */
-
-  function getGameResult(
-    teamScore,
-    opponentScore
-  ) {
-
-    if (
-      teamScore >
-      opponentScore
-    ) {
-
-      return "W";
-
-    }
-
-    if (
-      teamScore <
-      opponentScore
-    ) {
-
-      return "L";
-
-    }
-
-    return "T";
-
-  }
-
-  /* =========================
-     LOAD PREVIOUS SEASON
-  ========================= */
-
-  async function loadPreviousSeason(
-    season,
-    teamOverride
-  ) {
-
-    document
-      .querySelectorAll(".season-button")
-      .forEach(
-        function(button) {
-
-          button.classList.remove(
-            "active"
+          console.log(
+            "Trying nflverse source:",
+            url
           );
 
+          const response =
+            await fetch(
+              url,
+              {
+                method: "GET",
+                cache: "no-cache"
+              }
+            );
+
           if (
-            button.dataset.season ===
-            String(season)
+            !response.ok
           ) {
 
-            button.classList.add(
-              "active"
+            throw new Error(
+              "HTTP " +
+              response.status
             );
 
           }
 
+          const csvText =
+            await response.text();
+
+          if (
+            !csvText ||
+            csvText.length < 100
+          ) {
+
+            throw new Error(
+              "The NFL data file was empty."
+            );
+
+          }
+
+          const parsed =
+            parseCSV(csvText);
+
+          if (
+            parsed.length === 0
+          ) {
+
+            throw new Error(
+              "The NFL data file could not be parsed."
+            );
+
+          }
+
+          /*
+             Make sure this really looks like
+             NFL game data before accepting it.
+          */
+
+          const firstRow =
+            parsed[0];
+
+          const hasSeason =
+            Object.prototype.hasOwnProperty.call(
+              firstRow,
+              "season"
+            );
+
+          const hasHomeTeam =
+            Object.prototype.hasOwnProperty.call(
+              firstRow,
+              "home_team"
+            );
+
+          const hasAwayTeam =
+            Object.prototype.hasOwnProperty.call(
+              firstRow,
+              "away_team"
+            );
+
+          if (
+            !hasSeason ||
+            !hasHomeTeam ||
+            !hasAwayTeam
+          ) {
+
+            throw new Error(
+              "NFL data format was not recognized."
+            );
+
+          }
+
+          nflverseSchedule =
+            parsed;
+
+          console.log(
+            "NFLverse data loaded:",
+            parsed.length,
+            "games"
+          );
+
+          return nflverseSchedule;
+
+        } catch (error) {
+
+          console.warn(
+            "NFLverse source failed:",
+            url,
+            error
+          );
+
+          lastError =
+            error;
+
         }
+
+      }
+
+      throw (
+        lastError ||
+        new Error(
+          "All nflverse sources failed."
+        )
       );
 
-    const team =
-      teamOverride ||
-      window.currentGridLensTeam;
+    })();
 
-    if (!team) {
+  try {
 
-      previousSeasonDetail.innerHTML = `
+    return await nflverseLoadingPromise;
 
-        <h3>
-          Select a Team
-        </h3>
+  } finally {
 
-        <p class="season-placeholder">
-          Select a team first, then choose
-          a historical season.
-        </p>
+    nflverseLoadingPromise =
+      null;
 
-      `;
+  }
 
-      return;
+}
 
+/* =========================
+   TEAM MATCHING
+========================= */
+
+function gameBelongsToTeam(
+  game,
+  team
+) {
+
+  const aliases =
+    nflverseAliases[
+      team.abbreviation
+    ] ||
+    [team.abbreviation];
+
+  return (
+    aliases.includes(
+      String(
+        game.home_team ||
+        ""
+      ).toUpperCase()
+    ) ||
+    aliases.includes(
+      String(
+        game.away_team ||
+        ""
+      ).toUpperCase()
+    )
+  );
+
+}
+
+/* =========================
+   GET APP TEAM
+========================= */
+
+function convertNFLVerseTeamCode(
+  code
+) {
+
+  const upper =
+    String(
+      code || ""
+    ).toUpperCase();
+
+  return (
+    nflverseToAppTeam[
+      upper
+    ] ||
+    upper
+  );
+
+}
+
+/* =========================
+   GET OPPONENT
+========================= */
+
+function getOpponentForGame(
+  game,
+  team
+) {
+
+  const aliases =
+    nflverseAliases[
+      team.abbreviation
+    ] ||
+    [team.abbreviation];
+
+  const home =
+    String(
+      game.home_team || ""
+    ).toUpperCase();
+
+  const away =
+    String(
+      game.away_team || ""
+    ).toUpperCase();
+
+  if (
+    aliases.includes(home)
+  ) {
+
+    return convertNFLVerseTeamCode(
+      away
+    );
+
+  }
+
+  return convertNFLVerseTeamCode(
+    home
+  );
+
+}
+
+/* =========================
+   HOME / AWAY
+========================= */
+
+function teamIsHome(
+  game,
+  team
+) {
+
+  const aliases =
+    nflverseAliases[
+      team.abbreviation
+    ] ||
+    [team.abbreviation];
+
+  return aliases.includes(
+    String(
+      game.home_team || ""
+    ).toUpperCase()
+  );
+
+}
+
+/* =========================
+   SCORE
+========================= */
+
+function getScoreValue(
+  value
+) {
+
+  if (
+    value === null ||
+    value === undefined ||
+    value === ""
+  ) {
+
+    return null;
+
+  }
+
+  const number =
+    Number(value);
+
+  if (
+    Number.isFinite(number)
+  ) {
+
+    return number;
+
+  }
+
+  return null;
+
+}
+
+function getTeamScore(
+  game,
+  team
+) {
+
+  const home =
+    teamIsHome(
+      game,
+      team
+    );
+
+  return getScoreValue(
+    home
+      ? game.home_score
+      : game.away_score
+  );
+
+}
+
+function getOpponentScore(
+  game,
+  team
+) {
+
+  const home =
+    teamIsHome(
+      game,
+      team
+    );
+
+  return getScoreValue(
+    home
+      ? game.away_score
+      : game.home_score
+  );
+
+}
+
+/* =========================
+   GAME RESULT
+========================= */
+
+function getGameResult(
+  teamScore,
+  opponentScore
+) {
+
+  if (
+    teamScore === null ||
+    opponentScore === null
+  ) {
+
+    return "";
+
+  }
+
+  if (
+    teamScore >
+    opponentScore
+  ) {
+
+    return "W";
+
+  }
+
+  if (
+    teamScore <
+    opponentScore
+  ) {
+
+    return "L";
+
+  }
+
+  return "T";
+
+}
+
+/* =========================
+   GAME TYPE
+========================= */
+
+function formatGameWeek(
+  game
+) {
+
+  const type =
+    String(
+      game.game_type || ""
+    ).toUpperCase();
+
+  if (
+    type === "REG"
+  ) {
+
+    return (
+      "Week " +
+      game.week
+    );
+
+  }
+
+  const playoffNames = {
+
+    WC: "Wild Card",
+    DIV: "Divisional",
+    CON: "Conference",
+    SB: "Super Bowl"
+
+  };
+
+  return (
+    playoffNames[type] ||
+    type ||
+    "Postseason"
+  );
+
+}
+
+/* =========================
+   DATE
+========================= */
+
+function formatGameDate(
+  date
+) {
+
+  if (!date) {
+    return "";
+  }
+
+  const parsed =
+    new Date(
+      date +
+      "T12:00:00"
+    );
+
+  if (
+    Number.isNaN(
+      parsed.getTime()
+    )
+  ) {
+
+    return "";
+
+  }
+
+  return parsed.toLocaleDateString(
+    "en-US",
+    {
+      month: "short",
+      day: "numeric"
     }
+  );
+
+}
+
+/* =========================
+   LOAD PREVIOUS SEASON
+========================= */
+
+async function loadPreviousSeason(
+  season,
+  teamOverride
+) {
+
+  document
+    .querySelectorAll(
+      ".season-button"
+    )
+    .forEach(
+      function(button) {
+
+        button.classList.remove(
+          "active"
+        );
+
+        if (
+          button.dataset.season ===
+          String(season)
+        ) {
+
+          button.classList.add(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+  const team =
+    teamOverride ||
+    window.currentGridLensTeam;
+
+  if (!team) {
 
     previousSeasonDetail.innerHTML = `
 
       <h3>
-        ${season} Season
+        Select a Team
       </h3>
 
-      <p class="historical-loading">
-        Loading ${season} ${team.name}
-        historical data...
+      <p class="season-placeholder">
+        Select a team first, then choose
+        a historical season.
       </p>
 
     `;
 
-    try {
+    return;
 
-      const schedule =
-        await getNFLVerseSchedule();
+  }
 
-      const seasonGames =
-        schedule.filter(
-          function(game) {
+  previousSeasonDetail.innerHTML = `
 
-            return (
-              Number(game.season) ===
-              Number(season) &&
-              (
-                game.home_team ===
-                team.abbreviation ||
-                game.away_team ===
-                team.abbreviation
-              ) &&
-              Number.isFinite(
-                Number(game.home_score)
-              ) &&
-              Number.isFinite(
-                Number(game.away_score)
-              )
-            );
+    <h3>
+      ${season} Season
+    </h3>
 
-          }
-        );
+    <p class="historical-loading">
+      Loading ${season} ${team.name}
+      historical data...
+    </p>
 
-      if (
-        seasonGames.length === 0
-      ) {
+  `;
 
-        previousSeasonDetail.innerHTML = `
+  try {
 
-          <h3>
-            ${season} Season
-          </h3>
+    const schedule =
+      await getNFLVerseSchedule();
 
-          <p class="historical-error">
-            No historical game data was found
-            for ${team.name} in ${season}.
-          </p>
-
-        `;
-
-        return;
-
-      }
-
-      const regularSeasonGames =
-        seasonGames.filter(
-          function(game) {
-
-            return (
-              String(
-                game.game_type || ""
-              ).toUpperCase() ===
-              "REG"
-            );
-
-          }
-        );
-
-      const gamesForRecord =
-        regularSeasonGames.length > 0
-          ? regularSeasonGames
-          : seasonGames;
-
-      let wins = 0;
-      let losses = 0;
-      let ties = 0;
-      let pointsFor = 0;
-      let pointsAgainst = 0;
-
-      gamesForRecord.forEach(
+    const seasonGames =
+      schedule.filter(
         function(game) {
 
-          const teamScore =
-            getTeamScore(
+          return (
+            Number(
+              game.season
+            ) === Number(season) &&
+            gameBelongsToTeam(
               game,
-              team.abbreviation
-            );
-
-          const opponentScore =
-            getOpponentScore(
-              game,
-              team.abbreviation
-            );
-
-          pointsFor +=
-            teamScore;
-
-          pointsAgainst +=
-            opponentScore;
-
-          const result =
-            getGameResult(
-              teamScore,
-              opponentScore
-            );
-
-          if (result === "W") {
-            wins++;
-          } else if (
-            result === "L"
-          ) {
-            losses++;
-          } else {
-            ties++;
-          }
+              team
+            )
+          );
 
         }
       );
 
-      const gamesCount =
-        gamesForRecord.length;
-
-      const pointsPerGame =
-        gamesCount > 0
-          ? (
-              pointsFor /
-              gamesCount
-            ).toFixed(1)
-          : "0.0";
-
-      const pointsAllowedPerGame =
-        gamesCount > 0
-          ? (
-              pointsAgainst /
-              gamesCount
-            ).toFixed(1)
-          : "0.0";
-
-      const pointDifferential =
-        pointsFor -
-        pointsAgainst;
-
-      let recordText =
-        wins +
-        " - " +
-        losses;
-
-      if (ties > 0) {
-
-        recordText +=
-          " - " +
-          ties;
-
-      }
-
-      const sortedGames =
-        seasonGames.slice().sort(
-          function(a, b) {
-
-            const aDate =
-              new Date(
-                a.gameday ||
-                a.game_date ||
-                ""
-              ).getTime();
-
-            const bDate =
-              new Date(
-                b.gameday ||
-                b.game_date ||
-                ""
-              ).getTime();
-
-            if (
-              Number.isFinite(aDate) &&
-              Number.isFinite(bDate) &&
-              aDate !== bDate
-            ) {
-
-              return aDate - bDate;
-
-            }
-
-            const aWeek =
-              Number(a.week);
-
-            const bWeek =
-              Number(b.week);
-
-            if (
-              Number.isFinite(aWeek) &&
-              Number.isFinite(bWeek)
-            ) {
-
-              return aWeek - bWeek;
-
-            }
-
-            return 0;
-
-          }
-        );
-
-      let gamesHTML = "";
-
-      sortedGames.forEach(
-        function(game) {
-
-          const opponent =
-            getOpponentForGame(
-              game,
-              team.abbreviation
-            );
-
-          const opponentName =
-            teamNamesByAbbreviation[
-              opponent
-            ] ||
-            opponent;
-
-          const teamScore =
-            getTeamScore(
-              game,
-              team.abbreviation
-            );
-
-          const opponentScore =
-            getOpponentScore(
-              game,
-              team.abbreviation
-            );
-
-          const result =
-            getGameResult(
-              teamScore,
-              opponentScore
-            );
-
-          const isHome =
-            game.home_team ===
-            team.abbreviation;
-
-          const locationText =
-            isHome
-              ? "Home"
-              : "Away";
-
-          const gameType =
-            String(
-              game.game_type || ""
-            ).toUpperCase();
-
-          const isPlayoff =
-            gameType !== "REG";
-
-          const playoffLabel =
-            isPlayoff
-              ? `
-                <span class="playoff-label">
-                  ${formatGameWeek(game)}
-                </span>
-              `
-              : "";
-
-          const gameWeekText =
-            isPlayoff
-              ? "POST"
-              : "Week " + game.week;
-
-          const logoURL =
-            getTeamLogoURL(
-              opponent
-            );
-
-          const logoHTML =
-            logoURL
-              ? `
-                <img
-                  class="game-logo"
-                  src="${logoURL}"
-                  alt="${opponentName} logo"
-                  loading="lazy"
-                >
-              `
-              : `
-                <div
-                  class="game-logo"
-                  aria-hidden="true"
-                ></div>
-              `;
-
-          const resultClass =
-            result === "W"
-              ? "win"
-              : result === "L"
-                ? "loss"
-                : "tie";
-
-          gamesHTML += `
-
-            <div class="game-row">
-
-              <div class="game-week">
-                ${gameWeekText}
-              </div>
-
-              <div class="game-opponent">
-
-                ${logoHTML}
-
-                <div class="game-opponent-info">
-
-                  <div class="game-opponent-name">
-                    ${isHome ? "vs. " : "@ "}
-                    ${opponentName}
-                    ${playoffLabel}
-                  </div>
-
-                  <div class="game-location">
-                    ${locationText}
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="game-score">
-                ${teamScore} - ${opponentScore}
-              </div>
-
-              <div class="game-result ${resultClass}">
-                ${result}
-              </div>
-
-            </div>
-
-          `;
-
-        }
-      );
-
-      previousSeasonDetail.innerHTML = `
-
-        <h3>
-          ${season} ${team.name}
-        </h3>
-
-        <div class="season-record">
-          ${recordText}
-        </div>
-
-        <div class="season-stat-grid">
-
-          <div class="season-stat">
-
-            <span class="season-stat-label">
-              Wins
-            </span>
-
-            <span class="season-stat-value">
-              ${wins}
-            </span>
-
-          </div>
-
-          <div class="season-stat">
-
-            <span class="season-stat-label">
-              Losses
-            </span>
-
-            <span class="season-stat-value">
-              ${losses}
-            </span>
-
-          </div>
-
-          <div class="season-stat">
-
-            <span class="season-stat-label">
-              Points For
-            </span>
-
-            <span class="season-stat-value">
-              ${pointsFor}
-            </span>
-
-          </div>
-
-          <div class="season-stat">
-
-            <span class="season-stat-label">
-              Points Allowed
-            </span>
-
-            <span class="season-stat-value">
-              ${pointsAgainst}
-            </span>
-
-          </div>
-
-          <div class="season-stat">
-
-            <span class="season-stat-label">
-              Points Per Game
-            </span>
-
-            <span class="season-stat-value">
-              ${pointsPerGame}
-            </span>
-
-          </div>
-
-          <div class="season-stat">
-
-            <span class="season-stat-label">
-              Allowed Per Game
-            </span>
-
-            <span class="season-stat-value">
-              ${pointsAllowedPerGame}
-            </span>
-
-          </div>
-
-          <div class="season-stat">
-
-            <span class="season-stat-label">
-              Point Differential
-            </span>
-
-            <span class="season-stat-value">
-              ${pointDifferential >= 0 ? "+" : ""}
-              ${pointDifferential}
-            </span>
-
-          </div>
-
-          <div class="season-stat">
-
-            <span class="season-stat-label">
-              Games
-            </span>
-
-            <span class="season-stat-value">
-              ${gamesForRecord.length}
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="historical-schedule">
-
-          <h4 class="historical-schedule-title">
-            ${season} Schedule & Results
-          </h4>
-
-          <div class="game-list">
-            ${gamesHTML}
-          </div>
-
-        </div>
-
-        <div class="data-source">
-
-          Historical schedule and game results:
-          <a
-            href="https://github.com/nflverse/nflverse-data"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            nflverse
-          </a>
-
-          <br>
-
-          Team logos are loaded automatically
-          from ESPN's public team-logo CDN.
-
-        </div>
-
-      `;
-
-    } catch (error) {
-
-      console.error(
-        "NFLverse historical data error:",
-        error
-      );
+    if (
+      seasonGames.length === 0
+    ) {
 
       previousSeasonDetail.innerHTML = `
 
@@ -3534,193 +3171,787 @@
         </h3>
 
         <p class="historical-error">
-          We couldn't load the historical NFL
-          data right now. Please try again later.
+          No historical game data was found
+          for ${team.name} in ${season}.
         </p>
 
         <p class="season-placeholder">
-          The data is loaded automatically from
-          nflverse, so you do not need to enter
-          the information manually.
+          The nflverse source loaded successfully,
+          but no games matched this team and season.
         </p>
 
       `;
 
+      return;
+
     }
 
-  }
+    /*
+       Regular-season record is calculated
+       separately from playoff games.
+    */
 
-  /* =========================
-     SEASON BUTTONS
-  ========================= */
+    const regularSeasonGames =
+      seasonGames.filter(
+        function(game) {
 
-  document
-    .querySelectorAll(".season-button")
-    .forEach(
-      function(button) {
-
-        button.addEventListener(
-          "click",
-          function() {
-
-            loadPreviousSeason(
-              button.dataset.season
-            );
-
-          }
-        );
-
-      }
-    );
-
-  /* =========================
-     OPEN TEAM PROFILE
-  ========================= */
-
-  function openTeam(team) {
-
-    window.currentGridLensTeam =
-      team;
-
-    teamProfileName.textContent =
-      team.name;
-
-    teamProfileInfo.textContent =
-      team.abbreviation +
-      " • " +
-      team.division;
-
-    teamInfo.innerHTML =
-      "Team: " +
-      team.name +
-      "<br>Abbreviation: " +
-      team.abbreviation +
-      "<br>Division: " +
-      team.division;
-
-    teamResults.style.display =
-      "none";
-
-    teamSearch.style.display =
-      "none";
-
-    teamProfile.style.display =
-      "block";
-
-    teamRoster.innerHTML = `
-      <p class="roster-loading">
-        Loading ${team.name} roster...
-      </p>
-    `;
-
-    previousSeasonDetail.innerHTML = `
-
-      <h3>
-        Select a Season
-      </h3>
-
-      <p class="season-placeholder">
-        Choose a year above to view the
-        record, statistics, schedule, and
-        game results for that season.
-      </p>
-
-    `;
-
-    document
-      .querySelectorAll(".season-button")
-      .forEach(
-        function(button) {
-
-          button.classList.remove(
-            "active"
+          return (
+            String(
+              game.game_type || ""
+            ).toUpperCase() ===
+            "REG"
           );
 
         }
       );
 
-    teamProfile.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+    const playedRegularGames =
+      regularSeasonGames.filter(
+        function(game) {
 
-    loadTeamRoster(team);
+          return (
+            getTeamScore(
+              game,
+              team
+            ) !== null &&
+            getOpponentScore(
+              game,
+              team
+            ) !== null
+          );
 
-  }
+        }
+      );
 
-  /* =========================
-     BACK TO TEAMS
-  ========================= */
+    let wins = 0;
+    let losses = 0;
+    let ties = 0;
+    let pointsFor = 0;
+    let pointsAgainst = 0;
 
-  function returnToTeams() {
+    playedRegularGames.forEach(
+      function(game) {
 
-    teamProfile.style.display =
-      "none";
+        const teamScore =
+          getTeamScore(
+            game,
+            team
+          );
 
-    teamResults.style.display =
-      "block";
+        const opponentScore =
+          getOpponentScore(
+            game,
+            team
+          );
 
-    teamSearch.style.display =
-      "block";
+        pointsFor +=
+          teamScore;
 
-    displayTeams(teams);
+        pointsAgainst +=
+          opponentScore;
 
-    document.getElementById(
-      "teams"
-    ).scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
+        const result =
+          getGameResult(
+            teamScore,
+            opponentScore
+          );
 
-  }
+        if (
+          result === "W"
+        ) {
 
-  /* =========================
-     TEAM SEARCH
-  ========================= */
+          wins++;
 
-  teamSearch.addEventListener(
-    "input",
-    function() {
+        } else if (
+          result === "L"
+        ) {
 
-      const searchText =
-        teamSearch.value
-          .toLowerCase()
-          .trim();
+          losses++;
 
-      const filteredTeams =
-        teams.filter(
-          function(team) {
+        } else if (
+          result === "T"
+        ) {
 
-            return team.name
-              .toLowerCase()
-              .includes(searchText);
+          ties++;
+
+        }
+
+      }
+    );
+
+    const gamesCount =
+      playedRegularGames.length;
+
+    const pointsPerGame =
+      gamesCount > 0
+        ? (
+            pointsFor /
+            gamesCount
+          ).toFixed(1)
+        : "0.0";
+
+    const pointsAllowedPerGame =
+      gamesCount > 0
+        ? (
+            pointsAgainst /
+            gamesCount
+          ).toFixed(1)
+        : "0.0";
+
+    const pointDifferential =
+      pointsFor -
+      pointsAgainst;
+
+    let recordText =
+      wins +
+      " - " +
+      losses;
+
+    if (
+      ties > 0
+    ) {
+
+      recordText +=
+        " - " +
+        ties;
+
+    }
+
+    const playoffGames =
+      seasonGames.filter(
+        function(game) {
+
+          return (
+            String(
+              game.game_type || ""
+            ).toUpperCase() !==
+            "REG"
+          );
+
+        }
+      );
+
+    const playedPlayoffGames =
+      playoffGames.filter(
+        function(game) {
+
+          return (
+            getTeamScore(
+              game,
+              team
+            ) !== null &&
+            getOpponentScore(
+              game,
+              team
+            ) !== null
+          );
+
+        }
+      );
+
+    let playoffWins = 0;
+    let playoffLosses = 0;
+
+    playedPlayoffGames.forEach(
+      function(game) {
+
+        const result =
+          getGameResult(
+            getTeamScore(
+              game,
+              team
+            ),
+            getOpponentScore(
+              game,
+              team
+            )
+          );
+
+        if (
+          result === "W"
+        ) {
+
+          playoffWins++;
+
+        } else if (
+          result === "L"
+        ) {
+
+          playoffLosses++;
+
+        }
+
+      }
+    );
+
+    /* SORT GAMES BY DATE */
+
+    const sortedGames =
+      seasonGames
+        .slice()
+        .sort(
+          function(a, b) {
+
+            const aDate =
+              new Date(
+                (
+                  a.gameday ||
+                  a.game_date ||
+                  ""
+                ) +
+                "T12:00:00"
+              ).getTime();
+
+            const bDate =
+              new Date(
+                (
+                  b.gameday ||
+                  b.game_date ||
+                  ""
+                ) +
+                "T12:00:00"
+              ).getTime();
+
+            if (
+              Number.isFinite(aDate) &&
+              Number.isFinite(bDate)
+            ) {
+
+              return (
+                aDate -
+                bDate
+              );
+
+            }
+
+            return 0;
 
           }
         );
 
-      displayTeams(
-        filteredTeams
+    let gamesHTML = "";
+
+    sortedGames.forEach(
+      function(game) {
+
+        const opponent =
+          getOpponentForGame(
+            game,
+            team
+          );
+
+        const opponentName =
+          teamNamesByAbbreviation[
+            opponent
+          ] ||
+          opponent;
+
+        const teamScore =
+          getTeamScore(
+            game,
+            team
+          );
+
+        const opponentScore =
+          getOpponentScore(
+            game,
+            team
+          );
+
+        const result =
+          getGameResult(
+            teamScore,
+            opponentScore
+          );
+
+        const home =
+          teamIsHome(
+            game,
+            team
+          );
+
+        const locationText =
+          home
+            ? "Home"
+            : "Away";
+
+        const type =
+          String(
+            game.game_type || ""
+          ).toUpperCase();
+
+        const isPlayoff =
+          type !== "REG";
+
+        const weekText =
+          isPlayoff
+            ? "POST"
+            : "Week " +
+              game.week;
+
+        const playoffLabel =
+          isPlayoff
+            ? `
+              <span class="playoff-label">
+                ${formatGameWeek(game)}
+              </span>
+            `
+            : "";
+
+        const logoURL =
+          getTeamLogoURL(
+            opponent
+          );
+
+        const logoHTML =
+          logoURL
+            ? `
+              <img
+                class="game-logo"
+                src="${logoURL}"
+                alt="${opponentName} logo"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              >
+            `
+            : "";
+
+        const resultClass =
+          result === "W"
+            ? "win"
+            : result === "L"
+              ? "loss"
+              : "tie";
+
+        const scoreText =
+          teamScore !== null &&
+          opponentScore !== null
+            ? teamScore +
+              " - " +
+              opponentScore
+            : "—";
+
+        const dateText =
+          formatGameDate(
+            game.gameday ||
+            game.game_date
+          );
+
+        gamesHTML += `
+
+          <div class="game-row">
+
+            <div class="game-week">
+              ${weekText}
+            </div>
+
+            <div class="game-opponent">
+
+              ${logoHTML}
+
+              <div class="game-opponent-info">
+
+                <div class="game-opponent-name">
+
+                  ${home ? "vs. " : "@ "}
+                  ${opponentName}
+
+                  ${playoffLabel}
+
+                </div>
+
+                <div class="game-location">
+
+                  ${locationText}
+
+                  ${
+                    dateText
+                      ? " • " +
+                        dateText
+                      : ""
+                  }
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="game-score">
+              ${scoreText}
+            </div>
+
+            <div class="game-result ${resultClass}">
+              ${result || "—"}
+            </div>
+
+          </div>
+
+        `;
+
+      }
+    );
+
+    previousSeasonDetail.innerHTML = `
+
+      <h3>
+        ${season} ${team.name}
+      </h3>
+
+      <div class="season-record">
+        ${recordText}
+      </div>
+
+      <div class="season-stat-grid">
+
+        <div class="season-stat">
+
+          <span class="season-stat-label">
+            Wins
+          </span>
+
+          <span class="season-stat-value">
+            ${wins}
+          </span>
+
+        </div>
+
+        <div class="season-stat">
+
+          <span class="season-stat-label">
+            Losses
+          </span>
+
+          <span class="season-stat-value">
+            ${losses}
+          </span>
+
+        </div>
+
+        <div class="season-stat">
+
+          <span class="season-stat-label">
+            Points For
+          </span>
+
+          <span class="season-stat-value">
+            ${pointsFor}
+          </span>
+
+        </div>
+
+        <div class="season-stat">
+
+          <span class="season-stat-label">
+            Points Allowed
+          </span>
+
+          <span class="season-stat-value">
+            ${pointsAgainst}
+          </span>
+
+        </div>
+
+        <div class="season-stat">
+
+          <span class="season-stat-label">
+            Points Per Game
+          </span>
+
+          <span class="season-stat-value">
+            ${pointsPerGame}
+          </span>
+
+        </div>
+
+        <div class="season-stat">
+
+          <span class="season-stat-label">
+            Allowed Per Game
+          </span>
+
+          <span class="season-stat-value">
+            ${pointsAllowedPerGame}
+          </span>
+
+        </div>
+
+        <div class="season-stat">
+
+          <span class="season-stat-label">
+            Point Differential
+          </span>
+
+          <span class="season-stat-value">
+            ${
+              pointDifferential >= 0
+                ? "+"
+                : ""
+            }${pointDifferential}
+          </span>
+
+        </div>
+
+        <div class="season-stat">
+
+          <span class="season-stat-label">
+            Regular Season Games
+          </span>
+
+          <span class="season-stat-value">
+            ${gamesCount}
+          </span>
+
+        </div>
+
+        <div class="season-stat">
+
+          <span class="season-stat-label">
+            Playoff Record
+          </span>
+
+          <span class="season-stat-value">
+            ${playoffWins} - ${playoffLosses}
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="historical-schedule">
+
+        <h4 class="historical-schedule-title">
+          ${season} Schedule & Results
+        </h4>
+
+        <div class="game-list">
+          ${gamesHTML}
+        </div>
+
+      </div>
+
+      <div class="data-source">
+
+        Historical NFL game data:
+        <a
+          href="https://github.com/nflverse/nflverse-data"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          nflverse
+        </a>
+
+        <br>
+
+        Opponent team logos are loaded automatically
+        from ESPN's team-logo CDN.
+
+      </div>
+
+    `;
+
+  } catch (error) {
+
+    console.error(
+      "NFL historical data error:",
+      error
+    );
+
+    previousSeasonDetail.innerHTML = `
+
+      <h3>
+        ${season} Season
+      </h3>
+
+      <p class="historical-error">
+        We couldn't load the historical NFL
+        data right now.
+      </p>
+
+      <p class="season-placeholder">
+        GridLens automatically tried multiple
+        nflverse data sources, but your browser
+        could not retrieve the data.
+      </p>
+
+      <p class="season-placeholder">
+        Open the browser console if you want
+        to see the exact connection error.
+      </p>
+
+    `;
+
+  }
+
+}
+
+/* =========================
+   SEASON BUTTONS
+========================= */
+
+document
+  .querySelectorAll(
+    ".season-button"
+  )
+  .forEach(
+    function(button) {
+
+      button.addEventListener(
+        "click",
+        function() {
+
+          loadPreviousSeason(
+            button.dataset.season
+          );
+
+        }
       );
 
     }
   );
 
-  /* =========================
-     TEAM BACK BUTTON
-  ========================= */
+/* =========================
+   OPEN TEAM
+========================= */
 
-  teamBackButton.addEventListener(
-    "click",
-    returnToTeams
-  );
+function openTeam(team) {
 
-  /* =========================
-     START WEBSITE
-  ========================= */
+  window.currentGridLensTeam =
+    team;
 
-  displayPlayers(players);
+  teamProfileName.textContent =
+    team.name;
+
+  teamProfileInfo.textContent =
+    team.abbreviation +
+    " • " +
+    team.division;
+
+  teamInfo.innerHTML =
+    "Team: " +
+    team.name +
+    "<br>Abbreviation: " +
+    team.abbreviation +
+    "<br>Division: " +
+    team.division;
+
+  teamResults.style.display =
+    "none";
+
+  teamSearch.style.display =
+    "none";
+
+  teamProfile.style.display =
+    "block";
+
+  teamRoster.innerHTML = `
+    <p class="roster-loading">
+      Loading ${team.name} roster...
+    </p>
+  `;
+
+  previousSeasonDetail.innerHTML = `
+
+    <h3>
+      Select a Season
+    </h3>
+
+    <p class="season-placeholder">
+      Choose a year above to view the
+      record, statistics, schedule, and
+      game results for that season.
+    </p>
+
+  `;
+
+  document
+    .querySelectorAll(
+      ".season-button"
+    )
+    .forEach(
+      function(button) {
+
+        button.classList.remove(
+          "active"
+        );
+
+      }
+    );
+
+  teamProfile.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  loadTeamRoster(team);
+
+}
+
+/* =========================
+   BACK TO TEAMS
+========================= */
+
+function returnToTeams() {
+
+  teamProfile.style.display =
+    "none";
+
+  teamResults.style.display =
+    "block";
+
+  teamSearch.style.display =
+    "block";
 
   displayTeams(teams);
+
+  document
+    .getElementById("teams")
+    .scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+
+}
+
+teamSearch.addEventListener(
+  "input",
+  function() {
+
+    const searchText =
+      teamSearch.value
+        .toLowerCase()
+        .trim();
+
+    const filteredTeams =
+      teams.filter(
+        function(team) {
+
+          return team.name
+            .toLowerCase()
+            .includes(searchText);
+
+        }
+      );
+
+    displayTeams(
+      filteredTeams
+    );
+
+  }
+);
+
+teamBackButton.addEventListener(
+  "click",
+  returnToTeams
+);
+
+/* =========================
+   START WEBSITE
+========================= */
+
+displayPlayers(players);
+
+displayTeams(teams);
 
 </script>
 
