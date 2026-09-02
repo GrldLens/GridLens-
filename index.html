@@ -444,6 +444,15 @@
     .roster-player-name {
       color: #ffffff;
       font-weight: bold;
+      min-width: 0;
+    }
+
+    .roster-player-status {
+      color: #ff6b6b;
+      font-size: 12px;
+      font-weight: bold;
+      margin-left: auto;
+      flex-shrink: 0;
     }
 
     .roster-player-number {
@@ -1647,6 +1656,77 @@
   }
 
   /* =========================
+     GET INJURY STATUS
+  ========================= */
+
+  function getRosterStatus(player) {
+
+    const possibleStatuses = [
+
+      player.injury_status,
+      player.injuryStatus,
+      player.status
+
+    ];
+
+    for (
+      let i = 0;
+      i < possibleStatuses.length;
+      i++
+    ) {
+
+      const value =
+        possibleStatuses[i];
+
+      if (
+        typeof value !== "string"
+      ) {
+
+        continue;
+
+      }
+
+      const status =
+        value
+          .trim()
+          .toUpperCase();
+
+      if (
+        status === "IR" ||
+        status === "PUP"
+      ) {
+
+        return status;
+
+      }
+
+    }
+
+    return "";
+
+  }
+
+  /* =========================
+     GET ROSTER POSITION GROUP
+  ========================= */
+
+  function getRosterPositionGroup(player) {
+
+    if (
+      player.position === "CB" ||
+      player.position === "DB" ||
+      player.position === "S"
+    ) {
+
+      return "Defensive Backs (DB)";
+
+    }
+
+    return player.position;
+
+  }
+
+  /* =========================
      LOAD TEAM ROSTER
   ========================= */
 
@@ -1714,18 +1794,43 @@
         "LS"
       ];
 
+      const groupOrder = [
+        "QB",
+        "RB",
+        "FB",
+        "WR",
+        "TE",
+        "OL",
+        "OT",
+        "OG",
+        "C",
+        "DL",
+        "DE",
+        "DT",
+        "NT",
+        "LB",
+        "ILB",
+        "OLB",
+        "Defensive Backs (DB)",
+        "K",
+        "P",
+        "LS"
+      ];
+
       teamPlayers.sort(
         function(a, b) {
 
+          const aGroup =
+            getRosterPositionGroup(a);
+
+          const bGroup =
+            getRosterPositionGroup(b);
+
           const aPosition =
-            positionOrder.indexOf(
-              a.position
-            );
+            groupOrder.indexOf(aGroup);
 
           const bPosition =
-            positionOrder.indexOf(
-              b.position
-            );
+            groupOrder.indexOf(bGroup);
 
           if (
             aPosition !== bPosition
@@ -1748,48 +1853,50 @@
         }
       );
 
-      const positions = [];
+      const positionGroups = {};
 
       teamPlayers.forEach(
         function(player) {
 
+          const groupName =
+            getRosterPositionGroup(player);
+
           if (
-            !positions.includes(
-              player.position
-            )
+            !positionGroups[groupName]
           ) {
 
-            positions.push(
-              player.position
-            );
+            positionGroups[groupName] = [];
 
           }
+
+          positionGroups[groupName].push(
+            player
+          );
 
         }
       );
 
       let rosterHTML = "";
 
-      positions.forEach(
-        function(position) {
+      groupOrder.forEach(
+        function(groupName) {
+
+          if (
+            !positionGroups[groupName]
+          ) {
+
+            return;
+
+          }
 
           const positionPlayers =
-            teamPlayers.filter(
-              function(player) {
-
-                return (
-                  player.position ===
-                  position
-                );
-
-              }
-            );
+            positionGroups[groupName];
 
           rosterHTML += `
             <div class="roster-position">
 
               <h4 class="roster-position-title">
-                ${position}
+                ${groupName}
               </h4>
           `;
 
@@ -1801,12 +1908,26 @@
                   ? "#" + player.number
                   : "";
 
+              const status =
+                getRosterStatus(player);
+
+              const statusHTML =
+                status
+                  ? `
+                    <span class="roster-player-status">
+                      ${status}
+                    </span>
+                  `
+                  : "";
+
               rosterHTML += `
                 <div class="roster-player">
 
                   <span class="roster-player-name">
                     ${player.full_name || "Unknown Player"}
                   </span>
+
+                  ${statusHTML}
 
                   <span class="roster-player-number">
                     ${number}
