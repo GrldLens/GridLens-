@@ -508,6 +508,166 @@
       border: 1px solid #414141;
     }
 
+    /* =========================
+       HISTORICAL DATA
+    ========================= */
+
+    .historical-loading {
+      color: #00aaff;
+      font-weight: bold;
+      line-height: 1.5;
+    }
+
+    .historical-error {
+      color: #ff6b6b;
+      line-height: 1.5;
+    }
+
+    .season-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .season-stat {
+      background: #303030;
+      border: 1px solid #414141;
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .season-stat-label {
+      display: block;
+      color: #999999;
+      font-size: 12px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .season-stat-value {
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .historical-schedule {
+      margin-top: 20px;
+    }
+
+    .historical-schedule-title {
+      color: #00aaff;
+      font-size: 20px;
+      margin: 0 0 12px;
+    }
+
+    .game-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .game-row {
+      display: grid;
+      grid-template-columns: 70px minmax(0, 1fr) auto 70px;
+      align-items: center;
+      gap: 12px;
+      background: #303030;
+      border: 1px solid #414141;
+      border-radius: 9px;
+      padding: 10px 12px;
+    }
+
+    .game-row:hover {
+      border-color: #00aaff;
+    }
+
+    .game-week {
+      color: #999999;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .game-opponent {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .game-logo {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .game-opponent-info {
+      min-width: 0;
+    }
+
+    .game-opponent-name {
+      color: #ffffff;
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .game-location {
+      color: #999999;
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .game-score {
+      color: #ffffff;
+      font-size: 17px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .game-result {
+      text-align: center;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .game-result.win {
+      color: #55d66b;
+    }
+
+    .game-result.loss {
+      color: #ff6b6b;
+    }
+
+    .game-result.tie {
+      color: #ffd166;
+    }
+
+    .playoff-label {
+      display: inline-block;
+      margin-left: 7px;
+      padding: 3px 6px;
+      border-radius: 5px;
+      background: #00aaff;
+      color: #ffffff;
+      font-size: 10px;
+      vertical-align: middle;
+    }
+
+    .data-source {
+      color: #777777;
+      font-size: 12px;
+      margin-top: 18px;
+      line-height: 1.5;
+    }
+
+    .data-source a {
+      color: #00aaff;
+    }
+
     /* AUTOMATED ROSTER */
 
     .roster-loading {
@@ -628,6 +788,32 @@
       .season-list {
         grid-template-columns: repeat(3, 1fr);
       }
+
+      .game-row {
+        grid-template-columns: 45px minmax(0, 1fr) auto;
+        gap: 8px;
+      }
+
+      .game-result {
+        grid-column: 3;
+        grid-row: 1;
+      }
+
+      .game-score {
+        grid-column: 2;
+        grid-row: 2;
+      }
+
+      .game-opponent {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .game-week {
+        grid-column: 1;
+        grid-row: 1 / span 2;
+      }
+
     }
   </style>
 </head>
@@ -2344,54 +2530,456 @@
   }
 
   /* =========================
+     NFLVERSE HISTORICAL DATA
+  ========================= */
+
+  const NFLVERSE_SCHEDULE_URL =
+    "https://github.com/nflverse/nflverse-data/releases/download/schedules/schedules.csv";
+
+  const HISTORICAL_CACHE_PREFIX =
+    "gridlens_nflverse_schedule_";
+
+  const HISTORICAL_CACHE_TIME_PREFIX =
+    "gridlens_nflverse_schedule_time_";
+
+  const HISTORICAL_CACHE_DURATION =
+    24 * 60 * 60 * 1000;
+
+  let nflverseSchedule =
+    null;
+
+  /* =========================
+     TEAM LOGO MAPPING
+  ========================= */
+
+  const teamLogoCodes = {
+
+    ARI: "ari",
+    ATL: "atl",
+    BAL: "bal",
+    BUF: "buf",
+    CAR: "car",
+    CHI: "chi",
+    CIN: "cin",
+    CLE: "cle",
+    DAL: "dal",
+    DEN: "den",
+    DET: "det",
+    GB: "gb",
+    HOU: "hou",
+    IND: "ind",
+    JAX: "jax",
+    KC: "kc",
+    LAC: "lac",
+    LAR: "lar",
+    LV: "lv",
+    MIA: "mia",
+    MIN: "min",
+    NE: "ne",
+    NO: "no",
+    NYG: "nyg",
+    NYJ: "nyj",
+    PHI: "phi",
+    PIT: "pit",
+    SEA: "sea",
+    SF: "sf",
+    TB: "tb",
+    TEN: "ten",
+    WAS: "wsh"
+
+  };
+
+  const teamNamesByAbbreviation = {};
+
+  teams.forEach(
+    function(team) {
+
+      teamNamesByAbbreviation[
+        team.abbreviation
+      ] = team.name;
+
+    }
+  );
+
+  /* =========================
+     GET TEAM LOGO
+  ========================= */
+
+  function getTeamLogoURL(abbreviation) {
+
+    const code =
+      teamLogoCodes[abbreviation];
+
+    if (!code) {
+      return "";
+    }
+
+    return (
+      "https://a.espncdn.com/i/teamlogos/nfl/500/" +
+      code +
+      ".png"
+    );
+
+  }
+
+  /* =========================
+     PARSE CSV
+  ========================= */
+
+  function parseCSVLine(line) {
+
+    const values = [];
+
+    let current = "";
+
+    let insideQuotes = false;
+
+    for (
+      let i = 0;
+      i < line.length;
+      i++
+    ) {
+
+      const character =
+        line[i];
+
+      if (
+        character === '"'
+      ) {
+
+        if (
+          insideQuotes &&
+          line[i + 1] === '"'
+        ) {
+
+          current += '"';
+
+          i++;
+
+        } else {
+
+          insideQuotes =
+            !insideQuotes;
+
+        }
+
+      } else if (
+        character === "," &&
+        !insideQuotes
+      ) {
+
+        values.push(current);
+
+        current = "";
+
+      } else {
+
+        current += character;
+
+      }
+
+    }
+
+    values.push(current);
+
+    return values;
+
+  }
+
+  function parseCSV(text) {
+
+    const lines =
+      text
+        .replace(/\r/g, "")
+        .split("\n")
+        .filter(
+          function(line) {
+            return line.trim() !== "";
+          }
+        );
+
+    if (lines.length === 0) {
+      return [];
+    }
+
+    const headers =
+      parseCSVLine(lines[0]);
+
+    const rows = [];
+
+    for (
+      let i = 1;
+      i < lines.length;
+      i++
+    ) {
+
+      const values =
+        parseCSVLine(lines[i]);
+
+      const row = {};
+
+      headers.forEach(
+        function(header, index) {
+
+          row[header] =
+            values[index] !== undefined
+              ? values[index]
+              : "";
+
+        }
+      );
+
+      rows.push(row);
+
+    }
+
+    return rows;
+
+  }
+
+  /* =========================
+     GET HISTORICAL SCHEDULE
+  ========================= */
+
+  async function getNFLVerseSchedule() {
+
+    if (nflverseSchedule) {
+      return nflverseSchedule;
+    }
+
+    const cachedData =
+      localStorage.getItem(
+        HISTORICAL_CACHE_PREFIX + "all"
+      );
+
+    const cachedTime =
+      localStorage.getItem(
+        HISTORICAL_CACHE_TIME_PREFIX + "all"
+      );
+
+    if (
+      cachedData &&
+      cachedTime &&
+      Date.now() - Number(cachedTime) <
+        HISTORICAL_CACHE_DURATION
+    ) {
+
+      try {
+
+        nflverseSchedule =
+          JSON.parse(cachedData);
+
+        return nflverseSchedule;
+
+      } catch (error) {
+
+        localStorage.removeItem(
+          HISTORICAL_CACHE_PREFIX + "all"
+        );
+
+        localStorage.removeItem(
+          HISTORICAL_CACHE_TIME_PREFIX + "all"
+        );
+
+      }
+
+    }
+
+    const response =
+      await fetch(
+        NFLVERSE_SCHEDULE_URL
+      );
+
+    if (!response.ok) {
+
+      throw new Error(
+        "NFLverse schedule request failed."
+      );
+
+    }
+
+    const csvText =
+      await response.text();
+
+    nflverseSchedule =
+      parseCSV(csvText);
+
+    try {
+
+      localStorage.setItem(
+        HISTORICAL_CACHE_PREFIX + "all",
+        JSON.stringify(
+          nflverseSchedule
+        )
+      );
+
+      localStorage.setItem(
+        HISTORICAL_CACHE_TIME_PREFIX + "all",
+        Date.now().toString()
+      );
+
+    } catch (error) {
+
+      console.warn(
+        "Could not save historical data cache.",
+        error
+      );
+
+    }
+
+    return nflverseSchedule;
+
+  }
+
+  /* =========================
+     FORMAT GAME WEEK
+  ========================= */
+
+  function formatGameWeek(game) {
+
+    const gameType =
+      String(
+        game.game_type || ""
+      ).toUpperCase();
+
+    if (
+      gameType === "REG"
+    ) {
+
+      return "Week " + game.week;
+
+    }
+
+    const playoffNames = {
+
+      WC: "Wild Card",
+      DIV: "Divisional",
+      CON: "Conference",
+      SB: "Super Bowl"
+
+    };
+
+    return (
+      playoffNames[gameType] ||
+      gameType ||
+      "Game"
+    );
+
+  }
+
+  /* =========================
+     GET OPPONENT
+  ========================= */
+
+  function getOpponentForGame(
+    game,
+    teamAbbreviation
+  ) {
+
+    if (
+      game.home_team ===
+      teamAbbreviation
+    ) {
+
+      return game.away_team;
+
+    }
+
+    return game.home_team;
+
+  }
+
+  /* =========================
+     GET TEAM SCORE
+  ========================= */
+
+  function getTeamScore(
+    game,
+    teamAbbreviation
+  ) {
+
+    if (
+      game.home_team ===
+      teamAbbreviation
+    ) {
+
+      return Number(
+        game.home_score
+      );
+
+    }
+
+    return Number(
+      game.away_score
+    );
+
+  }
+
+  /* =========================
+     GET OPPONENT SCORE
+  ========================= */
+
+  function getOpponentScore(
+    game,
+    teamAbbreviation
+  ) {
+
+    if (
+      game.home_team ===
+      teamAbbreviation
+    ) {
+
+      return Number(
+        game.away_score
+      );
+
+    }
+
+    return Number(
+      game.home_score
+    );
+
+  }
+
+  /* =========================
+     GET GAME RESULT
+  ========================= */
+
+  function getGameResult(
+    teamScore,
+    opponentScore
+  ) {
+
+    if (
+      teamScore >
+      opponentScore
+    ) {
+
+      return "W";
+
+    }
+
+    if (
+      teamScore <
+      opponentScore
+    ) {
+
+      return "L";
+
+    }
+
+    return "T";
+
+  }
+
+  /* =========================
      LOAD PREVIOUS SEASON
   ========================= */
 
-  function loadPreviousSeason(season) {
-
-    previousSeasonDetail.innerHTML = `
-
-      <h3>
-        ${season} Season
-      </h3>
-
-      <div class="season-record">
-        — - —
-      </div>
-
-      <p class="season-placeholder">
-        ${season} team statistics will be added here.
-      </p>
-
-      <p class="season-placeholder">
-        Wins: —<br>
-        Losses: —<br>
-        Points Per Game: —<br>
-        Points Allowed: —
-      </p>
-
-      <div class="schedule-placeholder">
-
-        <strong>
-          ${season} Schedule & Results
-        </strong>
-
-        <p class="season-placeholder">
-          Schedule and game scores will be added here.
-        </p>
-
-        <p class="season-placeholder">
-          Week 1: —<br>
-          Week 2: —<br>
-          Week 3: —<br>
-          Week 4: —<br>
-          More games will appear here when
-          historical data is connected.
-        </p>
-
-      </div>
-
-    `;
+  async function loadPreviousSeason(
+    season,
+    teamOverride
+  ) {
 
     document
       .querySelectorAll(".season-button")
@@ -2404,7 +2992,7 @@
 
           if (
             button.dataset.season ===
-            season
+            String(season)
           ) {
 
             button.classList.add(
@@ -2415,6 +3003,550 @@
 
         }
       );
+
+    const team =
+      teamOverride ||
+      window.currentGridLensTeam;
+
+    if (!team) {
+
+      previousSeasonDetail.innerHTML = `
+
+        <h3>
+          Select a Team
+        </h3>
+
+        <p class="season-placeholder">
+          Select a team first, then choose
+          a historical season.
+        </p>
+
+      `;
+
+      return;
+
+    }
+
+    previousSeasonDetail.innerHTML = `
+
+      <h3>
+        ${season} Season
+      </h3>
+
+      <p class="historical-loading">
+        Loading ${season} ${team.name}
+        historical data...
+      </p>
+
+    `;
+
+    try {
+
+      const schedule =
+        await getNFLVerseSchedule();
+
+      const seasonGames =
+        schedule.filter(
+          function(game) {
+
+            return (
+              Number(game.season) ===
+              Number(season) &&
+              (
+                game.home_team ===
+                team.abbreviation ||
+                game.away_team ===
+                team.abbreviation
+              ) &&
+              Number.isFinite(
+                Number(game.home_score)
+              ) &&
+              Number.isFinite(
+                Number(game.away_score)
+              )
+            );
+
+          }
+        );
+
+      if (
+        seasonGames.length === 0
+      ) {
+
+        previousSeasonDetail.innerHTML = `
+
+          <h3>
+            ${season} Season
+          </h3>
+
+          <p class="historical-error">
+            No historical game data was found
+            for ${team.name} in ${season}.
+          </p>
+
+        `;
+
+        return;
+
+      }
+
+      const regularSeasonGames =
+        seasonGames.filter(
+          function(game) {
+
+            return (
+              String(
+                game.game_type || ""
+              ).toUpperCase() ===
+              "REG"
+            );
+
+          }
+        );
+
+      const gamesForRecord =
+        regularSeasonGames.length > 0
+          ? regularSeasonGames
+          : seasonGames;
+
+      let wins = 0;
+      let losses = 0;
+      let ties = 0;
+      let pointsFor = 0;
+      let pointsAgainst = 0;
+
+      gamesForRecord.forEach(
+        function(game) {
+
+          const teamScore =
+            getTeamScore(
+              game,
+              team.abbreviation
+            );
+
+          const opponentScore =
+            getOpponentScore(
+              game,
+              team.abbreviation
+            );
+
+          pointsFor +=
+            teamScore;
+
+          pointsAgainst +=
+            opponentScore;
+
+          const result =
+            getGameResult(
+              teamScore,
+              opponentScore
+            );
+
+          if (result === "W") {
+            wins++;
+          } else if (
+            result === "L"
+          ) {
+            losses++;
+          } else {
+            ties++;
+          }
+
+        }
+      );
+
+      const gamesCount =
+        gamesForRecord.length;
+
+      const pointsPerGame =
+        gamesCount > 0
+          ? (
+              pointsFor /
+              gamesCount
+            ).toFixed(1)
+          : "0.0";
+
+      const pointsAllowedPerGame =
+        gamesCount > 0
+          ? (
+              pointsAgainst /
+              gamesCount
+            ).toFixed(1)
+          : "0.0";
+
+      const pointDifferential =
+        pointsFor -
+        pointsAgainst;
+
+      let recordText =
+        wins +
+        " - " +
+        losses;
+
+      if (ties > 0) {
+
+        recordText +=
+          " - " +
+          ties;
+
+      }
+
+      const sortedGames =
+        seasonGames.slice().sort(
+          function(a, b) {
+
+            const aDate =
+              new Date(
+                a.gameday ||
+                a.game_date ||
+                ""
+              ).getTime();
+
+            const bDate =
+              new Date(
+                b.gameday ||
+                b.game_date ||
+                ""
+              ).getTime();
+
+            if (
+              Number.isFinite(aDate) &&
+              Number.isFinite(bDate) &&
+              aDate !== bDate
+            ) {
+
+              return aDate - bDate;
+
+            }
+
+            const aWeek =
+              Number(a.week);
+
+            const bWeek =
+              Number(b.week);
+
+            if (
+              Number.isFinite(aWeek) &&
+              Number.isFinite(bWeek)
+            ) {
+
+              return aWeek - bWeek;
+
+            }
+
+            return 0;
+
+          }
+        );
+
+      let gamesHTML = "";
+
+      sortedGames.forEach(
+        function(game) {
+
+          const opponent =
+            getOpponentForGame(
+              game,
+              team.abbreviation
+            );
+
+          const opponentName =
+            teamNamesByAbbreviation[
+              opponent
+            ] ||
+            opponent;
+
+          const teamScore =
+            getTeamScore(
+              game,
+              team.abbreviation
+            );
+
+          const opponentScore =
+            getOpponentScore(
+              game,
+              team.abbreviation
+            );
+
+          const result =
+            getGameResult(
+              teamScore,
+              opponentScore
+            );
+
+          const isHome =
+            game.home_team ===
+            team.abbreviation;
+
+          const locationText =
+            isHome
+              ? "Home"
+              : "Away";
+
+          const gameType =
+            String(
+              game.game_type || ""
+            ).toUpperCase();
+
+          const isPlayoff =
+            gameType !== "REG";
+
+          const playoffLabel =
+            isPlayoff
+              ? `
+                <span class="playoff-label">
+                  ${formatGameWeek(game)}
+                </span>
+              `
+              : "";
+
+          const gameWeekText =
+            isPlayoff
+              ? "POST"
+              : "Week " + game.week;
+
+          const logoURL =
+            getTeamLogoURL(
+              opponent
+            );
+
+          const logoHTML =
+            logoURL
+              ? `
+                <img
+                  class="game-logo"
+                  src="${logoURL}"
+                  alt="${opponentName} logo"
+                  loading="lazy"
+                >
+              `
+              : `
+                <div
+                  class="game-logo"
+                  aria-hidden="true"
+                ></div>
+              `;
+
+          const resultClass =
+            result === "W"
+              ? "win"
+              : result === "L"
+                ? "loss"
+                : "tie";
+
+          gamesHTML += `
+
+            <div class="game-row">
+
+              <div class="game-week">
+                ${gameWeekText}
+              </div>
+
+              <div class="game-opponent">
+
+                ${logoHTML}
+
+                <div class="game-opponent-info">
+
+                  <div class="game-opponent-name">
+                    ${isHome ? "vs. " : "@ "}
+                    ${opponentName}
+                    ${playoffLabel}
+                  </div>
+
+                  <div class="game-location">
+                    ${locationText}
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="game-score">
+                ${teamScore} - ${opponentScore}
+              </div>
+
+              <div class="game-result ${resultClass}">
+                ${result}
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      );
+
+      previousSeasonDetail.innerHTML = `
+
+        <h3>
+          ${season} ${team.name}
+        </h3>
+
+        <div class="season-record">
+          ${recordText}
+        </div>
+
+        <div class="season-stat-grid">
+
+          <div class="season-stat">
+
+            <span class="season-stat-label">
+              Wins
+            </span>
+
+            <span class="season-stat-value">
+              ${wins}
+            </span>
+
+          </div>
+
+          <div class="season-stat">
+
+            <span class="season-stat-label">
+              Losses
+            </span>
+
+            <span class="season-stat-value">
+              ${losses}
+            </span>
+
+          </div>
+
+          <div class="season-stat">
+
+            <span class="season-stat-label">
+              Points For
+            </span>
+
+            <span class="season-stat-value">
+              ${pointsFor}
+            </span>
+
+          </div>
+
+          <div class="season-stat">
+
+            <span class="season-stat-label">
+              Points Allowed
+            </span>
+
+            <span class="season-stat-value">
+              ${pointsAgainst}
+            </span>
+
+          </div>
+
+          <div class="season-stat">
+
+            <span class="season-stat-label">
+              Points Per Game
+            </span>
+
+            <span class="season-stat-value">
+              ${pointsPerGame}
+            </span>
+
+          </div>
+
+          <div class="season-stat">
+
+            <span class="season-stat-label">
+              Allowed Per Game
+            </span>
+
+            <span class="season-stat-value">
+              ${pointsAllowedPerGame}
+            </span>
+
+          </div>
+
+          <div class="season-stat">
+
+            <span class="season-stat-label">
+              Point Differential
+            </span>
+
+            <span class="season-stat-value">
+              ${pointDifferential >= 0 ? "+" : ""}
+              ${pointDifferential}
+            </span>
+
+          </div>
+
+          <div class="season-stat">
+
+            <span class="season-stat-label">
+              Games
+            </span>
+
+            <span class="season-stat-value">
+              ${gamesForRecord.length}
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="historical-schedule">
+
+          <h4 class="historical-schedule-title">
+            ${season} Schedule & Results
+          </h4>
+
+          <div class="game-list">
+            ${gamesHTML}
+          </div>
+
+        </div>
+
+        <div class="data-source">
+
+          Historical schedule and game results:
+          <a
+            href="https://github.com/nflverse/nflverse-data"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            nflverse
+          </a>
+
+          <br>
+
+          Team logos are loaded automatically
+          from ESPN's public team-logo CDN.
+
+        </div>
+
+      `;
+
+    } catch (error) {
+
+      console.error(
+        "NFLverse historical data error:",
+        error
+      );
+
+      previousSeasonDetail.innerHTML = `
+
+        <h3>
+          ${season} Season
+        </h3>
+
+        <p class="historical-error">
+          We couldn't load the historical NFL
+          data right now. Please try again later.
+        </p>
+
+        <p class="season-placeholder">
+          The data is loaded automatically from
+          nflverse, so you do not need to enter
+          the information manually.
+        </p>
+
+      `;
+
+    }
 
   }
 
@@ -2446,6 +3578,9 @@
   ========================= */
 
   function openTeam(team) {
+
+    window.currentGridLensTeam =
+      team;
 
     teamProfileName.textContent =
       team.name;
