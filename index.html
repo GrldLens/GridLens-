@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2651,10 +2652,7 @@ async function loadTeamRoster(
       "FB",
       "WR",
       "TE",
-      "OL",
-      "OT",
-      "OG",
-      "C",
+      "OLine",
       "DL",
       "DE",
       "DT",
@@ -2671,6 +2669,17 @@ async function loadTeamRoster(
     function getRosterPositionGroup(
       player
     ) {
+
+      if (
+        player.position === "OT" ||
+        player.position === "OG" ||
+        player.position === "C" ||
+        player.position === "OL"
+      ) {
+
+        return "OLine";
+
+      }
 
       if (
         player.position === "CB" ||
@@ -3349,3 +3358,4 @@ loadPlayerDatabase();
 
 </body>
 </html>
+```
