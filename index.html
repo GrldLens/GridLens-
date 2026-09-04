@@ -289,6 +289,50 @@
       margin-top: 15px;
     }
 
+    /* PLAYER PAGINATION */
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+    }
+
+    .pagination button {
+      min-width: 40px;
+      padding: 9px 12px;
+      background: #303030;
+      color: #ffffff;
+      border: 1px solid #00aaff;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .pagination button:hover {
+      background: #00aaff;
+    }
+
+    .pagination button.active {
+      background: #00aaff;
+      color: white;
+    }
+
+    .pagination button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .pagination-info {
+      width: 100%;
+      text-align: center;
+      color: #888888;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
     /* PLAYER PROFILE */
 
     .profile {
@@ -604,64 +648,73 @@
       line-height: 1.6;
     }
 
-    /* =========================
-       NFL DRAFT CLASSES
-    ========================= */
-
-    .draft-year-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .draft-year-button {
-      padding: 12px;
-      background: #292929;
-      color: #ffffff;
-      border: 1px solid #00aaff;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 15px;
-      font-weight: bold;
-    }
-
-    .draft-year-button:hover {
-      background: #00aaff;
-    }
-
-    .draft-year-button.active {
-      background: #00aaff;
-    }
-
-    .draft-detail {
-      margin-top: 20px;
-      background: #292929;
-      border: 1px solid #414141;
-      border-radius: 10px;
-      padding: 20px;
-    }
-
-    .draft-detail h3 {
-      color: #00aaff;
-      margin-top: 0;
-    }
+    /* DRAFT CLASSES */
 
     .draft-round {
       background: #303030;
       border: 1px solid #454545;
-      border-radius: 8px;
-      padding: 14px;
-      margin-top: 10px;
+      border-radius: 10px;
+      margin-top: 12px;
+      overflow: hidden;
     }
 
-    .draft-round strong {
+    .draft-round summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 15px 18px;
+      font-size: 17px;
+      font-weight: bold;
       color: #ffffff;
+      background: #292929;
+      border-left: 4px solid #00aaff;
     }
 
-    .draft-placeholder {
+    .draft-round summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .draft-round summary::after {
+      content: "▾";
+      float: right;
+      color: #00aaff;
+      font-size: 19px;
+    }
+
+    .draft-round[open] summary::after {
+      content: "▴";
+    }
+
+    .draft-round summary:hover {
+      background: #353535;
+    }
+
+    .draft-picks {
+      padding: 12px;
+    }
+
+    .draft-pick {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #292929;
+      border: 1px solid #414141;
+      border-radius: 7px;
+      padding: 11px;
+      margin-bottom: 7px;
+    }
+
+    .draft-pick:last-child {
+      margin-bottom: 0;
+    }
+
+    .draft-pick-number {
+      color: #00aaff;
+      font-weight: bold;
+      min-width: 55px;
+    }
+
+    .draft-pick-info {
       color: #bdbdbd;
-      line-height: 1.6;
     }
 
     /* AUTOMATED ROSTER */
@@ -807,8 +860,8 @@
         grid-template-columns: 1fr;
       }
 
-      .draft-year-list {
-        grid-template-columns: repeat(3, 1fr);
+      .draft-pick {
+        align-items: flex-start;
       }
 
     }
@@ -984,6 +1037,11 @@
     id="playerCount"
     class="player-count"
   ></p>
+
+  <div
+    class="pagination"
+    id="playerPagination"
+  ></div>
 
   <div class="profile" id="playerProfile">
 
@@ -1332,7 +1390,7 @@
 
 </section>
 
-<!-- NFL DRAFT CLASSES -->
+<!-- DRAFT CLASSES -->
 
 <section class="section" id="draft-classes">
 
@@ -1340,104 +1398,121 @@
 
   <p>
     Explore NFL draft classes by year.
-    Draft data will be added here later.
+    Draft data will be added to GridLens later.
   </p>
 
-  <div class="draft-year-list">
+  <details class="team-dropdown" open>
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2026"
-    >
-      2026
-    </button>
+    <summary>
+      Draft Class Year
+    </summary>
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2025"
-    >
-      2025
-    </button>
+    <div class="team-dropdown-content">
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2024"
-    >
-      2024
-    </button>
+      <p class="season-placeholder">
+        Select a draft year to view the draft order,
+        rounds, selections, and drafted players.
+      </p>
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2023"
-    >
-      2023
-    </button>
+      <div class="season-list">
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2022"
-    >
-      2022
-    </button>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2026"
+        >
+          2026
+        </button>
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2021"
-    >
-      2021
-    </button>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2025"
+        >
+          2025
+        </button>
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2020"
-    >
-      2020
-    </button>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2024"
+        >
+          2024
+        </button>
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2019"
-    >
-      2019
-    </button>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2023"
+        >
+          2023
+        </button>
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2018"
-    >
-      2018
-    </button>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2022"
+        >
+          2022
+        </button>
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2017"
-    >
-      2017
-    </button>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2021"
+        >
+          2021
+        </button>
 
-    <button
-      class="draft-year-button"
-      data-draft-year="2016"
-    >
-      2016
-    </button>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2020"
+        >
+          2020
+        </button>
 
-  </div>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2019"
+        >
+          2019
+        </button>
 
-  <div
-    class="draft-detail"
-    id="draftDetail"
-  >
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2018"
+        >
+          2018
+        </button>
 
-    <h3>
-      Select a Draft Class
-    </h3>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2017"
+        >
+          2017
+        </button>
 
-    <p class="draft-placeholder">
-      Choose a year above to view that NFL draft class.
-    </p>
+        <button
+          class="season-button draft-class-button"
+          data-draft-year="2016"
+        >
+          2016
+        </button>
 
-  </div>
+      </div>
+
+      <div
+        class="season-detail"
+        id="draftClassDetail"
+      >
+
+        <h3>
+          Select a Draft Class
+        </h3>
+
+        <p class="season-placeholder">
+          Choose a year above to view that NFL draft class.
+        </p>
+
+      </div>
+
+    </div>
+
+  </details>
 
 </section>
 
@@ -1552,6 +1627,11 @@ const playerCount =
     "playerCount"
   );
 
+const playerPagination =
+  document.getElementById(
+    "playerPagination"
+  );
+
 const playerProfile =
   document.getElementById(
     "playerProfile"
@@ -1641,6 +1721,25 @@ const retiredPlayersTab =
   document.getElementById(
     "retiredPlayersTab"
   );
+
+/* =========================
+   DRAFT CLASS ELEMENTS
+========================= */
+
+const draftClassDetail =
+  document.getElementById(
+    "draftClassDetail"
+  );
+
+/* =========================
+   PLAYER PAGINATION
+========================= */
+
+const PLAYERS_PER_PAGE =
+  20;
+
+let currentPlayerPage =
+  1;
 
 /* =========================
    PLAYER TYPE
@@ -1787,6 +1886,15 @@ function convertSleeperPlayer(
   const position =
     player.position ||
     "";
+
+  /*
+     CURRENT PLAYERS
+
+     A player must have:
+     1. A current NFL team
+     2. A listed football position
+     3. Sleeper must mark the player as active
+  */
 
   if (
     !team ||
@@ -2170,6 +2278,9 @@ async function loadPlayerDatabase() {
 
     }
 
+    currentPlayerPage =
+      1;
+
     applyPlayerFilters();
 
   } catch (error) {
@@ -2192,6 +2303,9 @@ async function loadPlayerDatabase() {
     playerCount.textContent =
       "";
 
+    playerPagination.innerHTML =
+      "";
+
   }
 
 }
@@ -2212,6 +2326,9 @@ function setPlayerType(
 
   playerType =
     type;
+
+  currentPlayerPage =
+    1;
 
   currentPlayersTab.classList.toggle(
     "active",
@@ -2248,6 +2365,9 @@ function setPlayerType(
     "";
 
   playerCount.textContent =
+    "";
+
+  playerPagination.innerHTML =
     "";
 
   loadPlayerDatabase();
@@ -2624,12 +2744,64 @@ function displayPlayers(
   playerResults.innerHTML =
     "";
 
-  playerCount.textContent =
-    playerList.length +
-    " players shown";
+  const totalPlayers =
+    playerList.length;
+
+  const totalPages =
+    Math.max(
+      1,
+      Math.ceil(
+        totalPlayers /
+        PLAYERS_PER_PAGE
+      )
+    );
 
   if (
-    playerList.length ===
+    currentPlayerPage >
+    totalPages
+  ) {
+
+    currentPlayerPage =
+      totalPages;
+
+  }
+
+  const startIndex =
+    (
+      currentPlayerPage -
+      1
+    ) *
+    PLAYERS_PER_PAGE;
+
+  const endIndex =
+    Math.min(
+      startIndex +
+        PLAYERS_PER_PAGE,
+      totalPlayers
+    );
+
+  const pagePlayers =
+    playerList.slice(
+      startIndex,
+      endIndex
+    );
+
+  playerCount.textContent =
+    totalPlayers === 0
+      ? "0 players shown"
+      :
+        "Showing " +
+        (
+          startIndex + 1
+        ) +
+        "–" +
+        endIndex +
+        " of " +
+        totalPlayers +
+        " players";
+
+  if (
+    pagePlayers.length ===
     0
   ) {
 
@@ -2639,11 +2811,15 @@ function displayPlayers(
       </p>
     `;
 
+    renderPlayerPagination(
+      totalPages
+    );
+
     return;
 
   }
 
-  playerList.forEach(
+  pagePlayers.forEach(
     function(player) {
 
       const card =
@@ -2750,7 +2926,188 @@ function displayPlayers(
     }
   );
 
+  renderPlayerPagination(
+    totalPages
+  );
+
   updateFilterSummary();
+
+}
+
+/* =========================
+   PLAYER PAGINATION
+========================= */
+
+function renderPlayerPagination(
+  totalPages
+) {
+
+  playerPagination.innerHTML =
+    "";
+
+  if (
+    totalPages <= 1
+  ) {
+
+    return;
+
+  }
+
+  const previousButton =
+    document.createElement(
+      "button"
+    );
+
+  previousButton.textContent =
+    "←";
+
+  previousButton.disabled =
+    currentPlayerPage ===
+    1;
+
+  previousButton.addEventListener(
+    "click",
+    function() {
+
+      if (
+        currentPlayerPage >
+        1
+      ) {
+
+        currentPlayerPage--;
+
+        applyPlayerFilters();
+
+        document
+          .getElementById(
+            "players"
+          )
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+      }
+
+    }
+  );
+
+  playerPagination.appendChild(
+    previousButton
+  );
+
+  for (
+    let page = 1;
+    page <= totalPages;
+    page++
+  ) {
+
+    const pageButton =
+      document.createElement(
+        "button"
+      );
+
+    pageButton.textContent =
+      page;
+
+    if (
+      page ===
+      currentPlayerPage
+    ) {
+
+      pageButton.classList.add(
+        "active"
+      );
+
+    }
+
+    pageButton.addEventListener(
+      "click",
+      function() {
+
+        currentPlayerPage =
+          page;
+
+        applyPlayerFilters();
+
+        document
+          .getElementById(
+            "players"
+          )
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+      }
+    );
+
+    playerPagination.appendChild(
+      pageButton
+    );
+
+  }
+
+  const nextButton =
+    document.createElement(
+      "button"
+    );
+
+  nextButton.textContent =
+    "→";
+
+  nextButton.disabled =
+    currentPlayerPage ===
+    totalPages;
+
+  nextButton.addEventListener(
+    "click",
+    function() {
+
+      if (
+        currentPlayerPage <
+        totalPages
+      ) {
+
+        currentPlayerPage++;
+
+        applyPlayerFilters();
+
+        document
+          .getElementById(
+            "players"
+          )
+          .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+      }
+
+    }
+  );
+
+  playerPagination.appendChild(
+    nextButton
+  );
+
+  const paginationInfo =
+    document.createElement(
+      "div"
+    );
+
+  paginationInfo.className =
+    "pagination-info";
+
+  paginationInfo.textContent =
+    "Page " +
+    currentPlayerPage +
+    " of " +
+    totalPages;
+
+  playerPagination.appendChild(
+    paginationInfo
+  );
 
 }
 
@@ -2881,42 +3238,55 @@ function applyPlayerFilters() {
 }
 
 /* =========================
+   RESET PAGE WHEN FILTERING
+========================= */
+
+function resetPlayerPage() {
+
+  currentPlayerPage =
+    1;
+
+  applyPlayerFilters();
+
+}
+
+/* =========================
    PLAYER FILTER EVENTS
 ========================= */
 
 searchBox.addEventListener(
   "input",
-  applyPlayerFilters
+  resetPlayerPage
 );
 
 positionFilter.addEventListener(
   "change",
-  applyPlayerFilters
+  resetPlayerPage
 );
 
 teamFilter.addEventListener(
   "change",
-  applyPlayerFilters
+  resetPlayerPage
 );
 
 conferenceFilter.addEventListener(
   "change",
-  applyPlayerFilters
+  resetPlayerPage
 );
 
 divisionFilter.addEventListener(
   "change",
-  applyPlayerFilters
+  resetPlayerPage
 );
 
 statusFilter.addEventListener(
   "change",
-  applyPlayerFilters
+  resetPlayerPage
 );
 
 sortFilter.addEventListener(
   "change",
-  applyPlayerFilters
+  resetPlayerPage
 );
 
 clearFilters.addEventListener(
@@ -2943,6 +3313,9 @@ clearFilters.addEventListener(
 
     sortFilter.value =
       "nameAsc";
+
+    currentPlayerPage =
+      1;
 
     applyPlayerFilters();
 
@@ -3058,6 +3431,9 @@ function openPlayer(
   playerCount.style.display =
     "none";
 
+  playerPagination.style.display =
+    "none";
+
   playerLoading.style.display =
     "none";
 
@@ -3092,6 +3468,9 @@ function returnToPlayers() {
 
   playerCount.style.display =
     "block";
+
+  playerPagination.style.display =
+    "flex";
 
   playerLoading.style.display =
     "block";
@@ -3610,6 +3989,16 @@ function loadPreviousSeason(
     .forEach(
       function(button) {
 
+        if (
+          button.classList.contains(
+            "draft-class-button"
+          )
+        ) {
+
+          return;
+
+        }
+
         button.classList.remove(
           "active"
         );
@@ -3686,12 +4075,281 @@ document
   .forEach(
     function(button) {
 
+      if (
+        button.classList.contains(
+          "draft-class-button"
+        )
+      ) {
+
+        return;
+
+      }
+
       button.addEventListener(
         "click",
         function() {
 
           loadPreviousSeason(
             button.dataset.season
+          );
+
+        }
+      );
+
+    }
+  );
+
+/* =========================
+   DRAFT CLASS ROUNDS
+========================= */
+
+function createDraftRound(
+  year,
+  round,
+  startPick,
+  endPick
+) {
+
+  let picksHTML =
+    "";
+
+  for (
+    let pick = startPick;
+    pick <= endPick;
+    pick++
+  ) {
+
+    picksHTML += `
+      <div class="draft-pick">
+
+        <span class="draft-pick-number">
+          Pick ${pick}
+        </span>
+
+        <span class="draft-pick-info">
+          Draft selection data will be added here.
+        </span>
+
+      </div>
+    `;
+
+  }
+
+  return `
+    <details class="draft-round">
+
+      <summary>
+        Round ${round}
+      </summary>
+
+      <div class="draft-picks">
+        ${picksHTML}
+      </div>
+
+    </details>
+  `;
+
+}
+
+/* =========================
+   LOAD DRAFT CLASS
+========================= */
+
+function loadDraftClass(
+  year
+) {
+
+  document
+    .querySelectorAll(
+      ".draft-class-button"
+    )
+    .forEach(
+      function(button) {
+
+        button.classList.remove(
+          "active"
+        );
+
+        if (
+          button.dataset.draftYear ===
+          String(year)
+        ) {
+
+          button.classList.add(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+  const rounds = [
+
+    {
+      round: 1,
+      start: 1,
+      end: 32
+    },
+
+    {
+      round: 2,
+      start: 33,
+      end: 64
+    },
+
+    {
+      round: 3,
+      start: 65,
+      end: 96
+    },
+
+    {
+      round: 4,
+      start: 97,
+      end: 128
+    },
+
+    {
+      round: 5,
+      start: 129,
+      end: 160
+    },
+
+    {
+      round: 6,
+      start: 161,
+      end: 192
+    },
+
+    {
+      round: 7,
+      start: 193,
+      end: 224
+    }
+
+  ];
+
+  let roundsHTML =
+    "";
+
+  rounds.forEach(
+    function(roundData) {
+
+      roundsHTML +=
+        createDraftRound(
+          year,
+          roundData.round,
+          roundData.start,
+          roundData.end
+        );
+
+    }
+  );
+
+  draftClassDetail.innerHTML = `
+
+    <h3>
+      ${year} NFL Draft Class
+    </h3>
+
+    <p class="season-placeholder">
+
+      Draft class data is not connected
+      to GridLens yet.
+
+    </p>
+
+    <p class="season-placeholder">
+
+      The structure below is ready for
+      the draft database. Each round can
+      be opened to view every draft pick.
+
+    </p>
+
+    <div class="profile-grid">
+
+      <div class="profile-box">
+
+        <h3>
+          Draft Order
+        </h3>
+
+        <p>
+          Draft order data will be added here.
+        </p>
+
+      </div>
+
+      <div class="profile-box">
+
+        <h3>
+          Drafted Players
+        </h3>
+
+        <p>
+          Drafted player information will
+          be added here.
+        </p>
+
+      </div>
+
+      <div class="profile-box">
+
+        <h3>
+          Team Selections
+        </h3>
+
+        <p>
+          Each team's selections will be
+          organized here.
+        </p>
+
+      </div>
+
+      <div class="profile-box">
+
+        <h3>
+          Draft Analysis
+        </h3>
+
+        <p>
+          GridLens draft analysis will
+          be added here.
+        </p>
+
+      </div>
+
+    </div>
+
+    <h3 style="margin-top: 25px;">
+      Rounds
+    </h3>
+
+    ${roundsHTML}
+
+  `;
+
+}
+
+/* =========================
+   DRAFT CLASS BUTTONS
+========================= */
+
+document
+  .querySelectorAll(
+    ".draft-class-button"
+  )
+  .forEach(
+    function(button) {
+
+      button.addEventListener(
+        "click",
+        function() {
+
+          loadDraftClass(
+            button.dataset.draftYear
           );
 
         }
@@ -3761,6 +4419,16 @@ function openTeam(
     )
     .forEach(
       function(button) {
+
+        if (
+          button.classList.contains(
+            "draft-class-button"
+          )
+        ) {
+
+          return;
+
+        }
 
         button.classList.remove(
           "active"
@@ -3868,135 +4536,6 @@ teamBackButton.addEventListener(
   "click",
   returnToTeams
 );
-
-/* =========================
-   NFL DRAFT CLASSES
-========================= */
-
-const draftDetail =
-  document.getElementById(
-    "draftDetail"
-  );
-
-function loadDraftClass(
-  year
-) {
-
-  document
-    .querySelectorAll(
-      ".draft-year-button"
-    )
-    .forEach(
-      function(button) {
-
-        button.classList.remove(
-          "active"
-        );
-
-        if (
-          button.dataset.draftYear ===
-          String(year)
-        ) {
-
-          button.classList.add(
-            "active"
-          );
-
-        }
-
-      }
-    );
-
-  draftDetail.innerHTML = `
-
-    <h3>
-      ${year} NFL Draft Class
-    </h3>
-
-    <p class="draft-placeholder">
-      Draft data is not connected to GridLens yet.
-    </p>
-
-    <div class="draft-round">
-      <strong>Round 1</strong>
-
-      <p class="draft-placeholder">
-        Draft picks will appear here.
-      </p>
-    </div>
-
-    <div class="draft-round">
-      <strong>Round 2</strong>
-
-      <p class="draft-placeholder">
-        Draft picks will appear here.
-      </p>
-    </div>
-
-    <div class="draft-round">
-      <strong>Round 3</strong>
-
-      <p class="draft-placeholder">
-        Draft picks will appear here.
-      </p>
-    </div>
-
-    <div class="draft-round">
-      <strong>Round 4</strong>
-
-      <p class="draft-placeholder">
-        Draft picks will appear here.
-      </p>
-    </div>
-
-    <div class="draft-round">
-      <strong>Round 5</strong>
-
-      <p class="draft-placeholder">
-        Draft picks will appear here.
-      </p>
-    </div>
-
-    <div class="draft-round">
-      <strong>Round 6</strong>
-
-      <p class="draft-placeholder">
-        Draft picks will appear here.
-      </p>
-    </div>
-
-    <div class="draft-round">
-      <strong>Round 7</strong>
-
-      <p class="draft-placeholder">
-        Draft picks will appear here.
-      </p>
-    </div>
-
-  `;
-
-}
-
-document
-  .querySelectorAll(
-    ".draft-year-button"
-  )
-  .forEach(
-    function(button) {
-
-      button.addEventListener(
-        "click",
-        function() {
-
-          loadDraftClass(
-            button.dataset.draftYear
-          );
-
-        }
-      );
-
-    }
-  );
 
 /* =========================
    START WEBSITE
