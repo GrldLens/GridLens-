@@ -604,6 +604,66 @@
       line-height: 1.6;
     }
 
+    /* =========================
+       NFL DRAFT CLASSES
+    ========================= */
+
+    .draft-year-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .draft-year-button {
+      padding: 12px;
+      background: #292929;
+      color: #ffffff;
+      border: 1px solid #00aaff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .draft-year-button:hover {
+      background: #00aaff;
+    }
+
+    .draft-year-button.active {
+      background: #00aaff;
+    }
+
+    .draft-detail {
+      margin-top: 20px;
+      background: #292929;
+      border: 1px solid #414141;
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .draft-detail h3 {
+      color: #00aaff;
+      margin-top: 0;
+    }
+
+    .draft-round {
+      background: #303030;
+      border: 1px solid #454545;
+      border-radius: 8px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+
+    .draft-round strong {
+      color: #ffffff;
+    }
+
+    .draft-placeholder {
+      color: #bdbdbd;
+      line-height: 1.6;
+    }
+
     /* AUTOMATED ROSTER */
 
     .roster-loading {
@@ -747,6 +807,10 @@
         grid-template-columns: 1fr;
       }
 
+      .draft-year-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
     }
   </style>
 </head>
@@ -767,6 +831,7 @@
     <a href="#home">Home</a>
     <a href="#teams">Teams</a>
     <a href="#players">Players</a>
+    <a href="#draft-classes">Draft Classes</a>
     <a href="#analysis">Analysis</a>
     <a href="#stats">Stats</a>
   </nav>
@@ -1267,6 +1332,115 @@
 
 </section>
 
+<!-- NFL DRAFT CLASSES -->
+
+<section class="section" id="draft-classes">
+
+  <h2>NFL Draft Classes</h2>
+
+  <p>
+    Explore NFL draft classes by year.
+    Draft data will be added here later.
+  </p>
+
+  <div class="draft-year-list">
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2026"
+    >
+      2026
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2025"
+    >
+      2025
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2024"
+    >
+      2024
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2023"
+    >
+      2023
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2022"
+    >
+      2022
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2021"
+    >
+      2021
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2020"
+    >
+      2020
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2019"
+    >
+      2019
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2018"
+    >
+      2018
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2017"
+    >
+      2017
+    </button>
+
+    <button
+      class="draft-year-button"
+      data-draft-year="2016"
+    >
+      2016
+    </button>
+
+  </div>
+
+  <div
+    class="draft-detail"
+    id="draftDetail"
+  >
+
+    <h3>
+      Select a Draft Class
+    </h3>
+
+    <p class="draft-placeholder">
+      Choose a year above to view that NFL draft class.
+    </p>
+
+  </div>
+
+</section>
+
 <footer>
 
   <img
@@ -1614,21 +1788,6 @@ function convertSleeperPlayer(
     player.position ||
     "";
 
-  /*
-     CURRENT PLAYERS
-
-     A player must have:
-     1. A current NFL team
-     2. A listed football position
-     3. Sleeper must mark the player as active
-
-     This keeps current players in the
-     Current Players section.
-
-     Injured current players can still appear
-     because they can remain active in Sleeper.
-  */
-
   if (
     !team ||
     !position ||
@@ -1781,17 +1940,6 @@ function convertRetiredPlayer(
   if (!fullName) {
     return null;
   }
-
-  /*
-     RETIRED / FORMER PLAYERS
-
-     Sleeper does not mark these players as
-     currently active.
-
-     This allows former players such as
-     A.J. Bouye to live in a separate section
-     instead of appearing with current players.
-  */
 
   if (
     player.active === true
@@ -1970,10 +2118,6 @@ async function loadPlayerDatabase() {
           }
         );
 
-    /*
-       Remove duplicate player IDs/names.
-    */
-
     const uniquePlayers =
       [];
 
@@ -2142,10 +2286,6 @@ retiredPlayersTab.addEventListener(
 
 function populatePlayerFilters() {
 
-  /*
-     Positions
-  */
-
   const positions =
     [
       ...new Set(
@@ -2191,10 +2331,6 @@ function populatePlayerFilters() {
 
     }
   );
-
-  /*
-     Teams
-  */
 
   const teamAbbreviations =
     [
@@ -2390,10 +2526,6 @@ function getFilteredPlayers() {
 
       }
     );
-
-  /*
-     Sorting
-  */
 
   const sortValue =
     sortFilter.value;
@@ -3736,6 +3868,135 @@ teamBackButton.addEventListener(
   "click",
   returnToTeams
 );
+
+/* =========================
+   NFL DRAFT CLASSES
+========================= */
+
+const draftDetail =
+  document.getElementById(
+    "draftDetail"
+  );
+
+function loadDraftClass(
+  year
+) {
+
+  document
+    .querySelectorAll(
+      ".draft-year-button"
+    )
+    .forEach(
+      function(button) {
+
+        button.classList.remove(
+          "active"
+        );
+
+        if (
+          button.dataset.draftYear ===
+          String(year)
+        ) {
+
+          button.classList.add(
+            "active"
+          );
+
+        }
+
+      }
+    );
+
+  draftDetail.innerHTML = `
+
+    <h3>
+      ${year} NFL Draft Class
+    </h3>
+
+    <p class="draft-placeholder">
+      Draft data is not connected to GridLens yet.
+    </p>
+
+    <div class="draft-round">
+      <strong>Round 1</strong>
+
+      <p class="draft-placeholder">
+        Draft picks will appear here.
+      </p>
+    </div>
+
+    <div class="draft-round">
+      <strong>Round 2</strong>
+
+      <p class="draft-placeholder">
+        Draft picks will appear here.
+      </p>
+    </div>
+
+    <div class="draft-round">
+      <strong>Round 3</strong>
+
+      <p class="draft-placeholder">
+        Draft picks will appear here.
+      </p>
+    </div>
+
+    <div class="draft-round">
+      <strong>Round 4</strong>
+
+      <p class="draft-placeholder">
+        Draft picks will appear here.
+      </p>
+    </div>
+
+    <div class="draft-round">
+      <strong>Round 5</strong>
+
+      <p class="draft-placeholder">
+        Draft picks will appear here.
+      </p>
+    </div>
+
+    <div class="draft-round">
+      <strong>Round 6</strong>
+
+      <p class="draft-placeholder">
+        Draft picks will appear here.
+      </p>
+    </div>
+
+    <div class="draft-round">
+      <strong>Round 7</strong>
+
+      <p class="draft-placeholder">
+        Draft picks will appear here.
+      </p>
+    </div>
+
+  `;
+
+}
+
+document
+  .querySelectorAll(
+    ".draft-year-button"
+  )
+  .forEach(
+    function(button) {
+
+      button.addEventListener(
+        "click",
+        function() {
+
+          loadDraftClass(
+            button.dataset.draftYear
+          );
+
+        }
+      );
+
+    }
+  );
 
 /* =========================
    START WEBSITE
