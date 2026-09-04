@@ -298,6 +298,7 @@
       gap: 7px;
       flex-wrap: wrap;
       margin-top: 22px;
+      position: relative;
     }
 
     .pagination button {
@@ -331,6 +332,61 @@
       color: #888888;
       font-size: 13px;
       margin-top: 4px;
+    }
+
+    /* JUMP TO PAGE MENU */
+
+    .page-menu-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .jump-page-button {
+      min-width: 130px !important;
+    }
+
+    .page-menu {
+      display: none;
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 220px;
+      max-height: 260px;
+      overflow-y: auto;
+      background: #292929;
+      border: 1px solid #00aaff;
+      border-radius: 10px;
+      padding: 8px;
+      z-index: 1000;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.45);
+    }
+
+    .page-menu.open {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .page-menu button {
+      min-width: 0;
+      padding: 8px 5px;
+      background: #303030;
+      color: white;
+      border: 1px solid #454545;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .page-menu button:hover {
+      background: #00aaff;
+      border-color: #00aaff;
+    }
+
+    .page-menu button.active {
+      background: #00aaff;
+      border-color: #00aaff;
     }
 
     /* PLAYER PROFILE */
@@ -862,6 +918,14 @@
 
       .draft-pick {
         align-items: flex-start;
+      }
+
+      .page-menu {
+        width: 190px;
+      }
+
+      .page-menu.open {
+        grid-template-columns: repeat(4, 1fr);
       }
 
     }
@@ -1738,6 +1802,9 @@ const draftClassDetail =
 const PLAYERS_PER_PAGE =
   20;
 
+const PAGE_BUTTONS_VISIBLE =
+  6;
+
 let currentPlayerPage =
   1;
 
@@ -1886,15 +1953,6 @@ function convertSleeperPlayer(
   const position =
     player.position ||
     "";
-
-  /*
-     CURRENT PLAYERS
-
-     A player must have:
-     1. A current NFL team
-     2. A listed football position
-     3. Sleeper must mark the player as active
-  */
 
   if (
     !team ||
@@ -2953,6 +3011,30 @@ function renderPlayerPagination(
 
   }
 
+  const pageGroup =
+    Math.floor(
+      (
+        currentPlayerPage -
+        1
+      ) /
+      PAGE_BUTTONS_VISIBLE
+    );
+
+  const groupStart =
+    pageGroup *
+    PAGE_BUTTONS_VISIBLE +
+    1;
+
+  const groupEnd =
+    Math.min(
+      groupStart +
+        PAGE_BUTTONS_VISIBLE -
+        1,
+      totalPages
+    );
+
+  /* PREVIOUS PAGE */
+
   const previousButton =
     document.createElement(
       "button"
@@ -2960,6 +3042,9 @@ function renderPlayerPagination(
 
   previousButton.textContent =
     "←";
+
+  previousButton.title =
+    "Previous page";
 
   previousButton.disabled =
     currentPlayerPage ===
@@ -2978,15 +3063,6 @@ function renderPlayerPagination(
 
         applyPlayerFilters();
 
-        document
-          .getElementById(
-            "players"
-          )
-          .scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
       }
 
     }
@@ -2996,9 +3072,11 @@ function renderPlayerPagination(
     previousButton
   );
 
+  /* SIX PAGE NUMBERS */
+
   for (
-    let page = 1;
-    page <= totalPages;
+    let page = groupStart;
+    page <= groupEnd;
     page++
   ) {
 
@@ -3030,15 +3108,6 @@ function renderPlayerPagination(
 
         applyPlayerFilters();
 
-        document
-          .getElementById(
-            "players"
-          )
-          .scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
       }
     );
 
@@ -3048,6 +3117,8 @@ function renderPlayerPagination(
 
   }
 
+  /* NEXT PAGE */
+
   const nextButton =
     document.createElement(
       "button"
@@ -3055,6 +3126,9 @@ function renderPlayerPagination(
 
   nextButton.textContent =
     "→";
+
+  nextButton.title =
+    "Next page";
 
   nextButton.disabled =
     currentPlayerPage ===
@@ -3073,15 +3147,6 @@ function renderPlayerPagination(
 
         applyPlayerFilters();
 
-        document
-          .getElementById(
-            "players"
-          )
-          .scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
       }
 
     }
@@ -3090,6 +3155,124 @@ function renderPlayerPagination(
   playerPagination.appendChild(
     nextButton
   );
+
+  /* JUMP TO PAGE MENU */
+
+  const pageMenuWrapper =
+    document.createElement(
+      "div"
+    );
+
+  pageMenuWrapper.className =
+    "page-menu-wrapper";
+
+  const jumpPageButton =
+    document.createElement(
+      "button"
+    );
+
+  jumpPageButton.className =
+    "jump-page-button";
+
+  jumpPageButton.textContent =
+    "Jump to page ▾";
+
+  const pageMenu =
+    document.createElement(
+      "div"
+    );
+
+  pageMenu.className =
+    "page-menu";
+
+  for (
+    let page = 1;
+    page <= totalPages;
+    page++
+  ) {
+
+    const menuButton =
+      document.createElement(
+        "button"
+      );
+
+    menuButton.textContent =
+      page;
+
+    if (
+      page ===
+      currentPlayerPage
+    ) {
+
+      menuButton.classList.add(
+        "active"
+      );
+
+    }
+
+    menuButton.addEventListener(
+      "click",
+      function(event) {
+
+        event.stopPropagation();
+
+        currentPlayerPage =
+          page;
+
+        pageMenu.classList.remove(
+          "open"
+        );
+
+        applyPlayerFilters();
+
+      }
+    );
+
+    pageMenu.appendChild(
+      menuButton
+    );
+
+  }
+
+  jumpPageButton.addEventListener(
+    "click",
+    function(event) {
+
+      event.stopPropagation();
+
+      pageMenu.classList.toggle(
+        "open"
+      );
+
+    }
+  );
+
+  pageMenuWrapper.appendChild(
+    jumpPageButton
+  );
+
+  pageMenuWrapper.appendChild(
+    pageMenu
+  );
+
+  playerPagination.appendChild(
+    pageMenuWrapper
+  );
+
+  /* CLOSE MENU WHEN CLICKING ELSEWHERE */
+
+  document.addEventListener(
+    "click",
+    function closePageMenu() {
+
+      pageMenu.classList.remove(
+        "open"
+      );
+
+    }
+  );
+
+  /* PAGE INFORMATION */
 
   const paginationInfo =
     document.createElement(
