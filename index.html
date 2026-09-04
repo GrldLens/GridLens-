@@ -99,6 +99,34 @@
        PLAYER SEARCH & FILTERS
     ========================= */
 
+    .player-type-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .player-type-tab {
+      padding: 11px 18px;
+      background: #303030;
+      color: #ffffff;
+      border: 2px solid #00aaff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: bold;
+    }
+
+    .player-type-tab:hover {
+      background: #00aaff;
+      color: white;
+    }
+
+    .player-type-tab.active {
+      background: #00aaff;
+      color: white;
+    }
+
     .player-controls {
       margin-top: 20px;
       background: #292929;
@@ -763,9 +791,27 @@
   <h2>Players</h2>
 
   <p>
-    Explore currently rostered NFL players.
+    Explore current and retired NFL players.
     Player information is automatically provided by Sleeper.
   </p>
+
+  <div class="player-type-tabs">
+
+    <button
+      id="currentPlayersTab"
+      class="player-type-tab active"
+    >
+      Current Players
+    </button>
+
+    <button
+      id="retiredPlayersTab"
+      class="player-type-tab"
+    >
+      Retired Players
+    </button>
+
+  </div>
 
   <div class="player-controls">
 
@@ -850,7 +896,7 @@
         id="filterSummary"
         class="filter-summary"
       >
-        Showing all currently rostered players
+        Showing all current players
       </span>
 
     </div>
@@ -1412,6 +1458,23 @@ const filterSummary =
     "filterSummary"
   );
 
+const currentPlayersTab =
+  document.getElementById(
+    "currentPlayersTab"
+  );
+
+const retiredPlayersTab =
+  document.getElementById(
+    "retiredPlayersTab"
+  );
+
+/* =========================
+   PLAYER TYPE
+========================= */
+
+let playerType =
+  "current";
+
 /* =========================
    GET SLEEPER PLAYERS
 ========================= */
@@ -1507,7 +1570,7 @@ async function getSleeperPlayers() {
 }
 
 /* =========================
-   CONVERT SLEEPER PLAYER
+   CONVERT CURRENT PLAYER
 ========================= */
 
 function convertSleeperPlayer(
@@ -1552,20 +1615,18 @@ function convertSleeperPlayer(
     "";
 
   /*
-     CURRENTLY ROSTERED RULE
+     CURRENT PLAYERS
 
      A player must have:
      1. A current NFL team
      2. A listed football position
      3. Sleeper must mark the player as active
 
-     This prevents retired/former players such as
-     A.J. Bouye from appearing in the current
-     Players section.
+     This keeps current players in the
+     Current Players section.
 
-     Injured players can still appear because
-     current players can be injured while remaining
-     active in Sleeper's player database.
+     Injured current players can still appear
+     because they can remain active in Sleeper.
   */
 
   if (
@@ -1589,11 +1650,6 @@ function convertSleeperPlayer(
 
       }
     );
-
-  /*
-     Only include players assigned to one
-     of the 32 NFL teams in GridLens.
-  */
 
   if (!matchingTeam) {
     return null;
@@ -1676,6 +1732,176 @@ function convertSleeperPlayer(
     active:
       player.active,
 
+    retired:
+      false,
+
+    photo:
+      customPlayerPhotos[
+        fullName
+      ] ||
+      ""
+
+  };
+
+}
+
+/* =========================
+   CONVERT RETIRED PLAYER
+========================= */
+
+function convertRetiredPlayer(
+  player
+) {
+
+  if (
+    !player ||
+    typeof player !== "object"
+  ) {
+
+    return null;
+
+  }
+
+  const firstName =
+    player.first_name ||
+    "";
+
+  const lastName =
+    player.last_name ||
+    "";
+
+  const fullName =
+    player.full_name ||
+    (
+      firstName +
+      " " +
+      lastName
+    ).trim();
+
+  if (!fullName) {
+    return null;
+  }
+
+  /*
+     RETIRED / FORMER PLAYERS
+
+     Sleeper does not mark these players as
+     currently active.
+
+     This allows former players such as
+     A.J. Bouye to live in a separate section
+     instead of appearing with current players.
+  */
+
+  if (
+    player.active === true
+  ) {
+
+    return null;
+
+  }
+
+  const position =
+    player.position ||
+    "Former Player";
+
+  const team =
+    player.team ||
+    "";
+
+  const matchingTeam =
+    teams.find(
+      function(teamData) {
+
+        return (
+          teamData.abbreviation ===
+          team
+        );
+
+      }
+    );
+
+  let conference =
+    "";
+
+  let division =
+    "";
+
+  let teamName =
+    "";
+
+  if (
+    matchingTeam
+  ) {
+
+    teamName =
+      matchingTeam.name;
+
+    division =
+      matchingTeam.division;
+
+    conference =
+      matchingTeam.division.startsWith(
+        "AFC"
+      )
+        ? "AFC"
+        : "NFC";
+
+  } else {
+
+    teamName =
+      "Former NFL Player";
+
+  }
+
+  return {
+
+    id:
+      player.player_id ||
+      fullName,
+
+    name:
+      fullName,
+
+    position:
+      position,
+
+    team:
+      team,
+
+    teamName:
+      teamName,
+
+    conference:
+      conference,
+
+    division:
+      division,
+
+    college:
+      player.college ||
+      "Not listed",
+
+    number:
+      player.number ||
+      "",
+
+    status:
+      player.status ||
+      "Retired / Former",
+
+    rosterStatus:
+      "Retired",
+
+    injuryStatus:
+      "",
+
+    active:
+      false,
+
+    retired:
+      true,
+
     photo:
       customPlayerPhotos[
         fullName
@@ -1692,8 +1918,20 @@ function convertSleeperPlayer(
 
 async function loadPlayerDatabase() {
 
-  playerLoading.textContent =
-    "Loading current NFL players from Sleeper...";
+  if (
+    playerType ===
+    "current"
+  ) {
+
+    playerLoading.textContent =
+      "Loading current NFL players from Sleeper...";
+
+  } else {
+
+    playerLoading.textContent =
+      "Loading retired players from Sleeper...";
+
+  }
 
   try {
 
@@ -1707,7 +1945,18 @@ async function loadPlayerDatabase() {
         .map(
           function(player) {
 
-            return convertSleeperPlayer(
+            if (
+              playerType ===
+              "current"
+            ) {
+
+              return convertSleeperPlayer(
+                player
+              );
+
+            }
+
+            return convertRetiredPlayer(
               player
             );
 
@@ -1762,8 +2011,20 @@ async function loadPlayerDatabase() {
 
     populatePlayerFilters();
 
-    playerLoading.textContent =
-      "Current roster data automatically provided by Sleeper.";
+    if (
+      playerType ===
+      "current"
+    ) {
+
+      playerLoading.textContent =
+        "Current roster data automatically provided by Sleeper.";
+
+    } else {
+
+      playerLoading.textContent =
+        "Retired and former player data automatically provided by Sleeper.";
+
+    }
 
     applyPlayerFilters();
 
@@ -1796,6 +2057,84 @@ async function loadPlayerDatabase() {
 ========================= */
 
 let players = [];
+
+/* =========================
+   SET PLAYER TYPE
+========================= */
+
+function setPlayerType(
+  type
+) {
+
+  playerType =
+    type;
+
+  currentPlayersTab.classList.toggle(
+    "active",
+    type === "current"
+  );
+
+  retiredPlayersTab.classList.toggle(
+    "active",
+    type === "retired"
+  );
+
+  searchBox.value =
+    "";
+
+  positionFilter.value =
+    "";
+
+  teamFilter.value =
+    "";
+
+  conferenceFilter.value =
+    "";
+
+  divisionFilter.value =
+    "";
+
+  statusFilter.value =
+    "";
+
+  sortFilter.value =
+    "nameAsc";
+
+  playerResults.innerHTML =
+    "";
+
+  playerCount.textContent =
+    "";
+
+  loadPlayerDatabase();
+
+}
+
+/* =========================
+   PLAYER TYPE BUTTONS
+========================= */
+
+currentPlayersTab.addEventListener(
+  "click",
+  function() {
+
+    setPlayerType(
+      "current"
+    );
+
+  }
+);
+
+retiredPlayersTab.addEventListener(
+  "click",
+  function() {
+
+    setPlayerType(
+      "retired"
+    );
+
+  }
+);
 
 /* =========================
    POPULATE FILTERS
@@ -1990,17 +2329,26 @@ function getFilteredPlayers() {
             .includes(
               searchText
             ) ||
-          player.teamName
+          (
+            player.teamName ||
+            ""
+          )
             .toLowerCase()
             .includes(
               searchText
             ) ||
-          player.team
+          (
+            player.team ||
+            ""
+          )
             .toLowerCase()
             .includes(
               searchText
             ) ||
-          player.position
+          (
+            player.position ||
+            ""
+          )
             .toLowerCase()
             .includes(
               searchText
@@ -2070,8 +2418,12 @@ function getFilteredPlayers() {
       ) {
 
         const teamCompare =
-          a.teamName.localeCompare(
-            b.teamName
+          (
+            a.teamName ||
+            ""
+          ).localeCompare(
+            b.teamName ||
+            ""
           );
 
         if (
@@ -2095,8 +2447,12 @@ function getFilteredPlayers() {
       ) {
 
         const positionCompare =
-          a.position.localeCompare(
-            b.position
+          (
+            a.position ||
+            ""
+          ).localeCompare(
+            b.position ||
+            ""
           );
 
         if (
@@ -2203,7 +2559,22 @@ function displayPlayers(
           </div>
         `;
 
+      } else if (
+        player.retired
+      ) {
+
+        statusHTML = `
+          <div class="player-status">
+            Retired / Former
+          </div>
+        `;
+
       }
+
+      const teamDisplay =
+        player.team
+          ? player.team
+          : "Former NFL Player";
 
       card.innerHTML = `
 
@@ -2220,7 +2591,7 @@ function displayPlayers(
           <p>
             ${player.position}
             •
-            ${player.team}
+            ${teamDisplay}
           </p>
 
           ${statusHTML}
@@ -2342,7 +2713,9 @@ function updateFilterSummary() {
   ) {
 
     filterSummary.textContent =
-      "Showing all currently rostered players";
+      playerType === "current"
+        ? "Showing all current players"
+        : "Showing all retired players";
 
   } else {
 
@@ -2458,7 +2831,10 @@ function openPlayer(
   profileInfo.textContent =
     player.position +
     " • " +
-    player.teamName;
+    (
+      player.teamName ||
+      "Former NFL Player"
+    );
 
   let numberText =
     player.number
@@ -2482,11 +2858,22 @@ function openPlayer(
     "Position: " +
     player.position +
     "<br>Team: " +
-    player.teamName +
-    "<br>Conference: " +
-    player.conference +
-    "<br>Division: " +
-    player.division +
+    (
+      player.teamName ||
+      "Former NFL Player"
+    ) +
+    (
+      player.conference
+        ? "<br>Conference: " +
+          player.conference
+        : ""
+    ) +
+    (
+      player.division
+        ? "<br>Division: " +
+          player.division
+        : ""
+    ) +
     "<br>College: " +
     player.college +
     numberText +
