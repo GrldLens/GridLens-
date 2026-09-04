@@ -1,18 +1,18 @@
-\<!DOCTYPE html>
-\<html lang="en">
-\<head>
-  \<meta charset="UTF-8">
-  \<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  \<title>GridLens | Football Research & Analysis\</title>
+  <title>GridLens | Football Research & Analysis</title>
 
-  \<style>
+  <style>
 
-    /\* =========================================================
+    /* =========================================================
        GLOBAL
-    \========================================================= \*/
+    ========================================================= */
 
-    \* {
+    * {
       box-sizing: border-box;
     }
 
@@ -35,7 +35,7 @@
           rgba(255,255,255,0.035) 119px,
           rgba(255,255,255,0.035) 120px
         ),
-        \#0b100f;
+        #0b100f;
       color: #ffffff;
       min-height: 100vh;
     }
@@ -70,9 +70,9 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    /\* =========================================================
+    /* =========================================================
        HEADER
-    \========================================================= \*/
+    ========================================================= */
 
     header {
       position: relative;
@@ -80,9 +80,9 @@
       background:
         linear-gradient(
           135deg,
-          \#111918,
-          \#1a211f 55%,
-          \#101615
+          #111918,
+          #1a211f 55%,
+          #101615
         );
       padding: 25px 20px 22px;
       text-align: center;
@@ -151,16 +151,16 @@
       transition: 0.2s ease;
     }
 
-    nav a\:hover {
+    nav a:hover {
       background: #00aaff;
       border-color: #00aaff;
       color: #ffffff;
       transform: translateY(-2px);
     }
 
-    /\* =========================================================
+    /* =========================================================
        HERO
-    \========================================================= \*/
+    ========================================================= */
 
     .hero {
       position: relative;
@@ -188,7 +188,7 @@
           rgba(255,255,255,0.08) 100px,
           rgba(255,255,255,0.08) 101px
         ),
-        \#17221d;
+        #17221d;
       box-shadow:
         inset 0 0 80px rgba(0,0,0,0.35),
         0 15px 40px rgba(0,0,0,0.22);
@@ -274,9 +274,9 @@
       transform: rotate(-8deg);
     }
 
-    /\* =========================================================
+    /* =========================================================
        SECTIONS
-    \========================================================= \*/
+    ========================================================= */
 
     .section {
       position: relative;
@@ -329,9 +329,9 @@
       line-height: 1.6;
     }
 
-    /\* =========================================================
+    /* =========================================================
        PLAYER SEARCH & FILTERS
-    \========================================================= \*/
+    ========================================================= */
 
     .player-type-tabs {
       display: flex;
@@ -353,7 +353,7 @@
       transition: 0.2s ease;
     }
 
-    .player-type-tab\:hover {
+    .player-type-tab:hover {
       background: #26312e;
       border-color: #00aaff;
       color: #ffffff;
@@ -374,7 +374,7 @@
       border-radius: 7px;
     }
 
-    \#searchBox {
+    #searchBox {
       width: 100%;
       padding: 14px 15px;
       font-size: 16px;
@@ -386,12 +386,12 @@
       transition: 0.2s ease;
     }
 
-    \#searchBox\:focus {
+    #searchBox:focus {
       border-color: #00aaff;
       box-shadow: 0 0 0 2px rgba(0,170,255,0.10);
     }
 
-    \#searchBox::placeholder {
+    #searchBox::placeholder {
       color: #7e8a86;
     }
 
@@ -414,7 +414,7 @@
       cursor: pointer;
     }
 
-    .player-filter\:focus {
+    .player-filter:focus {
       border-color: #00aaff;
     }
 
@@ -438,7 +438,7 @@
       font-size: 12px;
     }
 
-    .clear-filters\:hover {
+    .clear-filters:hover {
       background: #00aaff;
       color: #ffffff;
     }
@@ -448,9 +448,9 @@
       font-size: 12px;
     }
 
-    /\* =========================================================
+    /* =========================================================
        PLAYER CARDS
-    \========================================================= \*/
+    ========================================================= */
 
     .cards {
       display: grid;
@@ -470,8 +470,8 @@
       background:
         linear-gradient(
           135deg,
-          \#202927,
-          \#181f1d
+          #202927,
+          #181f1d
         );
       color: #ffffff;
       border-radius: 5px;
@@ -492,7 +492,7 @@
       border-radius: 50%;
     }
 
-    .card\:hover {
+    .card:hover {
       transform: translateY(-3px);
       border-color: #00aaff;
       background: #26312e;
@@ -565,9 +565,9 @@
       margin-top: 15px;
     }
 
-    /\* =========================================================
+    /* =========================================================
        PLAYER PAGINATION
-    \========================================================= \*/
+    ========================================================= */
 
     .pagination {
       display: flex;
@@ -590,7 +590,7 @@
       font-weight: bold;
     }
 
-    .pagination button\:hover {
+    .pagination button:hover {
       background: #00aaff;
       border-color: #00aaff;
     }
@@ -601,7 +601,7 @@
       color: #ffffff;
     }
 
-    .pagination button\:disabled {
+    .pagination button:disabled {
       opacity: 0.35;
       cursor: not-allowed;
     }
@@ -614,9 +614,9 @@
       margin-top: 4px;
     }
 
-    /\* =========================================================
+    /* =========================================================
        JUMP TO PAGE
-    \========================================================= \*/
+    ========================================================= */
 
     .page-menu-wrapper {
       position: relative;
@@ -661,15 +661,15 @@
       font-size: 13px;
     }
 
-    .page-menu button\:hover,
+    .page-menu button:hover,
     .page-menu button.active {
       background: #00aaff;
       border-color: #00aaff;
     }
 
-    /\* =========================================================
+    /* =========================================================
        PLAYER PROFILE
-    \========================================================= \*/
+    ========================================================= */
 
     .profile {
       display: none;
@@ -678,8 +678,8 @@
       background:
         linear-gradient(
           145deg,
-          \#18201e,
-          \#101615
+          #18201e,
+          #101615
         );
       border-radius: 7px;
       border: 1px solid #34413d;
@@ -707,7 +707,7 @@
       margin-bottom: 25px;
     }
 
-    .top-back-button\:hover {
+    .top-back-button:hover {
       background: #00aaff;
       color: #ffffff;
     }
@@ -767,7 +767,7 @@
       border: 1px solid #34413d;
     }
 
-    .profile-box\:hover {
+    .profile-box:hover {
       border-color: #00aaff;
     }
 
@@ -797,13 +797,13 @@
       text-transform: uppercase;
     }
 
-    .back-button\:hover {
+    .back-button:hover {
       background: #008dcc;
     }
 
-    /\* =========================================================
+    /* =========================================================
        TEAM SECTION
-    \========================================================= \*/
+    ========================================================= */
 
     .team-search {
       width: 100%;
@@ -818,7 +818,7 @@
       margin-top: 10px;
     }
 
-    .team-search\:focus {
+    .team-search:focus {
       border-color: #00aaff;
     }
 
@@ -830,7 +830,7 @@
       margin-top: 28px;
     }
 
-    .division\:first-child {
+    .division:first-child {
       margin-top: 22px;
     }
 
@@ -866,8 +866,8 @@
       background:
         linear-gradient(
           135deg,
-          \#202927,
-          \#181f1d
+          #202927,
+          #181f1d
         );
       border: 1px solid #34413d;
       border-left: 3px solid #00aaff;
@@ -877,7 +877,7 @@
       transition: 0.2s ease;
     }
 
-    .team-card\:hover {
+    .team-card:hover {
       transform: translateY(-2px);
       background: #26312e;
       border-color: #00aaff;
@@ -899,9 +899,9 @@
       letter-spacing: 1px;
     }
 
-    /\* =========================================================
+    /* =========================================================
        TEAM PROFILE
-    \========================================================= \*/
+    ========================================================= */
 
     .team-profile {
       display: none;
@@ -909,8 +909,8 @@
       background:
         linear-gradient(
           145deg,
-          \#18201e,
-          \#101615
+          #18201e,
+          #101615
         );
       padding: 25px;
       border-radius: 7px;
@@ -945,14 +945,14 @@
       font-size: 12px;
     }
 
-    .team-back\:hover {
+    .team-back:hover {
       background: #00aaff;
       color: #ffffff;
     }
 
-    /\* =========================================================
+    /* =========================================================
        TEAM DROPDOWNS
-    \========================================================= \*/
+    ========================================================= */
 
     .team-dropdown {
       background: #151c1a;
@@ -991,7 +991,7 @@
       content: "▴";
     }
 
-    .team-dropdown summary\:hover {
+    .team-dropdown summary:hover {
       background: #26312e;
     }
 
@@ -999,9 +999,9 @@
       padding: 20px;
     }
 
-    /\* =========================================================
+    /* =========================================================
        SEASON SELECTOR
-    \========================================================= \*/
+    ========================================================= */
 
     .season-list {
       display: grid;
@@ -1021,7 +1021,7 @@
       transition: 0.2s ease;
     }
 
-    .season-button\:hover {
+    .season-button:hover {
       background: #00aaff;
       border-color: #00aaff;
     }
@@ -1057,9 +1057,9 @@
       line-height: 1.6;
     }
 
-    /\* =========================================================
+    /* =========================================================
        DRAFT CLASSES
-    \========================================================= \*/
+    ========================================================= */
 
     .draft-round {
       background: #151c1a;
@@ -1097,7 +1097,7 @@
       content: "▴";
     }
 
-    .draft-round summary\:hover {
+    .draft-round summary:hover {
       background: #26312e;
     }
 
@@ -1116,7 +1116,7 @@
       margin-bottom: 7px;
     }
 
-    .draft-pick\:last-child {
+    .draft-pick:last-child {
       margin-bottom: 0;
     }
 
@@ -1132,9 +1132,9 @@
       font-size: 13px;
     }
 
-    /\* =========================================================
+    /* =========================================================
        AUTOMATED ROSTER
-    \========================================================= \*/
+    ========================================================= */
 
     .roster-loading {
       color: #00aaff;
@@ -1174,7 +1174,7 @@
       transition: 0.15s ease;
     }
 
-    .roster-player\:hover {
+    .roster-player:hover {
       border-color: #00aaff;
       background: #202a27;
     }
@@ -1212,9 +1212,9 @@
       font-size: 12px;
     }
 
-    /\* =========================================================
+    /* =========================================================
        FOOTER
-    \========================================================= \*/
+    ========================================================= */
 
     footer {
       margin-top: 60px;
@@ -1239,9 +1239,9 @@
       text-transform: uppercase;
     }
 
-    /\* =========================================================
+    /* =========================================================
        MOBILE
-    \========================================================= \*/
+    ========================================================= */
 
     @media (max-width: 900px) {
 
@@ -1363,706 +1363,706 @@
 
     }
 
-  \</style>
-\</head>
+  </style>
+</head>
 
-\<body>
+<body>
 
-\<header>
+<header>
 
-  \<img
-    src="images/IMG\_1274.png"
+  <img
+    src="images/IMG_1274.png"
     alt="GridLens Logo"
     class="header-logo"
-  \>
+  >
 
-  \<p>Football Research & Analysis\</p>
+  <p>Football Research & Analysis</p>
 
-  \<nav>
-    \<a href="#home">Home\</a>
-    \<a href="#teams">Teams\</a>
-    \<a href="#players">Players\</a>
-    \<a href="#draft-classes">Draft Classes\</a>
-    \<a href="#analysis">Analysis\</a>
-    \<a href="#stats">Stats\</a>
-  \</nav>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#teams">Teams</a>
+    <a href="#players">Players</a>
+    <a href="#draft-classes">Draft Classes</a>
+    <a href="#analysis">Analysis</a>
+    <a href="#stats">Stats</a>
+  </nav>
 
-\</header>
+</header>
 
-\<!-- =========================================================
+<!-- =========================================================
      HERO
-\========================================================= -->
+========================================================= -->
 
-\<section class="hero" id="home">
+<section class="hero" id="home">
 
-  \<div class="hero-content">
+  <div class="hero-content">
 
-    \<div class="hero-label">
+    <div class="hero-label">
       NFL Research • Film • Data
-    \</div>
+    </div>
 
-    \<h2>
-      See the game\<br>
-      \<span>differently.\</span>
-    \</h2>
+    <h2>
+      See the game<br>
+      <span>differently.</span>
+    </h2>
 
-    \<p>
+    <p>
       Research players, study teams, explore statistics,
       examine roster construction, and build a deeper
       understanding of football through the GridLens.
-    \</p>
+    </p>
 
-  \</div>
+  </div>
 
-  \<div class="hero-playbook">
+  <div class="hero-playbook">
     FIELD • FILM • DATA • ANALYSIS
-  \</div>
+  </div>
 
-\</section>
+</section>
 
-\<!-- =========================================================
+<!-- =========================================================
      PLAYERS
-\========================================================= -->
+========================================================= -->
 
-\<section class="section" id="players">
+<section class="section" id="players">
 
-  \<h2>Players\</h2>
+  <h2>Players</h2>
 
-  \<p>
+  <p>
     Explore current and retired NFL players.
     Player information is automatically provided by Sleeper.
-  \</p>
+  </p>
 
-  \<div class="player-type-tabs">
+  <div class="player-type-tabs">
 
-    \<button
+    <button
       id="currentPlayersTab"
       class="player-type-tab active"
-    \>
+    >
       Current Players
-    \</button>
+    </button>
 
-    \<button
+    <button
       id="retiredPlayersTab"
       class="player-type-tab"
-    \>
+    >
       Retired Players
-    \</button>
+    </button>
 
-  \</div>
+  </div>
 
-  \<div class="player-controls">
+  <div class="player-controls">
 
-    \<input
+    <input
       type="text"
       id="searchBox"
       placeholder="Search by player, team, or position..."
-    \>
+    >
 
-    \<div class="filter-grid">
+    <div class="filter-grid">
 
-      \<select
+      <select
         id="positionFilter"
         class="player-filter"
-      \>
-        \<option value="">All Positions\</option>
-      \</select>
+      >
+        <option value="">All Positions</option>
+      </select>
 
-      \<select
+      <select
         id="teamFilter"
         class="player-filter"
-      \>
-        \<option value="">All Teams\</option>
-      \</select>
+      >
+        <option value="">All Teams</option>
+      </select>
 
-      \<select
+      <select
         id="conferenceFilter"
         class="player-filter"
-      \>
-        \<option value="">All Conferences\</option>
-        \<option value="AFC">AFC\</option>
-        \<option value="NFC">NFC\</option>
-      \</select>
+      >
+        <option value="">All Conferences</option>
+        <option value="AFC">AFC</option>
+        <option value="NFC">NFC</option>
+      </select>
 
-      \<select
+      <select
         id="divisionFilter"
         class="player-filter"
-      \>
-        \<option value="">All Divisions\</option>
-        \<option value="AFC East">AFC East\</option>
-        \<option value="AFC North">AFC North\</option>
-        \<option value="AFC South">AFC South\</option>
-        \<option value="AFC West">AFC West\</option>
-        \<option value="NFC East">NFC East\</option>
-        \<option value="NFC North">NFC North\</option>
-        \<option value="NFC South">NFC South\</option>
-        \<option value="NFC West">NFC West\</option>
-      \</select>
+      >
+        <option value="">All Divisions</option>
+        <option value="AFC East">AFC East</option>
+        <option value="AFC North">AFC North</option>
+        <option value="AFC South">AFC South</option>
+        <option value="AFC West">AFC West</option>
+        <option value="NFC East">NFC East</option>
+        <option value="NFC North">NFC North</option>
+        <option value="NFC South">NFC South</option>
+        <option value="NFC West">NFC West</option>
+      </select>
 
-      \<select
+      <select
         id="statusFilter"
         class="player-filter"
-      \>
-        \<option value="">All Roster Statuses\</option>
-        \<option value="Active">Active\</option>
-        \<option value="Injured">Injured\</option>
-        \<option value="Other">Other\</option>
-      \</select>
+      >
+        <option value="">All Roster Statuses</option>
+        <option value="Active">Active</option>
+        <option value="Injured">Injured</option>
+        <option value="Other">Other</option>
+      </select>
 
-      \<select
+      <select
         id="sortFilter"
         class="player-filter"
-      \>
-        \<option value="nameAsc">A–Z\</option>
-        \<option value="nameDesc">Z–A\</option>
-        \<option value="team">Team\</option>
-        \<option value="position">Position\</option>
-      \</select>
+      >
+        <option value="nameAsc">A–Z</option>
+        <option value="nameDesc">Z–A</option>
+        <option value="team">Team</option>
+        <option value="position">Position</option>
+      </select>
 
-    \</div>
+    </div>
 
-    \<div class="filter-actions">
+    <div class="filter-actions">
 
-      \<button
+      <button
         id="clearFilters"
         class="clear-filters"
-      \>
+      >
         Clear Filters
-      \</button>
+      </button>
 
-      \<span
+      <span
         id="filterSummary"
         class="filter-summary"
-      \>
+      >
         Showing all current players
-      \</span>
+      </span>
 
-    \</div>
+    </div>
 
-  \</div>
+  </div>
 
-  \<p
+  <p
     id="playerLoading"
     class="sleeper-message"
-  \>
+  >
     Loading current NFL players from Sleeper...
-  \</p>
+  </p>
 
-  \<div
+  <div
     class="cards"
     id="playerResults"
-  \>\</div>
+  ></div>
 
-  \<p
+  <p
     id="playerCount"
     class="player-count"
-  \>\</p>
+  ></p>
 
-  \<div
+  <div
     class="pagination"
     id="playerPagination"
-  \>\</div>
+  ></div>
 
-  \<!-- PLAYER PROFILE -->
+  <!-- PLAYER PROFILE -->
 
-  \<div class="profile" id="playerProfile">
+  <div class="profile" id="playerProfile">
 
-    \<button
+    <button
       class="top-back-button"
       id="topBackButton"
       aria-label="Back to Players"
-    \>
+    >
       ←
-    \</button>
+    </button>
 
-    \<img
-      src="images/IMG\_1274.png"
+    <img
+      src="images/IMG_1274.png"
       alt="GridLens Logo"
       class="profile-logo"
-    \>
+    >
 
-    \<div class="profile-header">
+    <div class="profile-header">
 
-      \<div class="player-photo">
+      <div class="player-photo">
 
-        \<img
+        <img
           id="profilePhoto"
           src=""
           alt=""
-        \>
+        >
 
-        \<div
+        <div
           id="profilePlaceholder"
           class="placeholder"
-        \>\</div>
+        ></div>
 
-      \</div>
+      </div>
 
-      \<div>
+      <div>
 
-        \<h2 id="profileName">\</h2>
+        <h2 id="profileName"></h2>
 
-        \<p id="profileInfo">\</p>
+        <p id="profileInfo"></p>
 
-        \<p>GridLens Player Profile\</p>
+        <p>GridLens Player Profile</p>
 
-      \</div>
+      </div>
 
-    \</div>
+    </div>
 
-    \<div class="profile-grid">
+    <div class="profile-grid">
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Player Info\</h3>
+        <h3>Player Info</h3>
 
-        \<p id="profilePlayerInfo">\</p>
+        <p id="profilePlayerInfo"></p>
 
-      \</div>
+      </div>
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>2026 Stats\</h3>
+        <h3>2026 Stats</h3>
 
-        \<p>
-          Passing Yards: —\<br>
-          Touchdowns: —\<br>
-          Interceptions: —\<br>
+        <p>
+          Passing Yards: —<br>
+          Touchdowns: —<br>
+          Interceptions: —<br>
           Completion %: —
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Career Stats\</h3>
+        <h3>Career Stats</h3>
 
-        \<p>
+        <p>
           Career statistics will be added here.
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Strengths\</h3>
+        <h3>Strengths</h3>
 
-        \<p>
+        <p>
           Player strengths and traits will be added here.
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Weaknesses\</h3>
+        <h3>Weaknesses</h3>
 
-        \<p>
+        <p>
           Player weaknesses and areas for improvement
           will be added here.
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Film & Analysis\</h3>
+        <h3>Film & Analysis</h3>
 
-        \<p>
+        <p>
           Film breakdowns and GridLens analysis
           will be added here.
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Analyst Notes\</h3>
+        <h3>Analyst Notes</h3>
 
-        \<p>
+        <p>
           Your personal football research and notes
           will go here.
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-    \</div>
+    </div>
 
-    \<button
+    <button
       class="back-button"
       id="backButton"
-    \>
+    >
       Back to Players
-    \</button>
+    </button>
 
-  \</div>
+  </div>
 
-\</section>
+</section>
 
-\<!-- =========================================================
+<!-- =========================================================
      TEAMS
-\========================================================= -->
+========================================================= -->
 
-\<section class="section" id="teams">
+<section class="section" id="teams">
 
-  \<h2>Teams\</h2>
+  <h2>Teams</h2>
 
-  \<p>
+  <p>
     Search and explore NFL teams by division.
-  \</p>
+  </p>
 
-  \<input
+  <input
     type="text"
     id="teamSearch"
     class="team-search"
     placeholder="Search for a team..."
-  \>
+  >
 
-  \<div id="teamResults">\</div>
+  <div id="teamResults"></div>
 
-  \<!-- TEAM PROFILE -->
+  <!-- TEAM PROFILE -->
 
-  \<div
+  <div
     class="team-profile"
     id="teamProfile"
-  \>
+  >
 
-    \<button
+    <button
       class="team-back"
       id="teamBackButton"
-    \>
+    >
       ← Back to Teams
-    \</button>
+    </button>
 
-    \<h3
+    <h3
       class="team-profile-title"
       id="teamProfileName"
-    \>\</h3>
+    ></h3>
 
-    \<p
+    <p
       class="team-profile-subtitle"
       id="teamProfileInfo"
-    \>\</p>
+    ></p>
 
-    \<!-- 2026 SEASON -->
+    <!-- 2026 SEASON -->
 
-    \<details
+    <details
       class="team-dropdown"
       open
-    \>
+    >
 
-      \<summary>
+      <summary>
         2026 Season
-      \</summary>
+      </summary>
 
-      \<div class="team-dropdown-content">
+      <div class="team-dropdown-content">
 
-        \<div class="season-detail">
+        <div class="season-detail">
 
-          \<h3>2026 Record\</h3>
+          <h3>2026 Record</h3>
 
-          \<div class="season-record">
+          <div class="season-record">
             — - —
-          \</div>
+          </div>
 
-          \<p class="season-placeholder">
+          <p class="season-placeholder">
             2026 team statistics will be added here.
-          \</p>
+          </p>
 
-          \<p class="season-placeholder">
-            Wins: —\<br>
-            Losses: —\<br>
-            Points Per Game: —\<br>
+          <p class="season-placeholder">
+            Wins: —<br>
+            Losses: —<br>
+            Points Per Game: —<br>
             Points Allowed: —
-          \</p>
+          </p>
 
-          \<div class="season-detail">
+          <div class="season-detail">
 
-            \<strong>2026 Schedule & Results\</strong>
+            <strong>2026 Schedule & Results</strong>
 
-            \<p class="season-placeholder">
+            <p class="season-placeholder">
               Schedule and game scores will appear here.
-            \</p>
+            </p>
 
-          \</div>
+          </div>
 
-        \</div>
+        </div>
 
-      \</div>
+      </div>
 
-    \</details>
+    </details>
 
-    \<!-- PREVIOUS SEASONS -->
+    <!-- PREVIOUS SEASONS -->
 
-    \<details class="team-dropdown">
+    <details class="team-dropdown">
 
-      \<summary>
+      <summary>
         Previous Seasons
-      \</summary>
+      </summary>
 
-      \<div class="team-dropdown-content">
+      <div class="team-dropdown-content">
 
-        \<p class="season-placeholder">
+        <p class="season-placeholder">
           Select a season to view that team's
           record, statistics, schedule, and game results.
-        \</p>
+        </p>
 
-        \<div class="season-list">
+        <div class="season-list">
 
-          \<button class="season-button" data-season="2025">2025\</button>
-          \<button class="season-button" data-season="2024">2024\</button>
-          \<button class="season-button" data-season="2023">2023\</button>
-          \<button class="season-button" data-season="2022">2022\</button>
-          \<button class="season-button" data-season="2021">2021\</button>
-          \<button class="season-button" data-season="2020">2020\</button>
-          \<button class="season-button" data-season="2019">2019\</button>
-          \<button class="season-button" data-season="2018">2018\</button>
-          \<button class="season-button" data-season="2017">2017\</button>
-          \<button class="season-button" data-season="2016">2016\</button>
+          <button class="season-button" data-season="2025">2025</button>
+          <button class="season-button" data-season="2024">2024</button>
+          <button class="season-button" data-season="2023">2023</button>
+          <button class="season-button" data-season="2022">2022</button>
+          <button class="season-button" data-season="2021">2021</button>
+          <button class="season-button" data-season="2020">2020</button>
+          <button class="season-button" data-season="2019">2019</button>
+          <button class="season-button" data-season="2018">2018</button>
+          <button class="season-button" data-season="2017">2017</button>
+          <button class="season-button" data-season="2016">2016</button>
 
-        \</div>
+        </div>
 
-        \<div
+        <div
           class="season-detail"
           id="previousSeasonDetail"
-        \>
+        >
 
-          \<h3>Select a Season\</h3>
+          <h3>Select a Season</h3>
 
-          \<p class="season-placeholder">
+          <p class="season-placeholder">
             Choose a year above to view the
             record, statistics, schedule, and
             game results for that season.
-          \</p>
+          </p>
 
-        \</div>
+        </div>
 
-      \</div>
+      </div>
 
-    \</details>
+    </details>
 
-    \<!-- ROSTER -->
+    <!-- ROSTER -->
 
-    \<details class="team-dropdown">
+    <details class="team-dropdown">
 
-      \<summary>
+      <summary>
         Roster
-      \</summary>
+      </summary>
 
-      \<div class="team-dropdown-content">
+      <div class="team-dropdown-content">
 
-        \<div id="teamRoster">
+        <div id="teamRoster">
 
-          \<p class="roster-loading">
+          <p class="roster-loading">
             Roster will load when a team is selected.
-          \</p>
+          </p>
 
-        \</div>
+        </div>
 
-      \</div>
+      </div>
 
-    \</details>
+    </details>
 
-    \<!-- TEAM INFO -->
+    <!-- TEAM INFO -->
 
-    \<div class="profile-grid">
+    <div class="profile-grid">
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Team Info\</h3>
+        <h3>Team Info</h3>
 
-        \<p id="teamInfo">\</p>
+        <p id="teamInfo"></p>
 
-      \</div>
+      </div>
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Offense\</h3>
+        <h3>Offense</h3>
 
-        \<p>
+        <p>
           Offensive scheme, personnel,
           tendencies, and analysis will be added here.
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Defense\</h3>
+        <h3>Defense</h3>
 
-        \<p>
+        <p>
           Defensive scheme, personnel,
           tendencies, and analysis will be added here.
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-      \<div class="profile-box">
+      <div class="profile-box">
 
-        \<h3>Film & Analysis\</h3>
+        <h3>Film & Analysis</h3>
 
-        \<p>
+        <p>
           Team film breakdowns and GridLens
           analysis will be added here.
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-    \</div>
+    </div>
 
-  \</div>
+  </div>
 
-\</section>
+</section>
 
-\<!-- =========================================================
+<!-- =========================================================
      DRAFT CLASSES
-\========================================================= -->
+========================================================= -->
 
-\<section class="section" id="draft-classes">
+<section class="section" id="draft-classes">
 
-  \<h2>NFL Draft Classes\</h2>
+  <h2>NFL Draft Classes</h2>
 
-  \<p>
+  <p>
     Explore NFL draft classes by year.
     Draft data will be added to GridLens later.
-  \</p>
+  </p>
 
-  \<details class="team-dropdown" open>
+  <details class="team-dropdown" open>
 
-    \<summary>
+    <summary>
       Draft Class Year
-    \</summary>
+    </summary>
 
-    \<div class="team-dropdown-content">
+    <div class="team-dropdown-content">
 
-      \<p class="season-placeholder">
+      <p class="season-placeholder">
         Select a draft year to view the draft order,
         rounds, selections, and drafted players.
-      \</p>
+      </p>
 
-      \<div class="season-list">
+      <div class="season-list">
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2026"
-        \>
+        >
           2026
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2025"
-        \>
+        >
           2025
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2024"
-        \>
+        >
           2024
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2023"
-        \>
+        >
           2023
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2022"
-        \>
+        >
           2022
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2021"
-        \>
+        >
           2021
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2020"
-        \>
+        >
           2020
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2019"
-        \>
+        >
           2019
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2018"
-        \>
+        >
           2018
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2017"
-        \>
+        >
           2017
-        \</button>
+        </button>
 
-        \<button
+        <button
           class="season-button draft-class-button"
           data-draft-year="2016"
-        \>
+        >
           2016
-        \</button>
+        </button>
 
-      \</div>
+      </div>
 
-      \<div
+      <div
         class="season-detail"
         id="draftClassDetail"
-      \>
+      >
 
-        \<h3>
+        <h3>
           Select a Draft Class
-        \</h3>
+        </h3>
 
-        \<p class="season-placeholder">
+        <p class="season-placeholder">
           Choose a year above to view that NFL draft class.
-        \</p>
+        </p>
 
-      \</div>
+      </div>
 
-    \</div>
+    </div>
 
-  \</details>
+  </details>
 
-\</section>
+</section>
 
-\<!-- =========================================================
+<!-- =========================================================
      FOOTER
-\========================================================= -->
+========================================================= -->
 
-\<footer>
+<footer>
 
-  \<img
-    src="images/IMG\_1274.png"
+  <img
+    src="images/IMG_1274.png"
     alt="GridLens Logo"
     class="footer-logo"
-  \>
+  >
 
-  \<p>GridLens © 2026\</p>
+  <p>GridLens © 2026</p>
 
-\</footer>
+</footer>
 
-\<script>
+<script>
 
-/\* =========================================================
+/* =========================================================
    TEAM DATABASE
-\========================================================= \*/
+========================================================= */
 
 const teams = [
 
@@ -2108,34 +2108,34 @@ const teams = [
 
 ];
 
-/\* =========================================================
+/* =========================================================
    SLEEPER PLAYER DATABASE
-\========================================================= \*/
+========================================================= */
 
-const SLEEPER\_PLAYERS\_URL =
-  "[https://api.sleeper.app/v1/players/nfl](https://api.sleeper.app/v1/players/nfl)";
+const SLEEPER_PLAYERS_URL =
+  "https://api.sleeper.app/v1/players/nfl";
 
-const PLAYER\_CACHE\_KEY =
-  "gridlens\_sleeper\_players";
+const PLAYER_CACHE_KEY =
+  "gridlens_sleeper_players";
 
-const PLAYER\_CACHE\_TIME\_KEY =
-  "gridlens\_sleeper\_players\_time";
+const PLAYER_CACHE_TIME_KEY =
+  "gridlens_sleeper_players_time";
 
-const CACHE\_DURATION =
-  60 \* 60 \* 1000;
+const CACHE_DURATION =
+  60 * 60 * 1000;
 
 let sleeperPlayers = null;
 
 const customPlayerPhotos = {
 
   "Patrick Mahomes":
-    "images/IMG\_1818.png"
+    "images/IMG_1818.png"
 
 };
 
-/\* =========================================================
+/* =========================================================
    PLAYER ELEMENTS
-\========================================================= \*/
+========================================================= */
 
 const searchBox =
   document.getElementById(
@@ -2302,29 +2302,29 @@ const draftClassDetail =
     "draftClassDetail"
   );
 
-/\* =========================================================
+/* =========================================================
    PLAYER PAGINATION
-\========================================================= \*/
+========================================================= */
 
-const PLAYERS\_PER\_PAGE =
+const PLAYERS_PER_PAGE =
   20;
 
-const PAGE\_BUTTONS\_VISIBLE =
+const PAGE_BUTTONS_VISIBLE =
   6;
 
 let currentPlayerPage =
   1;
 
-/\* =========================================================
+/* =========================================================
    PLAYER TYPE
-\========================================================= \*/
+========================================================= */
 
 let playerType =
   "current";
 
-/\* =========================================================
+/* =========================================================
    GET SLEEPER PLAYERS
-\========================================================= \*/
+========================================================= */
 
 async function getSleeperPlayers() {
 
@@ -2334,12 +2334,12 @@ async function getSleeperPlayers() {
 
   const savedPlayers =
     localStorage.getItem(
-      PLAYER\_CACHE\_KEY
+      PLAYER_CACHE_KEY
     );
 
   const savedTime =
     localStorage.getItem(
-      PLAYER\_CACHE\_TIME\_KEY
+      PLAYER_CACHE_TIME_KEY
     );
 
   if (
@@ -2347,7 +2347,7 @@ async function getSleeperPlayers() {
     savedTime &&
     Date.now() -
       Number(savedTime) <
-      CACHE\_DURATION
+      CACHE_DURATION
   ) {
 
     try {
@@ -2362,11 +2362,11 @@ async function getSleeperPlayers() {
     } catch (error) {
 
       localStorage.removeItem(
-        PLAYER\_CACHE\_KEY
+        PLAYER_CACHE_KEY
       );
 
       localStorage.removeItem(
-        PLAYER\_CACHE\_TIME\_KEY
+        PLAYER_CACHE_TIME_KEY
       );
 
     }
@@ -2375,7 +2375,7 @@ async function getSleeperPlayers() {
 
   const response =
     await fetch(
-      SLEEPER\_PLAYERS\_URL
+      SLEEPER_PLAYERS_URL
     );
 
   if (!response.ok) {
@@ -2392,14 +2392,14 @@ async function getSleeperPlayers() {
   try {
 
     localStorage.setItem(
-      PLAYER\_CACHE\_KEY,
+      PLAYER_CACHE_KEY,
       JSON.stringify(
         sleeperPlayers
       )
     );
 
     localStorage.setItem(
-      PLAYER\_CACHE\_TIME\_KEY,
+      PLAYER_CACHE_TIME_KEY,
       Date.now().toString()
     );
 
@@ -2416,9 +2416,9 @@ async function getSleeperPlayers() {
 
 }
 
-/\* =========================================================
+/* =========================================================
    CONVERT CURRENT PLAYER
-\========================================================= \*/
+========================================================= */
 
 function convertSleeperPlayer(
   player
@@ -2434,15 +2434,15 @@ function convertSleeperPlayer(
   }
 
   const firstName =
-    player.first\_name ||
+    player.first_name ||
     "";
 
   const lastName =
-    player.last\_name ||
+    player.last_name ||
     "";
 
   const fullName =
-    player.full\_name ||
+    player.full_name ||
     (
       firstName +
       " " +
@@ -2491,7 +2491,7 @@ function convertSleeperPlayer(
     "Active";
 
   const injuryStatus =
-    player.injury\_status ||
+    player.injury_status ||
     "";
 
   const sleeperStatus =
@@ -2499,7 +2499,6 @@ function convertSleeperPlayer(
     "";
 
   if (
-     
     injuryStatus
   ) {
 
