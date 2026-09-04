@@ -194,33 +194,97 @@
         0 15px 40px rgba(0,0,0,0.22);
     }
 
-    .hero::before {
-      content: "";
+    /* Football field frame around the entire hero */
+
+    .hero-field {
       position: absolute;
-      right: -80px;
-      top: 50%;
-      width: 600px;
-      height: 600px;
-      transform: translateY(-50%);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 50%;
-      box-shadow:
-        0 0 0 70px rgba(255,255,255,0.025),
-        0 0 0 140px rgba(255,255,255,0.02);
+      inset: 12px;
+      z-index: 1;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 7px;
+      pointer-events: none;
     }
 
-    .hero::after {
+    .hero-field::before {
       content: "";
       position: absolute;
-      right: 100px;
-      top: 50%;
-      width: 350px;
-      height: 1px;
-      background: rgba(0,170,255,0.32);
-      transform: rotate(-28deg);
-      box-shadow:
-        0 100px 0 rgba(0,170,255,0.18),
-        0 -100px 0 rgba(0,170,255,0.18);
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: rgba(255,255,255,0.11);
+      transform: translateX(-50%);
+    }
+
+    .hero-endzone {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 11%;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .hero-endzone-left {
+      left: 0;
+      border-right: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .hero-endzone-right {
+      right: 0;
+      border-left: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .hero-endzone::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(255,255,255,0.035);
+    }
+
+    .hero-hashes {
+      position: absolute;
+      left: 11%;
+      right: 11%;
+      height: 8px;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 43px,
+          rgba(255,255,255,0.12) 43px,
+          rgba(255,255,255,0.12) 45px,
+          transparent 45px,
+          transparent 86px
+        );
+    }
+
+    .hero-hashes-top {
+      top: -1px;
+    }
+
+    .hero-hashes-bottom {
+      bottom: -1px;
+    }
+
+    .hero-fifty {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.20);
+      background: #17221d;
+      padding: 0 5px;
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .hero-fifty-top {
+      top: 3px;
+    }
+
+    .hero-fifty-bottom {
+      bottom: 3px;
     }
 
     .hero-content {
@@ -267,6 +331,7 @@
       position: absolute;
       right: 55px;
       bottom: 32px;
+      z-index: 2;
       color: rgba(255,255,255,0.17);
       font-size: 10px;
       letter-spacing: 3px;
@@ -1286,12 +1351,31 @@
         font-size: 16px;
       }
 
-      .hero::before {
-        right: -280px;
+      .hero-field {
+        inset: 9px;
       }
 
-      .hero::after {
-        display: none;
+      .hero-endzone {
+        width: 14%;
+      }
+
+      .hero-hashes {
+        left: 14%;
+        right: 14%;
+        height: 7px;
+      }
+
+      .hero-fifty {
+        font-size: 9px;
+        padding: 0 4px;
+      }
+
+      .hero-fifty-top {
+        top: 3px;
+      }
+
+      .hero-fifty-bottom {
+        bottom: 3px;
       }
 
       .section {
@@ -1395,6 +1479,26 @@
 
 <section class="hero" id="home">
 
+  <div class="hero-field" aria-hidden="true">
+
+    <div class="hero-endzone hero-endzone-left"></div>
+
+    <div class="hero-endzone hero-endzone-right"></div>
+
+    <div class="hero-hashes hero-hashes-top"></div>
+
+    <div class="hero-hashes hero-hashes-bottom"></div>
+
+    <div class="hero-fifty hero-fifty-top">
+      50
+    </div>
+
+    <div class="hero-fifty hero-fifty-bottom">
+      50
+    </div>
+
+  </div>
+
   <div class="hero-content">
 
     <div class="hero-label">
@@ -1403,7 +1507,7 @@
 
     <h2>
       See the game<br>
-      <span>differently.</span>
+      through a different <span>lens.</span>
     </h2>
 
     <p>
