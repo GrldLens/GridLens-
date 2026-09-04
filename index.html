@@ -1557,15 +1557,21 @@ function convertSleeperPlayer(
      A player must have:
      1. A current NFL team
      2. A listed football position
+     3. Sleeper must mark the player as active
 
-     Retired and legacy players such as
-     A.J. Bouye normally have no current
-     NFL team, so they are excluded.
+     This prevents retired/former players such as
+     A.J. Bouye from appearing in the current
+     Players section.
+
+     Injured players can still appear because
+     current players can be injured while remaining
+     active in Sleeper's player database.
   */
 
   if (
     !team ||
-    !position
+    !position ||
+    player.active !== true
   ) {
 
     return null;
@@ -2623,7 +2629,8 @@ async function loadTeamRoster(
             player &&
             player.team ===
               team.abbreviation &&
-            player.position
+            player.position &&
+            player.active === true
           );
 
         }
