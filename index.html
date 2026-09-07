@@ -5824,27 +5824,20 @@ function gridLensNormalize(value) {
 function gridLensPlayerMatches(player, query) {
   const q = gridLensNormalize(query);
 
-  return [
-    player.name,
-    player.position,
-    player.team,
-    player.teamName,
-    player.college,
-    player.conference,
-    player.division,
-    player.status
-  ]
-    .map(gridLensNormalize)
-    .some(value => value.includes(q));
+  /* Player searches should ONLY search the player's name.
+     This prevents a team, college, position, etc. from
+     causing unrelated players to appear. */
+  return gridLensNormalize(player.name).includes(q);
 }
 
 function gridLensTeamMatches(team, query) {
   const q = gridLensNormalize(query);
 
+  /* Team searches should use the team name or abbreviation only.
+     Division/conference text should never create a team result. */
   return [
     team.name,
-    team.abbreviation,
-    team.division
+    team.abbreviation
   ]
     .map(gridLensNormalize)
     .some(value => value.includes(q));
