@@ -1731,6 +1731,50 @@ header {
 body {
   position: relative;
 }
+
+/* Global Search results */
+.gridlens-search-results {
+  margin-top: 8px;
+  max-height: 230px;
+  overflow-y: auto;
+  display: none;
+}
+.gridlens-search-results.open {
+  display: block;
+}
+.gridlens-search-result {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 11px;
+  margin-bottom: 6px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 6px;
+  background: #202020;
+  color: #fff;
+  text-decoration: none;
+  text-align: left;
+}
+.gridlens-search-result:hover {
+  border-color: rgba(0,170,255,.55);
+  background: #282828;
+}
+.gridlens-search-result-name {
+  display: block;
+  font-weight: 800;
+  font-size: 13px;
+}
+.gridlens-search-result-meta {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255,255,255,.52);
+  font-size: 10px;
+}
+.gridlens-search-empty {
+  color: rgba(255,255,255,.5);
+  font-size: 12px;
+  padding: 9px 2px;
+}
 </style>
 </head>
 
@@ -1746,7 +1790,7 @@ body {
 
 <div class="gridlens-menu-search">
 <label class="gridlens-menu-search-label" for="gridlensGlobalSearch">GLOBAL SEARCH</label>
-<input class="gridlens-global-search" id="gridlensGlobalSearch" type="search" placeholder="Search GridLens..." autocomplete="off">
+<input class="gridlens-global-search" id="gridlensGlobalSearch" type="search" placeholder="Search GridLens..." autocomplete="off"><div class="gridlens-search-results" id="gridlensSearchResults" aria-live="polite"></div>
 </div>
 
 <nav class="gridlens-menu-links">
@@ -5720,6 +5764,162 @@ gridlensMenuButton.addEventListener("click",()=>gridlensMenuPanel.classList.cont
 gridlensMenuOverlay.addEventListener("click",closeGridLensMenu);
 gridlensMenuLinks.forEach(link=>link.addEventListener("click",closeGridLensMenu));
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeGridLensMenu()});
+
+
+/* =========================================================
+   GRIDLENS GLOBAL SEARCH
+========================================================= */
+
+const globalSearchInput = document.getElementById("gridlensGlobalSearch");
+const globalSearchResults = document.getElementById("gridlensSearchResults");
+
+function gridLensNormalize(value) {
+  return String(value || "").toLowerCase().trim();
+}
+
+function gridLensGetPlayerName(player) {
+  return player.name || [player.firstName, player.lastName].filter(Boolean).join(" ") || player.fullName || "";
+}
+
+function gridLensGetPlayerMeta(player) {
+  const position = player.position || player.pos || "Player";
+  const team = player.team || player.teamName || "";
+  const college = player.college || player.school || "";
+  return [position, team, college].filter(Boolean).join(" • ");
+}
+
+function gridLensGetTeamName(team) {
+  return team.name || team.teamName || team.displayName || "";
+}
+
+function gridLensSearch(query) {
+  const q = gridLensNormalize(query);
+  if (!q) return [];
+
+  const results = [];
+
+  if (typeof players !== "undefined" && Array.isArray(players)) {
+    players.forEach((player, index) => {
+      const name = gridLensGetPlayerName(player);
+      const meta = gridLensGetPlayerMeta(player);
+      const searchable = gridLensNormalize([
+        name,
+        player.position,
+        player.pos,
+        player.team,
+        player.teamName,
+        player.college,
+        player.school,
+        player.draft,
+        player.draftYear
+      ].join(" "));
+
+      if (searchable.includes(q)) {
+        results.push({
+          type: "Player",
+          name,
+          meta,
+          score: gridlensNormalize(name) === q ? 0 : 1,
+          action: () => {
+            if (typeof showPlayerProfile === "function") {
+              showPlayerProfile(index);
+            } else {
+              const playerSection = document.getElementById("players");
+              if (playerSection) playerSection.scrollIntoView({behavior:"smooth"});
+            }
+          }
+        });
+      }
+    });
+  }
+
+  if (typeof teams !== "undefined" && Array.isArray(teams)) {
+    teams.forEach((team, index) => {
+      const name = gridLensGetTeamName(team);
+      const searchable = gridLensNormalize([
+        name,
+        team.abbreviation,
+        team.abbr,
+        team.city,
+        team.division,
+        team.conference
+      ].join(" "));
+
+      if (searchable.includes(q)) {
+        results.push({
+          type: "Team",
+          name,
+          meta: [team.abbreviation || team.abbr, team.division].filter(Boolean).join(" • "),
+          score: gridlensNormalize(name) === q ? 0 : 1,
+          action: () => {
+            if (typeof showTeamProfile === "function") {
+              showTeamProfile(index);
+            } else {
+              const teamSection = document.getElementById("teams");
+              if (teamSection) teamSection.scrollIntoView({behavior:"smooth"});
+            }
+          }
+        });
+      }
+    });
+  }
+
+  return results
+    .sort((a,b) => a.score - b.score)
+    .slice(0, 8);
+}
+
+function renderGridLensSearch(query) {
+  if (!globalSearchResults) return;
+
+  if (!gridlensNormalize(query)) {
+    globalSearchResults.classList.remove("open");
+    globalSearchResults.innerHTML = "";
+    return;
+  }
+
+  const results = gridLensSearch(query);
+  globalSearchResults.classList.add("open");
+
+  if (!results.length) {
+    globalSearchResults.innerHTML = '<div class="gridlens-search-empty">No GridLens results found.</div>';
+    return;
+  }
+
+  globalSearchResults.innerHTML = results.map((result, i) => `
+    <a href="#" class="gridlens-search-result" data-search-index="${i}">
+      <span class="gridlens-search-result-name">${result.name}</span>
+      <span class="gridlens-search-result-meta">${result.type}${result.meta ? " • " + result.meta : ""}</span>
+    </a>
+  `).join("");
+
+  globalSearchResults.querySelectorAll(".gridlens-search-result").forEach(link => {
+    link.addEventListener("click", event => {
+      event.preventDefault();
+      const index = Number(link.dataset.searchIndex);
+      const result = results[index];
+      if (result) result.action();
+      if (typeof closeGridLensMenu === "function") closeGridLensMenu();
+      globalSearchInput.value = "";
+      globalSearchResults.classList.remove("open");
+    });
+  });
+}
+
+if (globalSearchInput) {
+  globalSearchInput.addEventListener("input", () => {
+    renderGridLensSearch(globalSearchInput.value);
+  });
+
+  globalSearchInput.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      globalSearchInput.value = "";
+      globalSearchResults.classList.remove("open");
+      globalSearchResults.innerHTML = "";
+      globalSearchInput.blur();
+    }
+  });
+}
 
 </script>
 
