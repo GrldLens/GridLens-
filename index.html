@@ -3306,7 +3306,31 @@ async function loadPlayerDatabase() {
         .filter(
           function(player) {
 
-            return player !== null;
+            if (
+              player === null
+            ) {
+
+              return false;
+
+            }
+
+            /*
+              Sleeper includes team-defense entries such as
+              "Baltimore Ravens" as players. Remove those
+              entries, but keep real defensive and special-teams
+              players (DL, LB, DB, K, P, LS, etc.).
+            */
+            if (
+              player.position &&
+              player.position.toString().toUpperCase() ===
+                "DEF"
+            ) {
+
+              return false;
+
+            }
+
+            return true;
 
           }
         );
