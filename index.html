@@ -2287,6 +2287,11 @@ body {
 .compare-input-wrap label{display:block;color:#7e8a86;font-size:10px;font-weight:800;letter-spacing:1.4px;margin-bottom:7px;}
 .compare-input{width:100%;box-sizing:border-box;padding:12px 13px;background:#202927;color:#fff;border:1px solid #43504c;border-radius:5px;outline:none;font-size:14px;}
 .compare-input:focus{border-color:#00aaff;box-shadow:0 0 0 2px rgba(0,170,255,.10);}
+.compare-search-wrap{position:relative;}
+.compare-suggestions{display:none;position:absolute;left:0;right:0;top:calc(100% + 5px);z-index:20;background:#202020;border:1px solid #3a4542;border-radius:6px;box-shadow:0 10px 24px rgba(0,0,0,.35);overflow:hidden;max-height:286px;}
+.compare-suggestion{display:block;width:100%;padding:11px 13px;background:#202020;color:#fff;border:0;border-bottom:1px solid #303030;text-align:left;cursor:pointer;font-size:13px;}
+.compare-suggestion:last-child{border-bottom:0;}
+.compare-suggestion:hover{background:#292929;color:#00aaff;}
 .compare-vs{align-self:center;text-align:center;color:#00aaff;font-size:12px;font-weight:900;letter-spacing:1px;padding-top:20px;}
 .compare-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;}
 .compare-button{padding:11px 18px;background:#00aaff;color:#fff;border:1px solid #00aaff;border-radius:5px;cursor:pointer;font-size:12px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;}
@@ -2580,16 +2585,21 @@ body {
     <div class="compare-select-grid">
       <div class="compare-input-wrap">
         <label for="comparePlayerA">PLAYER A</label>
-        <input class="compare-input" id="comparePlayerA" list="comparePlayerOptions" placeholder="Search for a player..." autocomplete="off">
+        <div class="compare-search-wrap">
+          <input class="compare-input" id="comparePlayerA" placeholder="Search for a player..." autocomplete="off">
+          <div class="compare-suggestions" id="compareSuggestionsA"></div>
+        </div>
       </div>
       <div class="compare-vs">VS</div>
       <div class="compare-input-wrap">
         <label for="comparePlayerB">PLAYER B</label>
-        <input class="compare-input" id="comparePlayerB" list="comparePlayerOptions" placeholder="Search for a player..." autocomplete="off">
+        <div class="compare-search-wrap">
+          <input class="compare-input" id="comparePlayerB" placeholder="Search for a player..." autocomplete="off">
+          <div class="compare-suggestions" id="compareSuggestionsB"></div>
+        </div>
       </div>
     </div>
 
-    <datalist id="comparePlayerOptions"></datalist>
 
     <div class="compare-actions">
       <button class="compare-button" id="comparePlayersButton" type="button">Compare Players</button>
@@ -3133,7 +3143,7 @@ body {
 
   <div class="standings-playoff">
 
-    <h3>Possible Playoff Picture</h3>
+    <h3>Playoff Picture</h3>
 
     <p>
       Placeholder playoff structure for the future live standings feed.
@@ -3471,9 +3481,14 @@ const comparePlayerB =
     "comparePlayerB"
   );
 
-const comparePlayerOptions =
+const compareSuggestionsA =
   document.getElementById(
-    "comparePlayerOptions"
+    "compareSuggestionsA"
+  );
+
+const compareSuggestionsB =
+  document.getElementById(
+    "compareSuggestionsB"
   );
 
 const comparePlayersButton =
@@ -5249,29 +5264,80 @@ function updateFilterSummary() {
 
 function populateComparePlayers() {
 
-  comparePlayerOptions.innerHTML =
-    "";
-
-  players
-    .slice()
-    .sort(function(a, b) {
-      return a.name.localeCompare(b.name);
-    })
-    .forEach(function(player) {
-
-      const option =
-        document.createElement("option");
-
-      option.value =
-        player.name;
-
-      comparePlayerOptions.appendChild(
-        option
-      );
-
-    });
+  // Suggestions are generated as the user types.
 
 }
+
+function renderCompareSuggestions(input, container) {
+
+  const query = input.value.toLowerCase().trim();
+  container.innerHTML = "";
+
+  if (!query) {
+    container.style.display = "none";
+    return;
+  }
+
+  const matches = players
+    .filter(function(player) {
+      return player.name.toLowerCase().includes(query);
+    })
+    .sort(function(a, b) {
+      const aStarts = a.name.toLowerCase().startsWith(query);
+      const bStarts = b.name.toLowerCase().startsWith(query);
+      if (aStarts !== bStarts) return aStarts ? -1 : 1;
+      return a.name.localeCompare(b.name);
+    })
+    .slice(0, 6);
+
+  if (!matches.length) {
+    container.style.display = "none";
+    return;
+  }
+
+  matches.forEach(function(player) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "compare-suggestion";
+    button.textContent = player.name;
+    button.addEventListener("mousedown", function(event) {
+      event.preventDefault();
+      input.value = player.name;
+      container.style.display = "none";
+      input.focus();
+    });
+    container.appendChild(button);
+  });
+
+  container.style.display = "block";
+}
+
+function hideCompareSuggestions() {
+  compareSuggestionsA.style.display = "none";
+  compareSuggestionsB.style.display = "none";
+}
+
+comparePlayerA.addEventListener("input", function() {
+  renderCompareSuggestions(comparePlayerA, compareSuggestionsA);
+});
+
+comparePlayerB.addEventListener("input", function() {
+  renderCompareSuggestions(comparePlayerB, compareSuggestionsB);
+});
+
+comparePlayerA.addEventListener("focus", function() {
+  renderCompareSuggestions(comparePlayerA, compareSuggestionsA);
+});
+
+comparePlayerB.addEventListener("focus", function() {
+  renderCompareSuggestions(comparePlayerB, compareSuggestionsB);
+});
+
+document.addEventListener("click", function(event) {
+  if (!event.target.closest(".compare-search-wrap")) {
+    hideCompareSuggestions();
+  }
+});
 
 function findComparePlayer(value) {
 
