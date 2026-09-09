@@ -2282,6 +2282,9 @@ body {
 
 .articles-section{margin-top:30px}.articles-section .section-kicker{color:#00aaff;font-size:12px;font-weight:800;letter-spacing:2px}.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.article-card{padding:22px;background:#202020;border:1px solid #343434;border-radius:9px;transition:.2s ease;cursor:pointer}.article-card:hover{border-color:#00aaff;transform:translateY(-3px);box-shadow:0 0 18px rgba(0,170,255,.12)}.article-tag{color:#00aaff;font-size:11px;font-weight:800;letter-spacing:1.5px;margin-bottom:12px}.article-card h3{color:#fff;font-size:21px;margin:0 0 10px}.article-card p{color:#b5b5b5;line-height:1.6;font-size:14px;margin-bottom:20px}.article-meta{display:flex;justify-content:space-between;padding-top:13px;border-top:1px solid #333;color:#777;font-size:12px}.article-read{color:#00aaff;font-weight:700}@media(max-width:900px){.articles-grid{grid-template-columns:1fr}}
 </style>
+<style>
+.news-featured{margin:6px 0 22px;padding:28px;background:linear-gradient(145deg,#202b2b,#151a1a);border:1px solid #3a4644;border-left:3px solid #00aaff;border-radius:10px}.news-featured-tag{color:#00aaff;font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:12px}.news-featured h3{color:#fff;font-size:30px;margin:0 0 10px}.news-featured p{color:#b8b8b8;line-height:1.65;font-size:15px;max-width:800px;margin:0 0 22px}.news-featured-meta{display:flex;justify-content:space-between;padding-top:14px;border-top:1px solid #34403e;color:#777;font-size:11px;font-weight:700;letter-spacing:1px}.news-filter-row{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 30px}.news-filter{background:#202020;color:#aaa;border:1px solid #363636;border-radius:6px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer}.news-filter:hover,.news-filter.active{color:#fff;border-color:#00aaff;background:#20272a}.news-latest-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:15px}.news-latest-heading h3{color:#fff;font-size:25px;margin:3px 0 0}.news-status{color:#666;font-size:10px;font-weight:800;letter-spacing:1.2px;padding-bottom:5px}@media(max-width:900px){.news-grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.news-featured{padding:22px}.news-featured h3{font-size:25px}.news-grid{grid-template-columns:1fr}.news-latest-heading{align-items:flex-start;flex-direction:column}.news-status{padding-bottom:0}}
+</style>
 </head>
 
 <body>
@@ -3128,15 +3131,20 @@ body {
 </section>
 
 <section class="section news-section" id="news">
-  <div class="section-kicker">GRIDLENS // NEWS</div>
-  <h2>GridLens News</h2>
-  <p class="section-subtitle">The latest NFL updates, transactions, injuries, signings, releases, and league news.</p>
+  <div class="section-kicker">GRIDLENS // NEWS</div><h2>NFL News</h2>
+  <p class="section-subtitle">What is happening around the league — transactions, injuries, team updates, and more.</p>
+  <div class="news-featured"><div class="news-featured-tag">FEATURED NEWS</div><h3>The Latest Around the NFL</h3><p>GridLens News will bring the biggest league developments into one place, with current updates organized so you can quickly see what happened and where it matters.</p><div class="news-featured-meta"><span>GRIDLENS NEWS</span><span>Latest Update</span></div></div>
+  <div class="news-filter-row"><button class="news-filter active" type="button">All News</button><button class="news-filter" type="button">Transactions</button><button class="news-filter" type="button">Injuries</button><button class="news-filter" type="button">Teams</button><button class="news-filter" type="button">Players</button><button class="news-filter" type="button">League</button></div>
+  <div class="news-latest-heading"><div><div class="section-kicker">GRIDLENS // LATEST</div><h3>Latest News</h3></div><span class="news-status">LIVE DATA COMING LATER</span></div>
   <div class="news-grid">
     <article class="news-card"><div class="news-tag">TRANSACTIONS</div><h3>NFL Transactions</h3><p>Track signings, releases, trades, waivers, and other roster moves across the league.</p><div class="news-meta"><span>GridLens News</span><span>Latest</span></div></article>
+    <article class="news-card"><div class="news-tag">INJURIES</div><h3>Injury Updates</h3><p>Follow important player health updates and how injuries can affect teams throughout the season.</p><div class="news-meta"><span>GridLens News</span><span>Latest</span></div></article>
     <article class="news-card"><div class="news-tag">TEAM NEWS</div><h3>Team Updates</h3><p>Follow the latest developments around all 32 NFL teams as the season moves forward.</p><div class="news-meta"><span>GridLens News</span><span>Latest</span></div></article>
-    <article class="news-card"><div class="news-tag">PLAYER NEWS</div><h3>Player Updates</h3><p>Stay current on injuries, roster changes, player movement, and other important updates.</p><div class="news-meta"><span>GridLens News</span><span>Latest</span></div></article>
+    <article class="news-card"><div class="news-tag">PLAYER NEWS</div><h3>Player Updates</h3><p>Stay current on player movement, roster changes, performances, and other important developments.</p><div class="news-meta"><span>GridLens News</span><span>Latest</span></div></article>
+    <article class="news-card"><div class="news-tag">LEAGUE</div><h3>Around the NFL</h3><p>League-wide developments, major announcements, and stories that affect the bigger football landscape.</p><div class="news-meta"><span>GridLens News</span><span>Latest</span></div></article>
+    <article class="news-card"><div class="news-tag">ROSTER MOVES</div><h3>Roster Watch</h3><p>A focused place for the roster moves and personnel decisions shaping teams across the league.</p><div class="news-meta"><span>GridLens News</span><span>Latest</span></div></article>
   </div>
-  <div class="news-placeholder">Automated NFL news will be connected to GridLens later.</div>
+  <div class="news-placeholder">Automated NFL news will be connected to GridLens later. The layout is ready for live updates.</div>
 </section>
 
 <section class="section" id="draft-classes">
@@ -6765,5 +6773,6 @@ loadPlayerDatabase = async function() {
 
 </script>
 
+<script>(function(){const filters=document.querySelectorAll('.news-filter'),cards=document.querySelectorAll('.news-card');filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(b=>b.classList.remove('active'));f.classList.add('active');const c=f.textContent.trim().toUpperCase();cards.forEach(card=>{const t=card.querySelector('.news-tag')?.textContent.trim().toUpperCase()||'';const k=c.replace(' NEWS','');card.style.display=(c==='ALL NEWS'||t.includes(k)||(k==='TEAMS'&&t.includes('TEAM'))||(k==='PLAYERS'&&t.includes('PLAYER'))) ? '' : 'none';});}));})();</script>
 </body>
 </html>
