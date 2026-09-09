@@ -2364,6 +2364,10 @@ body {
 </style>
 <style>
 .news-featured{margin:6px 0 22px;padding:28px;background:linear-gradient(145deg,#202b2b,#151a1a);border:1px solid #3a4644;border-left:3px solid #00aaff;border-radius:10px}.news-featured-tag{color:#00aaff;font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:12px}.news-featured h3{color:#fff;font-size:30px;margin:0 0 10px}.news-featured p{color:#b8b8b8;line-height:1.65;font-size:15px;max-width:800px;margin:0 0 22px}.news-featured-meta{display:flex;justify-content:space-between;padding-top:14px;border-top:1px solid #34403e;color:#777;font-size:11px;font-weight:700;letter-spacing:1px}.news-filter-row{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 30px}.news-filter{background:#202020;color:#aaa;border:1px solid #363636;border-radius:6px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer}.news-filter:hover,.news-filter.active{color:#fff;border-color:#00aaff;background:#20272a}.news-latest-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:15px}.news-latest-heading h3{color:#fff;font-size:25px;margin:3px 0 0}.news-status{color:#666;font-size:10px;font-weight:800;letter-spacing:1.2px;padding-bottom:5px}@media(max-width:900px){.news-grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.news-featured{padding:22px}.news-featured h3{font-size:25px}.news-grid{grid-template-columns:1fr}.news-latest-heading{align-items:flex-start;flex-direction:column}.news-status{padding-bottom:0}}
+
+.stats-category-button { cursor:pointer; }
+.stats-category-button.active { box-shadow:0 0 0 1px #00aaff inset, 0 0 14px rgba(0,170,255,.10); }
+.stats-category-note { margin-top:16px; padding:14px 16px; border:1px solid #303030; border-radius:8px; background:#1b1b1b; color:#858585; font-size:12px; line-height:1.5; }
 </style>
 </head>
 
@@ -3237,20 +3241,15 @@ body {
   <div class="stats-season-row"><span class="stats-season-badge">2026 SEASON • LAYOUT PREVIEW</span></div>
 
   <div class="stats-section-title"><h3>League Leaders</h3><div class="stats-section-line"></div></div>
-  <div class="stats-category-row">
-    <button class="stats-category-button active" type="button">Passing</button>
-    <button class="stats-category-button" type="button">Rushing</button>
-    <button class="stats-category-button" type="button">Receiving</button>
-    <button class="stats-category-button" type="button">Defense</button>
+  <div class="stats-category-row" role="tablist" aria-label="League leader categories">
+    <button class="stats-category-button active" type="button" data-stats-category="Passing" role="tab" aria-selected="true">Passing</button>
+    <button class="stats-category-button" type="button" data-stats-category="Rushing" role="tab" aria-selected="false">Rushing</button>
+    <button class="stats-category-button" type="button" data-stats-category="Receiving" role="tab" aria-selected="false">Receiving</button>
+    <button class="stats-category-button" type="button" data-stats-category="Defense" role="tab" aria-selected="false">Defense</button>
+    <button class="stats-category-button" type="button" data-stats-category="Kicking" role="tab" aria-selected="false">Kicking</button>
   </div>
-  <div class="stats-leader-grid">
-    <div class="stats-leader-card"><div class="stats-leader-header"><h4>Passing Yards</h4><span>TOP 5</span></div><table class="stats-table"><thead><tr><th>Player</th><th>Team</th><th>YDS</th></tr></thead><tbody>
-      <tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr>
-    </tbody></table></div>
-    <div class="stats-leader-card"><div class="stats-leader-header"><h4>Passing Touchdowns</h4><span>TOP 5</span></div><table class="stats-table"><thead><tr><th>Player</th><th>Team</th><th>TD</th></tr></thead><tbody>
-      <tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr>
-    </tbody></table></div>
-  </div>
+  <div class="stats-leader-grid" id="statsLeaderGrid"></div>
+  <div class="stats-category-note" id="statsCategoryNote">Select a category to preview the GridLens stat leaders layout. Real values will be connected later.</div>
 
   <div class="stats-section-title"><h3>Team Stats</h3><div class="stats-section-line"></div></div>
   <div class="stats-team-grid">
@@ -7174,5 +7173,79 @@ loadPlayerDatabase = async function() {
 </script>
 
 <script>(function(){const filters=document.querySelectorAll('.news-filter'),cards=document.querySelectorAll('.news-card');filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(b=>b.classList.remove('active'));f.classList.add('active');const c=f.textContent.trim().toUpperCase();cards.forEach(card=>{const t=card.querySelector('.news-tag')?.textContent.trim().toUpperCase()||'';const k=c.replace(' NEWS','');card.style.display=(c==='ALL NEWS'||t.includes(k)||(k==='TEAMS'&&t.includes('TEAM'))||(k==='PLAYERS'&&t.includes('PLAYER'))) ? '' : 'none';});}));})();</script>
+
+<script>
+(function(){
+  const buttons = document.querySelectorAll('.stats-category-button');
+  const grid = document.getElementById('statsLeaderGrid');
+  const note = document.getElementById('statsCategoryNote');
+  if (!buttons.length || !grid) return;
+
+  const categoryData = {
+    Passing: [
+      ['Passing Yards','YDS'],
+      ['Passing Touchdowns','TD'],
+      ['Completion Percentage','CMP%'],
+      ['Passer Rating','RTG']
+    ],
+    Rushing: [
+      ['Rushing Yards','YDS'],
+      ['Rushing Touchdowns','TD'],
+      ['Yards Per Carry','YPC'],
+      ['Rushing Attempts','ATT']
+    ],
+    Receiving: [
+      ['Receiving Yards','YDS'],
+      ['Receiving Touchdowns','TD'],
+      ['Receptions','REC'],
+      ['Yards Per Reception','YPR']
+    ],
+    Defense: [
+      ['Tackles','TKL'],
+      ['Sacks','SACK'],
+      ['Interceptions','INT'],
+      ['Forced Fumbles','FF']
+    ],
+    Kicking: [
+      ['Field Goals Made','FG'],
+      ['Field Goal Percentage','FG%'],
+      ['Extra Points Made','XP'],
+      ['Kicking Points','PTS']
+    ]
+  };
+
+  function emptyRows(stat){
+    return Array.from({length:5}, () => '<tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr>').join('');
+  }
+
+  function renderCategory(category){
+    const stats = categoryData[category] || categoryData.Passing;
+    grid.innerHTML = stats.slice(0,2).map(([title,abbr]) => `
+      <div class="stats-leader-card">
+        <div class="stats-leader-header"><h4>${title}</h4><span>TOP 5</span></div>
+        <table class="stats-table">
+          <thead><tr><th>Player</th><th>Team</th><th>${abbr}</th></tr></thead>
+          <tbody>${emptyRows(abbr)}</tbody>
+        </table>
+      </div>`).join('');
+
+    note.textContent = `${category} leaders selected. The table structure is active, but real ${category.toLowerCase()} values will be connected to GridLens data later.`;
+  }
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.dataset.statsCategory || button.textContent.trim();
+      buttons.forEach(b => {
+        const active = b === button;
+        b.classList.toggle('active', active);
+        b.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      renderCategory(category);
+    });
+  });
+
+  renderCategory('Passing');
+})();
+</script>
 </body>
 </html>
