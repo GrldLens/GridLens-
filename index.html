@@ -2275,6 +2275,39 @@ body {
 .research-card p { color:#b5b5b5; line-height:1.6; font-size:14px; margin-bottom:20px; }
 .research-meta { display:flex; justify-content:space-between; gap:10px; padding-top:13px; border-top:1px solid #333; color:#777; font-size:12px; }
 @media (max-width:900px) { .research-grid { grid-template-columns:1fr; } }
+
+/* =========================================================
+   COMPARE PLAYERS
+   ========================================================= */
+.compare-players-panel{margin-top:22px;padding:22px;background:linear-gradient(145deg,#18201e,#101615);border:1px solid #34413d;border-radius:9px;}
+.compare-kicker{color:#00aaff;font-size:11px;font-weight:900;letter-spacing:2px;margin-bottom:7px;}
+.compare-title{color:#fff;font-size:25px;margin:0 0 7px;}
+.compare-subtitle{color:#9ca7a3;font-size:13px;line-height:1.5;margin:0 0 18px;}
+.compare-select-grid{display:grid;grid-template-columns:1fr 60px 1fr;gap:12px;align-items:end;}
+.compare-input-wrap label{display:block;color:#7e8a86;font-size:10px;font-weight:800;letter-spacing:1.4px;margin-bottom:7px;}
+.compare-input{width:100%;box-sizing:border-box;padding:12px 13px;background:#202927;color:#fff;border:1px solid #43504c;border-radius:5px;outline:none;font-size:14px;}
+.compare-input:focus{border-color:#00aaff;box-shadow:0 0 0 2px rgba(0,170,255,.10);}
+.compare-vs{align-self:center;text-align:center;color:#00aaff;font-size:12px;font-weight:900;letter-spacing:1px;padding-top:20px;}
+.compare-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px;}
+.compare-button{padding:11px 18px;background:#00aaff;color:#fff;border:1px solid #00aaff;border-radius:5px;cursor:pointer;font-size:12px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;}
+.compare-button:hover{box-shadow:0 0 18px rgba(0,170,255,.18);}
+.compare-clear{padding:11px 15px;background:transparent;color:#00aaff;border:1px solid #00aaff;border-radius:5px;cursor:pointer;font-size:12px;font-weight:800;}
+.compare-message{color:#68736f;font-size:12px;margin:0;}
+.compare-results{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
+.compare-card{background:#202020;border:1px solid #343434;border-radius:8px;padding:20px;min-width:0;}
+.compare-card.winner{border-color:#00aaff;box-shadow:0 0 16px rgba(0,170,255,.10);}
+.compare-card-header{display:flex;align-items:center;gap:13px;padding-bottom:15px;margin-bottom:15px;border-bottom:1px solid #333;}
+.compare-avatar{width:52px;height:52px;border-radius:6px;object-fit:cover;background:#151515;border:1px solid #3a3a3a;flex-shrink:0;}
+.compare-avatar-placeholder{width:52px;height:52px;border-radius:6px;background:#151515;border:1px solid #3a3a3a;display:flex;align-items:center;justify-content:center;color:#00aaff;font-weight:900;font-size:20px;flex-shrink:0;}
+.compare-player-name{color:#fff;font-size:19px;font-weight:800;margin:0 0 4px;}
+.compare-player-info{color:#858f8b;font-size:12px;margin:0;}
+.compare-stat-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid #2e2e2e;}
+.compare-stat-row:last-child{border-bottom:0;}
+.compare-stat-label{color:#8e9894;font-size:12px;}
+.compare-stat-value{color:#fff;font-size:13px;font-weight:800;}
+.compare-empty{grid-column:1/-1;padding:22px;border:1px dashed #3a3a3a;border-radius:8px;text-align:center;color:#69736f;font-size:13px;}
+@media(max-width:700px){.compare-select-grid{grid-template-columns:1fr;gap:10px}.compare-vs{padding:0}.compare-results{grid-template-columns:1fr}.compare-empty{grid-column:auto;}}
+
 </style>
 
 <style>
@@ -2535,6 +2568,38 @@ body {
 
     </div>
 
+  </div>
+
+
+  <!-- COMPARE PLAYERS -->
+  <div class="compare-players-panel" id="comparePlayers">
+    <div class="compare-kicker">GRIDLENS // PLAYER COMPARISON</div>
+    <h3 class="compare-title">Compare Players</h3>
+    <p class="compare-subtitle">Choose two players to compare them side by side. The comparison is currently a layout preview; real statistical comparisons can be connected later.</p>
+
+    <div class="compare-select-grid">
+      <div class="compare-input-wrap">
+        <label for="comparePlayerA">PLAYER A</label>
+        <input class="compare-input" id="comparePlayerA" list="comparePlayerOptions" placeholder="Search for a player..." autocomplete="off">
+      </div>
+      <div class="compare-vs">VS</div>
+      <div class="compare-input-wrap">
+        <label for="comparePlayerB">PLAYER B</label>
+        <input class="compare-input" id="comparePlayerB" list="comparePlayerOptions" placeholder="Search for a player..." autocomplete="off">
+      </div>
+    </div>
+
+    <datalist id="comparePlayerOptions"></datalist>
+
+    <div class="compare-actions">
+      <button class="compare-button" id="comparePlayersButton" type="button">Compare Players</button>
+      <button class="compare-clear" id="clearCompareButton" type="button">Clear</button>
+      <p class="compare-message" id="compareMessage">Select two players to begin.</p>
+    </div>
+
+    <div class="compare-results" id="compareResults">
+      <div class="compare-empty">Your two-player comparison will appear here.</div>
+    </div>
   </div>
 
   <p
@@ -3396,6 +3461,41 @@ const playerProfile =
     "playerProfile"
   );
 
+const comparePlayerA =
+  document.getElementById(
+    "comparePlayerA"
+  );
+
+const comparePlayerB =
+  document.getElementById(
+    "comparePlayerB"
+  );
+
+const comparePlayerOptions =
+  document.getElementById(
+    "comparePlayerOptions"
+  );
+
+const comparePlayersButton =
+  document.getElementById(
+    "comparePlayersButton"
+  );
+
+const clearCompareButton =
+  document.getElementById(
+    "clearCompareButton"
+  );
+
+const compareMessage =
+  document.getElementById(
+    "compareMessage"
+  );
+
+const compareResults =
+  document.getElementById(
+    "compareResults"
+  );
+
 const profileName =
   document.getElementById(
     "profileName"
@@ -4079,6 +4179,7 @@ async function loadPlayerDatabase() {
     players =
       uniquePlayers;
 
+    populateComparePlayers();
     populatePlayerFilters();
 
     if (
@@ -5141,6 +5242,158 @@ function updateFilterSummary() {
   }
 
 }
+
+/* =========================================================
+   COMPARE PLAYERS
+========================================================= */
+
+function populateComparePlayers() {
+
+  comparePlayerOptions.innerHTML =
+    "";
+
+  players
+    .slice()
+    .sort(function(a, b) {
+      return a.name.localeCompare(b.name);
+    })
+    .forEach(function(player) {
+
+      const option =
+        document.createElement("option");
+
+      option.value =
+        player.name;
+
+      comparePlayerOptions.appendChild(
+        option
+      );
+
+    });
+
+}
+
+function findComparePlayer(value) {
+
+  const query =
+    value.toLowerCase().trim();
+
+  if (!query) {
+    return null;
+  }
+
+  return players.find(function(player) {
+    return player.name.toLowerCase() === query;
+  }) || null;
+
+}
+
+function comparePlayerCard(player) {
+
+  const team =
+    player.teamName ||
+    "Former NFL Player";
+
+  const position =
+    player.position ||
+    "—";
+
+  const image =
+    player.photo
+      ? `<img class="compare-avatar" src="${player.photo}" alt="${player.name} headshot">`
+      : `<div class="compare-avatar-placeholder">${player.name.charAt(0)}</div>`;
+
+  return `
+    <div class="compare-card">
+      <div class="compare-card-header">
+        ${image}
+        <div>
+          <h4 class="compare-player-name">${player.name}</h4>
+          <p class="compare-player-info">${position} • ${team}</p>
+        </div>
+      </div>
+      <div class="compare-stat-row"><span class="compare-stat-label">2026 Stats</span><span class="compare-stat-value">Coming Soon</span></div>
+      <div class="compare-stat-row"><span class="compare-stat-label">Career Stats</span><span class="compare-stat-value">Coming Soon</span></div>
+      <div class="compare-stat-row"><span class="compare-stat-label">Strengths</span><span class="compare-stat-value">Coming Soon</span></div>
+      <div class="compare-stat-row"><span class="compare-stat-label">Weaknesses</span><span class="compare-stat-value">Coming Soon</span></div>
+      <div class="compare-stat-row"><span class="compare-stat-label">GridLens Analysis</span><span class="compare-stat-value">Coming Soon</span></div>
+    </div>
+  `;
+
+}
+
+function runPlayerComparison() {
+
+  const playerA =
+    findComparePlayer(comparePlayerA.value);
+
+  const playerB =
+    findComparePlayer(comparePlayerB.value);
+
+  if (!playerA || !playerB) {
+    compareMessage.textContent =
+      "Choose two players from the player database.";
+    compareResults.innerHTML =
+      '<div class="compare-empty">Both players must be selected before a comparison can be shown.</div>';
+    return;
+  }
+
+  if (
+    playerA.name.toLowerCase() ===
+    playerB.name.toLowerCase()
+  ) {
+    compareMessage.textContent =
+      "Choose two different players.";
+    compareResults.innerHTML =
+      '<div class="compare-empty">A player cannot be compared against themselves.</div>';
+    return;
+  }
+
+  compareMessage.textContent =
+    "Comparison ready. Detailed statistics will be connected later.";
+
+  compareResults.innerHTML =
+    comparePlayerCard(playerA) +
+    comparePlayerCard(playerB);
+
+}
+
+comparePlayersButton.addEventListener(
+  "click",
+  runPlayerComparison
+);
+
+clearCompareButton.addEventListener(
+  "click",
+  function() {
+
+    comparePlayerA.value = "";
+    comparePlayerB.value = "";
+    compareMessage.textContent =
+      "Select two players to begin.";
+    compareResults.innerHTML =
+      '<div class="compare-empty">Your two-player comparison will appear here.</div>';
+
+  }
+);
+
+comparePlayerA.addEventListener(
+  "keydown",
+  function(event) {
+    if (event.key === "Enter") {
+      runPlayerComparison();
+    }
+  }
+);
+
+comparePlayerB.addEventListener(
+  "keydown",
+  function(event) {
+    if (event.key === "Enter") {
+      runPlayerComparison();
+    }
+  }
+);
 
 /* =========================================================
    APPLY PLAYER FILTERS
