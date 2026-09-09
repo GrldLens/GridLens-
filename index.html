@@ -1479,6 +1479,48 @@
       line-height: 1.6;
     }
 
+
+
+/* =========================================================
+   GRIDLENS STATS
+========================================================= */
+.stats-section { margin-top:30px; }
+.stats-intro { max-width:760px; margin:0 auto 26px; text-align:center; color:#aeb8b4; line-height:1.6; }
+.stats-season-row { display:flex; justify-content:center; margin-bottom:26px; }
+.stats-season-badge { display:inline-block; padding:8px 14px; border:1px solid rgba(0,170,255,.5); border-radius:999px; color:#00aaff; background:rgba(0,170,255,.07); font-size:11px; font-weight:800; letter-spacing:1.5px; }
+.stats-section-title { display:flex; align-items:center; gap:12px; margin:30px 0 16px; }
+.stats-section-title h3 { margin:0; color:#fff; font-size:24px; }
+.stats-section-line { flex:1; height:1px; background:rgba(0,170,255,.28); }
+.stats-category-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
+.stats-category-button { border:1px solid #3a3a3a; background:#202020; color:#cfcfcf; padding:9px 13px; border-radius:7px; font-size:12px; font-weight:700; cursor:pointer; }
+.stats-category-button.active,.stats-category-button:hover { border-color:#00aaff; color:#fff; background:#242424; }
+.stats-leader-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.stats-leader-card { background:#202020; border:1px solid #343434; border-radius:9px; overflow:hidden; }
+.stats-leader-header { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:15px 18px; border-bottom:1px solid #333; }
+.stats-leader-header h4 { margin:0; color:#fff; font-size:16px; }
+.stats-leader-header span { color:#00aaff; font-size:11px; font-weight:800; letter-spacing:1px; }
+.stats-table { width:100%; border-collapse:collapse; }
+.stats-table th,.stats-table td { padding:12px 14px; border-bottom:1px solid #2f2f2f; text-align:left; font-size:13px; }
+.stats-table th { color:#777; font-size:10px; text-transform:uppercase; letter-spacing:1px; }
+.stats-table td { color:#cfcfcf; }
+.stats-table tr:last-child td { border-bottom:0; }
+.stats-player-name { color:#fff !important; font-weight:700; }
+.stats-placeholder { color:#777 !important; }
+.stats-team-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.stats-team-card { background:#202020; border:1px solid #343434; border-radius:9px; padding:20px; }
+.stats-team-card h4 { margin:0 0 15px; color:#fff; font-size:17px; }
+.stats-metric-row { display:flex; justify-content:space-between; gap:15px; padding:11px 0; border-bottom:1px solid #2f2f2f; }
+.stats-metric-row:last-child { border-bottom:0; }
+.stats-metric-label { color:#999; font-size:13px; }
+.stats-metric-value { color:#fff; font-weight:800; }
+.stats-search-box { width:100%; box-sizing:border-box; padding:13px 15px; border:1px solid #3a3a3a; border-radius:8px; background:#202020; color:#fff; outline:none; font-size:14px; margin-bottom:16px; }
+.stats-search-box:focus { border-color:#00aaff; box-shadow:0 0 0 2px rgba(0,170,255,.08); }
+.stats-player-panel { background:#202020; border:1px solid #343434; border-radius:9px; padding:20px; }
+.stats-player-panel h4 { margin:0 0 8px; color:#fff; font-size:18px; }
+.stats-player-panel p { margin:0; color:#999; line-height:1.6; font-size:13px; }
+.stats-note { margin-top:22px; padding:14px 16px; border-left:3px solid #00aaff; background:#1c1c1c; color:#888; font-size:12px; line-height:1.6; }
+@media (max-width:760px) { .stats-leader-grid,.stats-team-grid { grid-template-columns:1fr; } .stats-section-title h3 { font-size:20px; } .stats-table th,.stats-table td { padding:10px 9px; } }
+
     /* =========================================================
        GRIDLENS STANDINGS
     ========================================================= */
@@ -2989,7 +3031,7 @@ body {
 
   <p class="standings-intro">
     See how every team stacks up by conference and division,
-    then view the current possible playoff picture.
+    then view the current playoff picture.
     Live standings data will be connected to an automated data source later.
   </p>
 
@@ -3182,6 +3224,45 @@ body {
 <!-- =========================================================
      DRAFT CLASSES
 ========================================================= -->
+
+
+
+<!-- =========================================================
+     STATS
+========================================================= -->
+<section class="section stats-section" id="stats">
+  <div class="section-kicker">GRIDLENS // STATISTICS</div>
+  <h2>Stats</h2>
+  <p class="stats-intro">Explore league leaders, team statistics, and player production through the GridLens lens. Live statistics will be connected to an automated data source later.</p>
+  <div class="stats-season-row"><span class="stats-season-badge">2026 SEASON • LAYOUT PREVIEW</span></div>
+
+  <div class="stats-section-title"><h3>League Leaders</h3><div class="stats-section-line"></div></div>
+  <div class="stats-category-row">
+    <button class="stats-category-button active" type="button">Passing</button>
+    <button class="stats-category-button" type="button">Rushing</button>
+    <button class="stats-category-button" type="button">Receiving</button>
+    <button class="stats-category-button" type="button">Defense</button>
+  </div>
+  <div class="stats-leader-grid">
+    <div class="stats-leader-card"><div class="stats-leader-header"><h4>Passing Yards</h4><span>TOP 5</span></div><table class="stats-table"><thead><tr><th>Player</th><th>Team</th><th>YDS</th></tr></thead><tbody>
+      <tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr>
+    </tbody></table></div>
+    <div class="stats-leader-card"><div class="stats-leader-header"><h4>Passing Touchdowns</h4><span>TOP 5</span></div><table class="stats-table"><thead><tr><th>Player</th><th>Team</th><th>TD</th></tr></thead><tbody>
+      <tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr><tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="stats-section-title"><h3>Team Stats</h3><div class="stats-section-line"></div></div>
+  <div class="stats-team-grid">
+    <div class="stats-team-card"><h4>Offense</h4><div class="stats-metric-row"><span class="stats-metric-label">Points Per Game</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Total Yards</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Passing Yards</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Rushing Yards</span><span class="stats-metric-value">—</span></div></div>
+    <div class="stats-team-card"><h4>Defense</h4><div class="stats-metric-row"><span class="stats-metric-label">Points Allowed</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Yards Allowed</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Sacks</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Takeaways</span><span class="stats-metric-value">—</span></div></div>
+  </div>
+
+  <div class="stats-section-title"><h3>Player Stats</h3><div class="stats-section-line"></div></div>
+  <input class="stats-search-box" type="text" placeholder="Search a player to view statistics..." aria-label="Search player statistics">
+  <div class="stats-player-panel"><h4>Player Statistics</h4><p>Select a player to view season production, career statistics, and category-by-category performance.</p></div>
+  <div class="stats-note">GridLens is currently displaying the statistics layout only. Real player and team statistics will be connected later without filling this section with made-up numbers.</div>
+</section>
 
 <section class="section research-section" id="research">
   <div class="section-kicker">GRIDLENS // RESEARCH</div>
