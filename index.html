@@ -2258,6 +2258,21 @@ body {
   font-size:12px;
   padding:9px 2px;
 }
+
+/* =========================================================
+   LATEST GRIDLENS RESEARCH
+   ========================================================= */
+.research-section { margin-top:30px; }
+.research-section .section-kicker { color:#00aaff; font-size:12px; font-weight:800; letter-spacing:2px; }
+.research-section .section-subtitle { color:#a9a9a9; margin:0 0 24px; }
+.research-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.research-card { padding:22px; background:#202020; border:1px solid #343434; border-radius:9px; transition:.2s ease; cursor:pointer; }
+.research-card:hover { border-color:#00aaff; transform:translateY(-3px); box-shadow:0 0 18px rgba(0,170,255,.12); }
+.research-tag { color:#00aaff; font-size:11px; font-weight:800; letter-spacing:1.5px; margin-bottom:12px; }
+.research-card h3 { color:#fff; font-size:21px; margin:0 0 10px; }
+.research-card p { color:#b5b5b5; line-height:1.6; font-size:14px; margin-bottom:20px; }
+.research-meta { display:flex; justify-content:space-between; gap:10px; padding-top:13px; border-top:1px solid #333; color:#777; font-size:12px; }
+@media (max-width:900px) { .research-grid { grid-template-columns:1fr; } }
 </style>
 </head>
 
@@ -2277,6 +2292,7 @@ body {
 <a class="gridlens-menu-link" href="#home"><span class="gridlens-menu-link-icon">⌂</span><span>Home</span></a>
 <a class="gridlens-menu-link" href="#teams"><span class="gridlens-menu-link-icon">🏈</span><span>Teams</span></a>
 <a class="gridlens-menu-link" href="#standings"><span class="gridlens-menu-link-icon">🏆</span><span>Standings</span></a>
+<a class="gridlens-menu-link" href="#research"><span class="gridlens-menu-link-icon">▤</span><span>Research</span></a>
 <a class="gridlens-menu-link" href="#players"><span class="gridlens-menu-link-icon">◉</span><span>Players</span></a>
 <a class="gridlens-menu-link" href="#draft"><span class="gridlens-menu-link-icon">▣</span><span>Draft Classes</span></a>
 <a class="gridlens-menu-link" href="#analysis"><span class="gridlens-menu-link-icon">▤</span><span>Analysis</span></a>
@@ -3077,6 +3093,17 @@ body {
 <!-- =========================================================
      DRAFT CLASSES
 ========================================================= -->
+
+<section class="section research-section" id="research">
+  <div class="section-kicker">GRIDLENS // RESEARCH</div>
+  <h2>Latest GridLens Research</h2>
+  <p class="section-subtitle">Football research, analysis, and insights through a different lens.</p>
+  <div class="research-grid">
+    <article class="research-card"><div class="research-tag">PLAYER ANALYSIS</div><h3>Quarterback Development</h3><p>Breaking down quarterback development, decision-making, and how young passers are building their games.</p><div class="research-meta"><span>GridLens Research</span><span>2026</span></div></article>
+    <article class="research-card"><div class="research-tag">TEAM ANALYSIS</div><h3>Building a Complete Roster</h3><p>Examining how teams build their rosters and where depth can make the biggest difference over a season.</p><div class="research-meta"><span>GridLens Research</span><span>2026</span></div></article>
+    <article class="research-card"><div class="research-tag">FILM STUDY</div><h3>Seeing the Game Differently</h3><p>Exploring formations, tendencies, matchups, and the details that can be missed when watching the game at a surface level.</p><div class="research-meta"><span>GridLens Research</span><span>2026</span></div></article>
+  </div>
+</section>
 
 <section class="section" id="draft-classes">
 
