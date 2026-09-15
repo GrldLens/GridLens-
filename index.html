@@ -2398,12 +2398,63 @@ body {
 
 <style id="gridlens-screen-navigation-styles">
 /* =========================================================
-   GRIDLENS SCREEN NAVIGATION
+   GRIDLENS SCREEN SYSTEM
 ========================================================= */
+:root{--gl-blue:#00aaff;--gl-bg:#151515;--gl-panel:#1d1d1d;--gl-panel-2:#202020;--gl-line:rgba(255,255,255,.08)}
 .gridlens-screen-hidden{display:none !important}
-.gridlens-screen-active{animation:gridLensScreenIn .18s ease}
-@keyframes gridLensScreenIn{from{opacity:.92;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-body.gridlens-screen-mode{scroll-behavior:smooth}
+.gridlens-screen-active{display:block;animation:gridLensScreenIn .32s cubic-bezier(.2,.75,.2,1) both}
+@keyframes gridLensScreenIn{from{opacity:0;transform:translateY(18px) scale(.992)}to{opacity:1;transform:translateY(0) scale(1)}}
+.gridlens-screen-exit{opacity:0 !important;transform:translateY(-10px) scale(.995) !important;transition:opacity .16s ease,transform .16s ease !important}
+body.gridlens-screen-mode{scroll-behavior:auto}
+body.gridlens-screen-switching{overflow-x:hidden}
+
+/* A real page-like frame for every standalone GridLens screen. */
+section.gridlens-standalone-screen{
+  width:min(1180px,calc(100% - 32px));
+  min-height:calc(100vh - 150px);
+  margin:26px auto 44px;
+  padding:30px 30px 42px;
+  box-sizing:border-box;
+  background:linear-gradient(180deg,rgba(30,30,30,.98),rgba(21,21,21,.98));
+  border:1px solid rgba(0,170,255,.16);
+  border-radius:14px;
+  box-shadow:0 18px 55px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.025);
+  position:relative;
+  overflow:hidden;
+}
+section.gridlens-standalone-screen::before{
+  content:"";position:absolute;left:0;top:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gl-blue),transparent);opacity:.75;
+}
+.gridlens-screen-heading{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:22px;
+  padding:2px 0 24px;margin-bottom:26px;border-bottom:1px solid var(--gl-line);
+}
+.gridlens-screen-heading-copy{min-width:0}
+.gridlens-screen-heading .screen-kicker{margin:0 0 7px;color:var(--gl-blue);font-size:11px;font-weight:900;letter-spacing:2px}
+.gridlens-screen-heading h2{margin:0!important;color:#fff;font-size:clamp(30px,4vw,46px)!important;line-height:1.02!important;letter-spacing:-.8px}
+.gridlens-screen-heading p{margin:10px 0 0;color:#999;max-width:700px;line-height:1.6;font-size:14px}
+.gridlens-screen-home{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;padding:10px 13px;border:1px solid rgba(0,170,255,.42);border-radius:7px;background:#202020;color:#cfefff;text-decoration:none;font-size:11px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;transition:.2s ease}
+.gridlens-screen-home:hover{background:#00aaff;color:#151515;border-color:#00aaff;box-shadow:0 0 20px rgba(0,170,255,.18);transform:translateY(-1px)}
+.gridlens-screen-body>*:first-child{margin-top:0}
+
+/* Keep existing content styling, but give the standalone screens breathing room. */
+section.gridlens-standalone-screen > .section-kicker{display:none}
+section.gridlens-standalone-screen > h2{display:none}
+section.gridlens-standalone-screen > .section-subtitle{display:none}
+section.gridlens-standalone-screen .team-profile,
+section.gridlens-standalone-screen .profile,
+section.gridlens-standalone-screen .stats-section-title:first-of-type{margin-top:0}
+
+@media(max-width:700px){
+  section.gridlens-standalone-screen{width:calc(100% - 20px);min-height:calc(100vh - 105px);margin:14px auto 28px;padding:22px 15px 30px;border-radius:11px}
+  .gridlens-screen-heading{align-items:flex-start;flex-direction:column;gap:14px;padding-bottom:20px;margin-bottom:20px}
+  .gridlens-screen-heading h2{font-size:31px!important}
+  .gridlens-screen-heading p{font-size:13px}
+  .gridlens-screen-home{width:100%;justify-content:center;box-sizing:border-box}
+}
+
+@media(prefers-reduced-motion:reduce){.gridlens-screen-active{animation:none}.gridlens-screen-exit{transition:none!important}}
 </style>
 </head>
 
@@ -2427,6 +2478,7 @@ body.gridlens-screen-mode{scroll-behavior:smooth}
 <a class="gridlens-menu-link" href="#players"><span class="gridlens-menu-link-icon">◉</span><span>Players</span></a>
 <a class="gridlens-menu-link" href="#draft-classes"><span class="gridlens-menu-link-icon">▣</span><span>Draft Classes</span></a>
 <a class="gridlens-menu-link" href="#stats"><span class="gridlens-menu-link-icon">▥</span><span>Stats</span></a>
+<a class="gridlens-menu-link" href="#film-room"><span class="gridlens-menu-link-icon">◫</span><span>Film Room</span></a>
 <a class="gridlens-menu-link" href="#news"><span class="gridlens-menu-link-icon">◈</span><span>News</span></a>
 </nav>
 <div class="gridlens-menu-footer">
@@ -7283,7 +7335,7 @@ loadPlayerDatabase = async function() {
 
    Home keeps Home, Standings, Analysis, and News.
    Larger areas load as their own GridLens screens in
-   the same browser tab.
+   the same browser tab, with an app-like transition.
 ========================================================= */
 (function(){
   const screenGroups = {
@@ -7308,59 +7360,137 @@ loadPlayerDatabase = async function() {
     "draft-classes": "draft-classes"
   };
 
+  const screenMeta = {
+    teams: {
+      kicker: "GRIDLENS // TEAM INTELLIGENCE",
+      title: "Teams",
+      text: "Explore every NFL team by division, roster, season, and football identity."
+    },
+    players: {
+      kicker: "GRIDLENS // PLAYER INTELLIGENCE",
+      title: "Players",
+      text: "Research players, compare profiles, and build a deeper understanding of individual performance."
+    },
+    stats: {
+      kicker: "GRIDLENS // STATISTICS",
+      title: "Stats",
+      text: "A dedicated statistical workspace for league leaders, team performance, and player research."
+    },
+    "film-room": {
+      kicker: "GRIDLENS // FILM ROOM",
+      title: "Film Room",
+      text: "Study formations, plays, players, teams, and tendencies through the GridLens."
+    },
+    "draft-classes": {
+      kicker: "GRIDLENS // DRAFT RESEARCH",
+      title: "Draft Classes",
+      text: "Study draft classes, selections, player paths, and where those players are now."
+    }
+  };
+
   const allSections = Array.from(document.querySelectorAll("section[id]"));
+  let activeRoute = null;
+  let transitionTimer = null;
+
+  function prepareStandaloneScreens(){
+    Object.keys(screenMeta).forEach(route => {
+      const section = document.getElementById(route);
+      if (!section) return;
+      section.classList.add("gridlens-standalone-screen");
+      if (section.querySelector(".gridlens-screen-heading")) return;
+
+      const meta = screenMeta[route];
+      const heading = document.createElement("div");
+      heading.className = "gridlens-screen-heading";
+      heading.innerHTML = `
+        <div class="gridlens-screen-heading-copy">
+          <div class="screen-kicker">${meta.kicker}</div>
+          <h2>${meta.title}</h2>
+          <p>${meta.text}</p>
+        </div>
+        <a class="gridlens-screen-home" href="#home" aria-label="Back to Home">⌂&nbsp; Home</a>
+      `;
+      section.insertBefore(heading, section.firstChild);
+    });
+  }
+
+  prepareStandaloneScreens();
 
   function getRequestedRoute(){
     const raw = window.location.hash.replace(/^#/, "").trim();
     return routeMap[raw] || "home";
   }
 
-  function showScreen(route, targetId){
-    const visibleIds = new Set(screenGroups[route] || screenGroups.home);
+  function scrollToTopInstant(){
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }
 
+  function setVisible(route, targetId){
+    const visibleIds = new Set(screenGroups[route] || screenGroups.home);
     allSections.forEach(section => {
       const visible = visibleIds.has(section.id);
       section.classList.toggle("gridlens-screen-hidden", !visible);
+      section.classList.remove("gridlens-screen-exit");
       if (visible) section.classList.add("gridlens-screen-active");
       else section.classList.remove("gridlens-screen-active");
     });
 
     document.body.classList.add("gridlens-screen-mode");
+    activeRoute = route;
 
-    if (targetId && route === "home") {
+    if (route === "home" && targetId && targetId !== "home") {
       requestAnimationFrame(() => {
         const target = document.getElementById(targetId);
         if (target) target.scrollIntoView({behavior:"smooth", block:"start"});
       });
     } else {
-      window.scrollTo({top:0, behavior:"instant"});
+      scrollToTopInstant();
     }
 
     if (typeof closeGridLensMenu === "function") closeGridLensMenu();
   }
 
+  function animateTo(route, targetId){
+    if (transitionTimer) clearTimeout(transitionTimer);
+    const normalizedRoute = screenGroups[route] ? route : "home";
+
+    if (activeRoute === normalizedRoute) {
+      setVisible(normalizedRoute, targetId);
+      return;
+    }
+
+    document.body.classList.add("gridlens-screen-switching");
+    allSections.forEach(section => {
+      if (!section.classList.contains("gridlens-screen-hidden")) {
+        section.classList.add("gridlens-screen-exit");
+      }
+    });
+
+    transitionTimer = setTimeout(() => {
+      setVisible(normalizedRoute, targetId);
+      requestAnimationFrame(() => document.body.classList.remove("gridlens-screen-switching"));
+    }, 155);
+  }
+
   window.gridLensNavigate = function(route, targetId){
     const normalizedRoute = screenGroups[route] ? route : "home";
-    if (normalizedRoute === "home") {
-      history.pushState({gridlensRoute: "home"}, "", "#" + (targetId || "home"));
-      showScreen("home", targetId || "home");
-    } else {
-      history.pushState({gridlensRoute: normalizedRoute}, "", "#" + normalizedRoute);
-      showScreen(normalizedRoute, null);
-    }
+    const hash = normalizedRoute === "home" ? (targetId || "home") : normalizedRoute;
+    history.pushState({gridlensRoute: normalizedRoute}, "", "#" + hash);
+    animateTo(normalizedRoute, normalizedRoute === "home" ? (targetId || "home") : null);
   };
 
   function navigateFromLink(event){
     const href = event.currentTarget.getAttribute("href") || "";
     if (!href.startsWith("#")) return;
-
     const id = href.slice(1);
     if (!routeMap[id]) return;
 
     event.preventDefault();
     const route = routeMap[id];
-    history.pushState({gridlensRoute:route}, "", "#" + id);
-    showScreen(route, route === "home" ? id : null);
+    history.pushState({gridlensRoute: route}, "", "#" + id);
+    animateTo(route, route === "home" ? id : null);
   }
 
   document.querySelectorAll('a[href^="#"]').forEach(link => {
@@ -7369,16 +7499,18 @@ loadPlayerDatabase = async function() {
 
   window.addEventListener("popstate", () => {
     const raw = window.location.hash.replace(/^#/, "").trim();
-    showScreen(routeMap[raw] || "home", routeMap[raw] === "home" ? raw : null);
+    const route = routeMap[raw] || "home";
+    animateTo(route, route === "home" ? raw : null);
   });
 
   window.addEventListener("hashchange", () => {
     const raw = window.location.hash.replace(/^#/, "").trim();
-    showScreen(routeMap[raw] || "home", routeMap[raw] === "home" ? raw : null);
+    const route = routeMap[raw] || "home";
+    if (activeRoute !== route) animateTo(route, route === "home" ? raw : null);
   });
 
   const initialHash = window.location.hash.replace(/^#/, "").trim();
-  showScreen(routeMap[initialHash] || "home", routeMap[initialHash] === "home" ? initialHash : null);
+  setVisible(routeMap[initialHash] || "home", routeMap[initialHash] === "home" ? initialHash : null);
 })();
 </script>
 
