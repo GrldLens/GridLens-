@@ -2395,6 +2395,16 @@ body {
 @media(max-width:600px){.film-grid{grid-template-columns:1fr}.film-featured{padding:22px}.film-featured h3{font-size:25px}.film-featured-meta{flex-direction:column;gap:6px}}
 </style>
 
+
+<style id="gridlens-screen-navigation-styles">
+/* =========================================================
+   GRIDLENS SCREEN NAVIGATION
+========================================================= */
+.gridlens-screen-hidden{display:none !important}
+.gridlens-screen-active{animation:gridLensScreenIn .18s ease}
+@keyframes gridLensScreenIn{from{opacity:.92;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+body.gridlens-screen-mode{scroll-behavior:smooth}
+</style>
 </head>
 
 <body>
@@ -5847,6 +5857,10 @@ function openPlayer(
   playerProfile.style.display =
     "block";
 
+  if (typeof window.gridLensNavigate === "function") {
+    window.gridLensNavigate("players", "players");
+  }
+
   playerProfile.scrollIntoView({
     behavior: "smooth",
     block: "start"
@@ -6801,6 +6815,10 @@ function openTeam(
   teamProfile.style.display =
     "block";
 
+  if (typeof window.gridLensNavigate === "function") {
+    window.gridLensNavigate("teams", "teams");
+  }
+
   teamRoster.innerHTML = `
     <p class="roster-loading">
       Loading ${team.name} roster...
@@ -7258,6 +7276,110 @@ loadPlayerDatabase = async function() {
   return result;
 };
 
+
+
+/* =========================================================
+   GRIDLENS SAME-TAB SCREEN NAVIGATION
+
+   Home keeps Home, Standings, Analysis, and News.
+   Larger areas load as their own GridLens screens in
+   the same browser tab.
+========================================================= */
+(function(){
+  const screenGroups = {
+    home: ["home", "pulse", "standings", "research", "articles", "news"],
+    teams: ["teams"],
+    players: ["players"],
+    stats: ["stats"],
+    "film-room": ["film-room"],
+    "draft-classes": ["draft-classes"]
+  };
+
+  const routeMap = {
+    home: "home",
+    standings: "home",
+    research: "home",
+    articles: "home",
+    news: "home",
+    teams: "teams",
+    players: "players",
+    stats: "stats",
+    "film-room": "film-room",
+    "draft-classes": "draft-classes"
+  };
+
+  const allSections = Array.from(document.querySelectorAll("section[id]"));
+
+  function getRequestedRoute(){
+    const raw = window.location.hash.replace(/^#/, "").trim();
+    return routeMap[raw] || "home";
+  }
+
+  function showScreen(route, targetId){
+    const visibleIds = new Set(screenGroups[route] || screenGroups.home);
+
+    allSections.forEach(section => {
+      const visible = visibleIds.has(section.id);
+      section.classList.toggle("gridlens-screen-hidden", !visible);
+      if (visible) section.classList.add("gridlens-screen-active");
+      else section.classList.remove("gridlens-screen-active");
+    });
+
+    document.body.classList.add("gridlens-screen-mode");
+
+    if (targetId && route === "home") {
+      requestAnimationFrame(() => {
+        const target = document.getElementById(targetId);
+        if (target) target.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    } else {
+      window.scrollTo({top:0, behavior:"instant"});
+    }
+
+    if (typeof closeGridLensMenu === "function") closeGridLensMenu();
+  }
+
+  window.gridLensNavigate = function(route, targetId){
+    const normalizedRoute = screenGroups[route] ? route : "home";
+    if (normalizedRoute === "home") {
+      history.pushState({gridlensRoute: "home"}, "", "#" + (targetId || "home"));
+      showScreen("home", targetId || "home");
+    } else {
+      history.pushState({gridlensRoute: normalizedRoute}, "", "#" + normalizedRoute);
+      showScreen(normalizedRoute, null);
+    }
+  };
+
+  function navigateFromLink(event){
+    const href = event.currentTarget.getAttribute("href") || "";
+    if (!href.startsWith("#")) return;
+
+    const id = href.slice(1);
+    if (!routeMap[id]) return;
+
+    event.preventDefault();
+    const route = routeMap[id];
+    history.pushState({gridlensRoute:route}, "", "#" + id);
+    showScreen(route, route === "home" ? id : null);
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", navigateFromLink);
+  });
+
+  window.addEventListener("popstate", () => {
+    const raw = window.location.hash.replace(/^#/, "").trim();
+    showScreen(routeMap[raw] || "home", routeMap[raw] === "home" ? raw : null);
+  });
+
+  window.addEventListener("hashchange", () => {
+    const raw = window.location.hash.replace(/^#/, "").trim();
+    showScreen(routeMap[raw] || "home", routeMap[raw] === "home" ? raw : null);
+  });
+
+  const initialHash = window.location.hash.replace(/^#/, "").trim();
+  showScreen(routeMap[initialHash] || "home", routeMap[initialHash] === "home" ? initialHash : null);
+})();
 </script>
 
 <script>(function(){const filters=document.querySelectorAll('.news-filter'),cards=document.querySelectorAll('.news-card');filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(b=>b.classList.remove('active'));f.classList.add('active');const c=f.textContent.trim().toUpperCase();cards.forEach(card=>{const t=card.querySelector('.news-tag')?.textContent.trim().toUpperCase()||'';const k=c.replace(' NEWS','');card.style.display=(c==='ALL NEWS'||t.includes(k)||(k==='TEAMS'&&t.includes('TEAM'))||(k==='PLAYERS'&&t.includes('PLAYER'))) ? '' : 'none';});}));})();</script>
