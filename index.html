@@ -2369,6 +2369,32 @@ body {
 .stats-category-button.active { box-shadow:0 0 0 1px #00aaff inset, 0 0 14px rgba(0,170,255,.10); }
 .stats-category-note { margin-top:16px; padding:14px 16px; border:1px solid #303030; border-radius:8px; background:#1b1b1b; color:#858585; font-size:12px; line-height:1.5; }
 </style>
+
+<style id="gridlens-film-room-styles">
+/* =========================================================
+   FILM ROOM
+========================================================= */
+.film-room-section{margin-top:30px}
+.film-room-section .section-kicker{color:#00aaff;font-size:12px;font-weight:800;letter-spacing:2px}
+.film-room-section .section-subtitle{color:#a9a9a9;margin:0 0 24px}
+.film-featured{margin:6px 0 24px;padding:28px;background:linear-gradient(145deg,#202b2b,#151a1a);border:1px solid #3a4644;border-left:3px solid #00aaff;border-radius:10px}
+.film-featured-tag{color:#00aaff;font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:12px}
+.film-featured h3{color:#fff;font-size:30px;margin:0 0 10px}
+.film-featured p{color:#b8b8b8;line-height:1.65;font-size:15px;max-width:820px;margin:0 0 20px}
+.film-featured-meta{display:flex;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid #34403e;color:#777;font-size:11px;font-weight:700;letter-spacing:1px}
+.film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.film-card{padding:22px;background:#202020;border:1px solid #343434;border-radius:9px;transition:.2s ease}
+.film-card:hover{border-color:#00aaff;transform:translateY(-3px);box-shadow:0 0 18px rgba(0,170,255,.12)}
+.film-tag{color:#00aaff;font-size:11px;font-weight:800;letter-spacing:1.5px;margin-bottom:12px}
+.film-card h3{color:#fff;font-size:21px;margin:0 0 10px}
+.film-card p{color:#b5b5b5;line-height:1.6;font-size:14px;margin:0 0 18px}
+.film-watch-button{display:inline-block;padding:10px 14px;background:#00aaff;color:#fff;border:1px solid #00aaff;border-radius:5px;font-size:11px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;cursor:pointer}
+.film-watch-button:hover{box-shadow:0 0 16px rgba(0,170,255,.18)}
+.film-note{margin-top:18px;padding:15px 17px;border:1px dashed #3a3a3a;border-radius:8px;color:#777;font-size:12px;line-height:1.6;text-align:center}
+@media(max-width:900px){.film-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.film-grid{grid-template-columns:1fr}.film-featured{padding:22px}.film-featured h3{font-size:25px}.film-featured-meta{flex-direction:column;gap:6px}}
+</style>
+
 </head>
 
 <body>
@@ -2427,6 +2453,7 @@ body {
     <a href="#players">Players</a>
     <a href="#draft-classes">Draft Classes</a>
     <a href="#research">Analysis</a>
+    <a href="#film-room">Film Room</a>
     <a href="#stats">Stats</a>
     <a href="#news">News</a>
   </nav>
@@ -3283,6 +3310,67 @@ body {
     <article class="article-card"><div class="article-tag">TEAM ANALYSIS</div><h3>How Roster Depth Changes a Season</h3><p>Looking beyond the starting lineup and examining why depth can become one of the biggest advantages in football.</p><div class="article-meta"><span>GridLens</span><span class="article-read">Read Article →</span></div></article>
     <article class="article-card"><div class="article-tag">FILM STUDY</div><h3>Finding the Details on Film</h3><p>A GridLens approach to studying formations, tendencies, matchups, and the small details that shape a play.</p><div class="article-meta"><span>GridLens</span><span class="article-read">Read Article →</span></div></article>
   </div>
+</section>
+
+
+
+<section class="section film-room-section" id="film-room">
+  <div class="section-kicker">GRIDLENS // FILM ROOM</div>
+  <h2>Film Room</h2>
+  <p class="section-subtitle">Study formations, plays, players, teams, and tendencies through the GridLens.</p>
+
+  <div class="film-featured">
+    <div class="film-featured-tag">FEATURED FILM STUDY</div>
+    <h3>Break Down the Game</h3>
+    <p>Use NFL game film to study a play, then bring the film findings into GridLens through written analysis, diagrams, telestration, and detailed notes.</p>
+    <div class="film-featured-meta"><span>GRIDLENS FILM ROOM</span><span>FILM ACCESS COMING LATER</span></div>
+  </div>
+
+  <div class="film-grid">
+    <article class="film-card">
+      <div class="film-tag">FORMATION BREAKDOWN</div>
+      <h3>Formation Breakdown</h3>
+      <p>Study offensive and defensive alignments, personnel groupings, motion, spacing, and pre-snap structure.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">PLAY BREAKDOWN</div>
+      <h3>Play Breakdown</h3>
+      <p>Break down what happened on individual plays, including reads, routes, blocking, coverage, pressure, and decision-making.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">PLAYER FILM</div>
+      <h3>Player Film</h3>
+      <p>Study individual players and identify their strengths, weaknesses, technique, tendencies, and development.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">TEAM FILM</div>
+      <h3>Team Film</h3>
+      <p>Examine how teams operate on both sides of the ball, from scheme and personnel to situational tendencies.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">TENDENCIES</div>
+      <h3>Tendencies</h3>
+      <p>Track recurring patterns in formations, play calls, personnel, alignments, coverage, pressure, and situational football.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">FILM STUDY</div>
+      <h3>GridLens Film Studies</h3>
+      <p>Turn individual film sessions into organized GridLens research that connects what is seen on film to the bigger picture.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+  </div>
+
+  <div class="film-note">Actual NFL film will not be hosted by GridLens in this layout. Film access can be connected later through an appropriate authorized source, while GridLens houses the analysis.</div>
 </section>
 
 <section class="section news-section" id="news">
