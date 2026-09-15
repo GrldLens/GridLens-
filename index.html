@@ -1479,48 +1479,6 @@
       line-height: 1.6;
     }
 
-
-
-/* =========================================================
-   GRIDLENS STATS
-========================================================= */
-.stats-section { margin-top:30px; }
-.stats-intro { max-width:760px; margin:0 auto 26px; text-align:center; color:#aeb8b4; line-height:1.6; }
-.stats-season-row { display:flex; justify-content:center; margin-bottom:26px; }
-.stats-season-badge { display:inline-block; padding:8px 14px; border:1px solid rgba(0,170,255,.5); border-radius:999px; color:#00aaff; background:rgba(0,170,255,.07); font-size:11px; font-weight:800; letter-spacing:1.5px; }
-.stats-section-title { display:flex; align-items:center; gap:12px; margin:30px 0 16px; }
-.stats-section-title h3 { margin:0; color:#fff; font-size:24px; }
-.stats-section-line { flex:1; height:1px; background:rgba(0,170,255,.28); }
-.stats-category-row { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
-.stats-category-button { border:1px solid #3a3a3a; background:#202020; color:#cfcfcf; padding:9px 13px; border-radius:7px; font-size:12px; font-weight:700; cursor:pointer; }
-.stats-category-button.active,.stats-category-button:hover { border-color:#00aaff; color:#fff; background:#242424; }
-.stats-leader-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
-.stats-leader-card { background:#202020; border:1px solid #343434; border-radius:9px; overflow:hidden; }
-.stats-leader-header { display:flex; justify-content:space-between; align-items:center; gap:12px; padding:15px 18px; border-bottom:1px solid #333; }
-.stats-leader-header h4 { margin:0; color:#fff; font-size:16px; }
-.stats-leader-header span { color:#00aaff; font-size:11px; font-weight:800; letter-spacing:1px; }
-.stats-table { width:100%; border-collapse:collapse; }
-.stats-table th,.stats-table td { padding:12px 14px; border-bottom:1px solid #2f2f2f; text-align:left; font-size:13px; }
-.stats-table th { color:#777; font-size:10px; text-transform:uppercase; letter-spacing:1px; }
-.stats-table td { color:#cfcfcf; }
-.stats-table tr:last-child td { border-bottom:0; }
-.stats-player-name { color:#fff !important; font-weight:700; }
-.stats-placeholder { color:#777 !important; }
-.stats-team-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
-.stats-team-card { background:#202020; border:1px solid #343434; border-radius:9px; padding:20px; }
-.stats-team-card h4 { margin:0 0 15px; color:#fff; font-size:17px; }
-.stats-metric-row { display:flex; justify-content:space-between; gap:15px; padding:11px 0; border-bottom:1px solid #2f2f2f; }
-.stats-metric-row:last-child { border-bottom:0; }
-.stats-metric-label { color:#999; font-size:13px; }
-.stats-metric-value { color:#fff; font-weight:800; }
-.stats-search-box { width:100%; box-sizing:border-box; padding:13px 15px; border:1px solid #3a3a3a; border-radius:8px; background:#202020; color:#fff; outline:none; font-size:14px; margin-bottom:16px; }
-.stats-search-box:focus { border-color:#00aaff; box-shadow:0 0 0 2px rgba(0,170,255,.08); }
-.stats-player-panel { background:#202020; border:1px solid #343434; border-radius:9px; padding:20px; }
-.stats-player-panel h4 { margin:0 0 8px; color:#fff; font-size:18px; }
-.stats-player-panel p { margin:0; color:#999; line-height:1.6; font-size:13px; }
-.stats-note { margin-top:22px; padding:14px 16px; border-left:3px solid #00aaff; background:#1c1c1c; color:#888; font-size:12px; line-height:1.6; }
-@media (max-width:760px) { .stats-leader-grid,.stats-team-grid { grid-template-columns:1fr; } .stats-section-title h3 { font-size:20px; } .stats-table th,.stats-table td { padding:10px 9px; } }
-
     /* =========================================================
        GRIDLENS STANDINGS
     ========================================================= */
@@ -2142,10 +2100,8 @@ header {
 .gridlens-menu-button.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .gridlens-menu-button.open span:nth-child(2){opacity:0}
 .gridlens-menu-button.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.gridlens-menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:1090;opacity:0;visibility:hidden;transition:.25s}
-.gridlens-menu-overlay.open{opacity:1;visibility:visible}
-.gridlens-menu-panel{position:fixed;top:0;right:0;width:min(330px,84vw);height:100vh;background:#151515;border-left:1px solid rgba(0,170,255,.22);box-shadow:-14px 0 35px rgba(0,0,0,.35);z-index:1095;transform:translateX(100%);transition:transform .28s ease;display:flex;flex-direction:column;padding:68px 20px 20px;box-sizing:border-box}
-.gridlens-menu-panel.open{transform:translateX(0)}
+.gridlens-menu-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.52);z-index:1090;opacity:0;visibility:hidden;pointer-events:none;transition:.25s}.gridlens-menu-overlay.open{display:block;opacity:1;visibility:visible;pointer-events:auto}
+.gridlens-menu-panel{display:none;position:fixed;top:0;right:0;width:min(330px,84vw);height:100vh;background:#151515;border-left:1px solid rgba(0,170,255,.22);box-shadow:-14px 0 35px rgba(0,0,0,.35);z-index:1095;transform:translateX(100%);visibility:hidden;pointer-events:none;transition:transform .28s ease,visibility 0s linear .28s;flex-direction:column;padding:68px 20px 20px;box-sizing:border-box}.gridlens-menu-panel.open{display:flex;transform:translateX(0);visibility:visible;pointer-events:auto;transition:transform .28s ease,visibility 0s linear 0s}
 .gridlens-menu-kicker{color:#00aaff;font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:8px}
 .gridlens-menu-title{color:#fff;font-size:22px;font-weight:800;margin-bottom:14px}
 .gridlens-menu-links{display:flex;flex-direction:column;gap:8px}
@@ -2364,11 +2320,32 @@ body {
 </style>
 <style>
 .news-featured{margin:6px 0 22px;padding:28px;background:linear-gradient(145deg,#202b2b,#151a1a);border:1px solid #3a4644;border-left:3px solid #00aaff;border-radius:10px}.news-featured-tag{color:#00aaff;font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:12px}.news-featured h3{color:#fff;font-size:30px;margin:0 0 10px}.news-featured p{color:#b8b8b8;line-height:1.65;font-size:15px;max-width:800px;margin:0 0 22px}.news-featured-meta{display:flex;justify-content:space-between;padding-top:14px;border-top:1px solid #34403e;color:#777;font-size:11px;font-weight:700;letter-spacing:1px}.news-filter-row{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 30px}.news-filter{background:#202020;color:#aaa;border:1px solid #363636;border-radius:6px;padding:9px 14px;font-size:12px;font-weight:700;cursor:pointer}.news-filter:hover,.news-filter.active{color:#fff;border-color:#00aaff;background:#20272a}.news-latest-heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:15px}.news-latest-heading h3{color:#fff;font-size:25px;margin:3px 0 0}.news-status{color:#666;font-size:10px;font-weight:800;letter-spacing:1.2px;padding-bottom:5px}@media(max-width:900px){.news-grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.news-featured{padding:22px}.news-featured h3{font-size:25px}.news-grid{grid-template-columns:1fr}.news-latest-heading{align-items:flex-start;flex-direction:column}.news-status{padding-bottom:0}}
-
-.stats-category-button { cursor:pointer; }
-.stats-category-button.active { box-shadow:0 0 0 1px #00aaff inset, 0 0 14px rgba(0,170,255,.10); }
-.stats-category-note { margin-top:16px; padding:14px 16px; border:1px solid #303030; border-radius:8px; background:#1b1b1b; color:#858585; font-size:12px; line-height:1.5; }
 </style>
+
+
+/* =========================================================
+   FILM ROOM
+   ========================================================= */
+.film-room-section{margin-top:30px}
+.film-room-section .section-kicker{color:#00aaff;font-size:12px;font-weight:800;letter-spacing:2px}
+.film-room-section .section-subtitle{color:#a9a9a9;margin:0 0 24px}
+.film-featured{margin:6px 0 24px;padding:28px;background:linear-gradient(145deg,#202b2b,#151a1a);border:1px solid #3a4644;border-left:3px solid #00aaff;border-radius:10px}
+.film-featured-tag{color:#00aaff;font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:12px}
+.film-featured h3{color:#fff;font-size:30px;margin:0 0 10px}
+.film-featured p{color:#b8b8b8;line-height:1.65;font-size:15px;max-width:820px;margin:0 0 20px}
+.film-featured-meta{display:flex;justify-content:space-between;gap:12px;padding-top:14px;border-top:1px solid #34403e;color:#777;font-size:11px;font-weight:700;letter-spacing:1px}
+.film-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.film-card{padding:22px;background:#202020;border:1px solid #343434;border-radius:9px;transition:.2s ease}
+.film-card:hover{border-color:#00aaff;transform:translateY(-3px);box-shadow:0 0 18px rgba(0,170,255,.12)}
+.film-tag{color:#00aaff;font-size:11px;font-weight:800;letter-spacing:1.5px;margin-bottom:12px}
+.film-card h3{color:#fff;font-size:21px;margin:0 0 10px}
+.film-card p{color:#b5b5b5;line-height:1.6;font-size:14px;margin:0 0 18px}
+.film-watch-button{display:inline-block;padding:10px 14px;background:#00aaff;color:#fff;border:1px solid #00aaff;border-radius:5px;font-size:11px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;cursor:pointer}
+.film-watch-button:hover{box-shadow:0 0 16px rgba(0,170,255,.18)}
+.film-note{margin-top:18px;padding:15px 17px;border:1px dashed #3a3a3a;border-radius:8px;color:#777;font-size:12px;line-height:1.6;text-align:center}
+@media(max-width:900px){.film-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.film-grid{grid-template-columns:1fr}.film-featured{padding:22px}.film-featured h3{font-size:25px}.film-featured-meta{flex-direction:column;gap:6px}}
+
 </head>
 
 <body>
@@ -2388,6 +2365,7 @@ body {
 <a class="gridlens-menu-link" href="#teams"><span class="gridlens-menu-link-icon">🏈</span><span>Teams</span></a>
 <a class="gridlens-menu-link" href="#standings"><span class="gridlens-menu-link-icon">🏆</span><span>Standings</span></a>
 <a class="gridlens-menu-link" href="#research"><span class="gridlens-menu-link-icon">▤</span><span>Analysis</span></a>
+<a class="gridlens-menu-link" href="#film-room"><span class="gridlens-menu-link-icon">▶</span><span>Film Room</span></a>
 <a class="gridlens-menu-link" href="#players"><span class="gridlens-menu-link-icon">◉</span><span>Players</span></a>
 <a class="gridlens-menu-link" href="#draft-classes"><span class="gridlens-menu-link-icon">▣</span><span>Draft Classes</span></a>
 <a class="gridlens-menu-link" href="#stats"><span class="gridlens-menu-link-icon">▥</span><span>Stats</span></a>
@@ -3035,7 +3013,7 @@ body {
 
   <p class="standings-intro">
     See how every team stacks up by conference and division,
-    then view the current playoff picture.
+    then view the current possible playoff picture.
     Live standings data will be connected to an automated data source later.
   </p>
 
@@ -3229,40 +3207,6 @@ body {
      DRAFT CLASSES
 ========================================================= -->
 
-
-
-<!-- =========================================================
-     STATS
-========================================================= -->
-<section class="section stats-section" id="stats">
-  <div class="section-kicker">GRIDLENS // STATISTICS</div>
-  <h2>Stats</h2>
-  <p class="stats-intro">Explore league leaders, team statistics, and player production through the GridLens lens. Live statistics will be connected to an automated data source later.</p>
-  <div class="stats-season-row"><span class="stats-season-badge">2026 SEASON • LAYOUT PREVIEW</span></div>
-
-  <div class="stats-section-title"><h3>League Leaders</h3><div class="stats-section-line"></div></div>
-  <div class="stats-category-row" role="tablist" aria-label="League leader categories">
-    <button class="stats-category-button active" type="button" data-stats-category="Passing" role="tab" aria-selected="true">Passing</button>
-    <button class="stats-category-button" type="button" data-stats-category="Rushing" role="tab" aria-selected="false">Rushing</button>
-    <button class="stats-category-button" type="button" data-stats-category="Receiving" role="tab" aria-selected="false">Receiving</button>
-    <button class="stats-category-button" type="button" data-stats-category="Defense" role="tab" aria-selected="false">Defense</button>
-    <button class="stats-category-button" type="button" data-stats-category="Kicking" role="tab" aria-selected="false">Kicking</button>
-  </div>
-  <div class="stats-leader-grid" id="statsLeaderGrid"></div>
-  <div class="stats-category-note" id="statsCategoryNote">Select a category to preview the GridLens stat leaders layout. Real values will be connected later.</div>
-
-  <div class="stats-section-title"><h3>Team Stats</h3><div class="stats-section-line"></div></div>
-  <div class="stats-team-grid">
-    <div class="stats-team-card"><h4>Offense</h4><div class="stats-metric-row"><span class="stats-metric-label">Points Per Game</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Total Yards</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Passing Yards</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Rushing Yards</span><span class="stats-metric-value">—</span></div></div>
-    <div class="stats-team-card"><h4>Defense</h4><div class="stats-metric-row"><span class="stats-metric-label">Points Allowed</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Yards Allowed</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Sacks</span><span class="stats-metric-value">—</span></div><div class="stats-metric-row"><span class="stats-metric-label">Takeaways</span><span class="stats-metric-value">—</span></div></div>
-  </div>
-
-  <div class="stats-section-title"><h3>Player Stats</h3><div class="stats-section-line"></div></div>
-  <input class="stats-search-box" type="text" placeholder="Search a player to view statistics..." aria-label="Search player statistics">
-  <div class="stats-player-panel"><h4>Player Statistics</h4><p>Select a player to view season production, career statistics, and category-by-category performance.</p></div>
-  <div class="stats-note">GridLens is currently displaying the statistics layout only. Real player and team statistics will be connected later without filling this section with made-up numbers.</div>
-</section>
-
 <section class="section research-section" id="research">
   <div class="section-kicker">GRIDLENS // RESEARCH</div>
   <h2>Latest GridLens Research</h2>
@@ -3283,6 +3227,65 @@ body {
     <article class="article-card"><div class="article-tag">TEAM ANALYSIS</div><h3>How Roster Depth Changes a Season</h3><p>Looking beyond the starting lineup and examining why depth can become one of the biggest advantages in football.</p><div class="article-meta"><span>GridLens</span><span class="article-read">Read Article →</span></div></article>
     <article class="article-card"><div class="article-tag">FILM STUDY</div><h3>Finding the Details on Film</h3><p>A GridLens approach to studying formations, tendencies, matchups, and the small details that shape a play.</p><div class="article-meta"><span>GridLens</span><span class="article-read">Read Article →</span></div></article>
   </div>
+</section>
+
+<section class="section film-room-section" id="film-room">
+  <div class="section-kicker">GRIDLENS // FILM ROOM</div>
+  <h2>Film Room</h2>
+  <p class="section-subtitle">Study formations, plays, players, teams, and tendencies through the GridLens.</p>
+
+  <div class="film-featured">
+    <div class="film-featured-tag">FEATURED FILM STUDY</div>
+    <h3>Break Down the Game</h3>
+    <p>Use NFL game film to study a play, then bring the film findings into GridLens through written analysis, diagrams, telestration, and detailed notes.</p>
+    <div class="film-featured-meta"><span>GRIDLENS FILM ROOM</span><span>FILM ACCESS COMING LATER</span></div>
+  </div>
+
+  <div class="film-grid">
+    <article class="film-card">
+      <div class="film-tag">FORMATION BREAKDOWN</div>
+      <h3>Formation Breakdown</h3>
+      <p>Study offensive and defensive alignments, personnel groupings, motion, spacing, and pre-snap structure.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">PLAY BREAKDOWN</div>
+      <h3>Play Breakdown</h3>
+      <p>Break down what happened on individual plays, including reads, routes, blocking, coverage, pressure, and decision-making.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">PLAYER FILM</div>
+      <h3>Player Film</h3>
+      <p>Study individual players and identify their strengths, weaknesses, technique, tendencies, and development.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">TEAM FILM</div>
+      <h3>Team Film</h3>
+      <p>Examine how teams operate on both sides of the ball, from scheme and personnel to situational tendencies.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">TENDENCIES</div>
+      <h3>Tendencies</h3>
+      <p>Track recurring patterns in formations, play calls, personnel, alignments, coverage, pressure, and situational football.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+
+    <article class="film-card">
+      <div class="film-tag">FILM STUDY</div>
+      <h3>GridLens Film Studies</h3>
+      <p>Turn individual film sessions into organized GridLens research that connects what you see on film to the bigger picture.</p>
+      <button class="film-watch-button" type="button">Watch Film</button>
+    </article>
+  </div>
+
+  <div class="film-note">Actual NFL film will not be hosted by GridLens in this layout. Film access can be connected later through an appropriate authorized source, while GridLens houses the analysis.</div>
 </section>
 
 <section class="section news-section" id="news">
@@ -7173,79 +7176,5 @@ loadPlayerDatabase = async function() {
 </script>
 
 <script>(function(){const filters=document.querySelectorAll('.news-filter'),cards=document.querySelectorAll('.news-card');filters.forEach(f=>f.addEventListener('click',()=>{filters.forEach(b=>b.classList.remove('active'));f.classList.add('active');const c=f.textContent.trim().toUpperCase();cards.forEach(card=>{const t=card.querySelector('.news-tag')?.textContent.trim().toUpperCase()||'';const k=c.replace(' NEWS','');card.style.display=(c==='ALL NEWS'||t.includes(k)||(k==='TEAMS'&&t.includes('TEAM'))||(k==='PLAYERS'&&t.includes('PLAYER'))) ? '' : 'none';});}));})();</script>
-
-<script>
-(function(){
-  const buttons = document.querySelectorAll('.stats-category-button');
-  const grid = document.getElementById('statsLeaderGrid');
-  const note = document.getElementById('statsCategoryNote');
-  if (!buttons.length || !grid) return;
-
-  const categoryData = {
-    Passing: [
-      ['Passing Yards','YDS'],
-      ['Passing Touchdowns','TD'],
-      ['Completion Percentage','CMP%'],
-      ['Passer Rating','RTG']
-    ],
-    Rushing: [
-      ['Rushing Yards','YDS'],
-      ['Rushing Touchdowns','TD'],
-      ['Yards Per Carry','YPC'],
-      ['Rushing Attempts','ATT']
-    ],
-    Receiving: [
-      ['Receiving Yards','YDS'],
-      ['Receiving Touchdowns','TD'],
-      ['Receptions','REC'],
-      ['Yards Per Reception','YPR']
-    ],
-    Defense: [
-      ['Tackles','TKL'],
-      ['Sacks','SACK'],
-      ['Interceptions','INT'],
-      ['Forced Fumbles','FF']
-    ],
-    Kicking: [
-      ['Field Goals Made','FG'],
-      ['Field Goal Percentage','FG%'],
-      ['Extra Points Made','XP'],
-      ['Kicking Points','PTS']
-    ]
-  };
-
-  function emptyRows(stat){
-    return Array.from({length:5}, () => '<tr><td class="stats-player-name">—</td><td class="stats-placeholder">—</td><td class="stats-placeholder">—</td></tr>').join('');
-  }
-
-  function renderCategory(category){
-    const stats = categoryData[category] || categoryData.Passing;
-    grid.innerHTML = stats.slice(0,2).map(([title,abbr]) => `
-      <div class="stats-leader-card">
-        <div class="stats-leader-header"><h4>${title}</h4><span>TOP 5</span></div>
-        <table class="stats-table">
-          <thead><tr><th>Player</th><th>Team</th><th>${abbr}</th></tr></thead>
-          <tbody>${emptyRows(abbr)}</tbody>
-        </table>
-      </div>`).join('');
-
-    note.textContent = `${category} leaders selected. The table structure is active, but real ${category.toLowerCase()} values will be connected to GridLens data later.`;
-  }
-
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const category = button.dataset.statsCategory || button.textContent.trim();
-      buttons.forEach(b => {
-        const active = b === button;
-        b.classList.toggle('active', active);
-        b.setAttribute('aria-selected', active ? 'true' : 'false');
-      });
-      renderCategory(category);
-    });
-  });
-
-  renderCategory('Passing');
-})();
-</script>
 </body>
 </html>
