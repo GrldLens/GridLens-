@@ -536,8 +536,8 @@
       background:
         linear-gradient(
           145deg,
-          rgba(26,34,32,0.97),
-          rgba(17,23,21,0.98)
+          rgba(32,32,32,0.98),
+          rgba(21,21,21,0.99)
         );
       border-radius: 10px;
       border: 1px solid #333333;
@@ -1313,8 +1313,37 @@
       letter-spacing: 1px;
     }
 
+    .team-directory-divider {
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-top:42px;
+      color:#777;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+    .team-directory-divider::before,
+    .team-directory-divider::after {
+      content:"";
+      height:1px;
+      background:#333;
+      flex:1;
+    }
+
+    .team-directory-label {
+      margin: 22px 0 12px;
+      color:#00aaff;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:2px;
+      text-transform:uppercase;
+    }
+
     .team-tool-section {
-      margin-top: 42px;
+      display:block;
+      margin-top:26px;
       padding-top: 34px;
       border-top: 1px solid #333333;
     }
@@ -1326,6 +1355,11 @@
       font-weight: 900;
       letter-spacing: 2px;
       text-transform: uppercase;
+    }
+
+    @media (max-width: 700px) {
+      .team-directory-divider { margin-top:32px; }
+      .team-leader-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
     }
 
     .team-tool-section h3 {
@@ -3063,8 +3097,10 @@ section.gridlens-standalone-screen .stats-section-title:first-of-type{margin-top
   <h2>Teams</h2>
 
   <p>
-    Search and explore NFL teams by division.
+    Explore all 32 NFL teams by division, then use GridLens team research tools below.
   </p>
+
+  <div class="team-directory-label">32 TEAMS // BY DIVISION</div>
 
   <input
     type="text"
@@ -3074,6 +3110,10 @@ section.gridlens-standalone-screen .stats-section-title:first-of-type{margin-top
   >
 
   <div id="teamResults"></div>
+
+  <div class="team-directory-divider">
+    <span>TEAM RESEARCH TOOLS</span>
+  </div>
 
   <!-- TEAM LEADERS -->
 
@@ -7377,6 +7417,9 @@ function returnToTeams() {
 
   teamSearch.style.display =
     "block";
+
+  if (teamLeadersSection) teamLeadersSection.style.display = "block";
+  if (compareRostersSection) compareRostersSection.style.display = "block";
 
   if (teamLeadersSection) teamLeadersSection.style.display = "block";
   if (compareRostersSection) compareRostersSection.style.display = "block";
